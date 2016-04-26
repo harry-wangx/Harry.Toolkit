@@ -9,7 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{3CB370CA
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net40", "Net40", "{FA7E6FB1-0D1C-4934-BB38-F0644658F502}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harry.Common.Net40", "src\DotNet\Harry.Common\Harry.Common.Net40.csproj", "{D925F3EA-091C-47E9-9AB3-FD94D30E76F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harry.Image.Validate", "src\DotNet\Harry.Image.Validate\Harry.Image.Validate.csproj", "{498D05D6-D1BB-47D5-8777-135DD13DC3FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harry.Image.Validate.GeneralProvider", "src\DotNet\Harry.Image.Validate.GeneralProvider\Harry.Image.Validate.GeneralProvider.csproj", "{BBC69968-FB06-4FB8-8A04-3FB978356605}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,15 +19,20 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D925F3EA-091C-47E9-9AB3-FD94D30E76F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D925F3EA-091C-47E9-9AB3-FD94D30E76F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D925F3EA-091C-47E9-9AB3-FD94D30E76F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D925F3EA-091C-47E9-9AB3-FD94D30E76F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{498D05D6-D1BB-47D5-8777-135DD13DC3FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{498D05D6-D1BB-47D5-8777-135DD13DC3FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{498D05D6-D1BB-47D5-8777-135DD13DC3FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{498D05D6-D1BB-47D5-8777-135DD13DC3FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBC69968-FB06-4FB8-8A04-3FB978356605}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBC69968-FB06-4FB8-8A04-3FB978356605}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBC69968-FB06-4FB8-8A04-3FB978356605}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBC69968-FB06-4FB8-8A04-3FB978356605}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{D925F3EA-091C-47E9-9AB3-FD94D30E76F1} = {FA7E6FB1-0D1C-4934-BB38-F0644658F502}
+		{498D05D6-D1BB-47D5-8777-135DD13DC3FE} = {FA7E6FB1-0D1C-4934-BB38-F0644658F502}
+		{BBC69968-FB06-4FB8-8A04-3FB978356605} = {FA7E6FB1-0D1C-4934-BB38-F0644658F502}
 	EndGlobalSection
 EndGlobal
