@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net40", "Net40", "{FA7E6FB1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harry.Image.Validate", "src\DotNet\Harry.Image.Validate\Harry.Image.Validate.csproj", "{498D05D6-D1BB-47D5-8777-135DD13DC3FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harry.Image.Validate.Providers.General", "src\DotNet\Harry.Image.Validate.GeneralProvider\Harry.Image.Validate.Providers.General.csproj", "{BBC69968-FB06-4FB8-8A04-3FB978356605}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harry.Image.Validate.Providers.General", "src\DotNet\Harry.Image.Validate.Providers.General\Harry.Image.Validate.Providers.General.csproj", "{BBC69968-FB06-4FB8-8A04-3FB978356605}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
