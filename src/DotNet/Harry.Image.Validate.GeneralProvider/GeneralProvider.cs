@@ -6,7 +6,7 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 
-namespace Harry.Image.Validate.GeneralProvider
+namespace Harry.Image.Validate.Providers.General
 {
     public class GeneralProvider : IImageProvider
     {

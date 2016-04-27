@@ -38,7 +38,7 @@ namespace Harry.Image.Validate
         /// 设置参数
         /// </summary>
         /// <returns></returns>
-        public ValidateImageBuilder Config(Action<ValidateImageOptions> fun)
+        public ValidateImageBuilder Configure(Action<ValidateImageOptions> fun)
         {
             fun(options);
             options.CheckOptions();
