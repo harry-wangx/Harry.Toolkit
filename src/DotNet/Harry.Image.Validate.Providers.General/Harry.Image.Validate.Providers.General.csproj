@@ -7,8 +7,8 @@
     <ProjectGuid>{BBC69968-FB06-4FB8-8A04-3FB978356605}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Harry.Image.Validate.GeneralProvider</RootNamespace>
-    <AssemblyName>Harry.Image.Validate.GeneralProvider</AssemblyName>
+    <RootNamespace>Harry.Image.Validate.Providers.General</RootNamespace>
+    <AssemblyName>Harry.Image.Validate.Providers.General</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
