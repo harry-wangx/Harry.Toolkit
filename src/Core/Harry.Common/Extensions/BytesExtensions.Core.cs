@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Harry.Extensions
+namespace System
 {
     public static partial class BytesExtensions
     {

@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 
-namespace Harry.Extensions
+namespace System
 {
     public static partial class StringExtensions
     {
@@ -181,22 +181,24 @@ namespace Harry.Extensions
             }
         }
 
-        public static T ToEnum<T>(this string value, T defaultValue)
+        public static T ToEnum<T>(this string value)
+        {
+            return (T)Enum.Parse(typeof(T), value, true);
+
+        }
+
+        public static T ToEnum<T>(this string value, T defaultValue) where T : struct
         {
             if (!value.HasValue())
             {
                 return defaultValue;
             }
             T result;
-            try
+            if (Enum.TryParse<T>(value, out result))
             {
-                result = (T)((object)Enum.Parse(typeof(T), value, true));
+                return result;
             }
-            catch (ArgumentException)
-            {
-                result = defaultValue;
-            }
-            return result;
+            return defaultValue;
         }
         #endregion
 

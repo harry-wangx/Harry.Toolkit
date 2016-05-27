@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{21036777-C7B1-40E1-9F1E-C8A45BEED7F9}"
 	ProjectSection(SolutionItems) = preProject
@@ -11,16 +11,6 @@ EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Harry.Common", "src\Core\Harry.Common\Harry.Common.xproj", "{EADC6D83-2728-4064-876C-BA8C1280A9F8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{E50E35F4-DE0D-454A-B545-6A7D410E37A4}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{7600C7C9-79C4-4649-9310-DD2B53643BC3}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Harry.Configuration", "src\Core\Harry.Configuration\Harry.Configuration.xproj", "{D37AA434-18BF-4A05-906B-D3C9FF68E2DF}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Harry.Configuration.Abstractions", "src\Core\Harry.Configuration.Abstractions\Harry.Configuration.Abstractions.xproj", "{E8C27CA9-6A02-4D08-9B9B-7CE91BE49FEE}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Harry.Configuration.Provider.Microsoft", "src\Core\Harry.Configuration.Provider.Microsoft\Harry.Configuration.Provider.Microsoft.xproj", "{824CC449-B5DA-4D00-BE23-96C282C9BBBA}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Harry.Configuration.Provider.Zookeeper", "src\Core\Harry.Configuration.Provider.Zookeeper\Harry.Configuration.Provider.Zookeeper.xproj", "{06F9278D-FF03-4730-B5CA-F75DA96E1416}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,31 +22,8 @@ Global
 		{EADC6D83-2728-4064-876C-BA8C1280A9F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EADC6D83-2728-4064-876C-BA8C1280A9F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EADC6D83-2728-4064-876C-BA8C1280A9F8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D37AA434-18BF-4A05-906B-D3C9FF68E2DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D37AA434-18BF-4A05-906B-D3C9FF68E2DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D37AA434-18BF-4A05-906B-D3C9FF68E2DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D37AA434-18BF-4A05-906B-D3C9FF68E2DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E8C27CA9-6A02-4D08-9B9B-7CE91BE49FEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E8C27CA9-6A02-4D08-9B9B-7CE91BE49FEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E8C27CA9-6A02-4D08-9B9B-7CE91BE49FEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E8C27CA9-6A02-4D08-9B9B-7CE91BE49FEE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{824CC449-B5DA-4D00-BE23-96C282C9BBBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{824CC449-B5DA-4D00-BE23-96C282C9BBBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{824CC449-B5DA-4D00-BE23-96C282C9BBBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{824CC449-B5DA-4D00-BE23-96C282C9BBBA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{06F9278D-FF03-4730-B5CA-F75DA96E1416}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{06F9278D-FF03-4730-B5CA-F75DA96E1416}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{06F9278D-FF03-4730-B5CA-F75DA96E1416}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{06F9278D-FF03-4730-B5CA-F75DA96E1416}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{7600C7C9-79C4-4649-9310-DD2B53643BC3} = {E50E35F4-DE0D-454A-B545-6A7D410E37A4}
-		{D37AA434-18BF-4A05-906B-D3C9FF68E2DF} = {E50E35F4-DE0D-454A-B545-6A7D410E37A4}
-		{E8C27CA9-6A02-4D08-9B9B-7CE91BE49FEE} = {E50E35F4-DE0D-454A-B545-6A7D410E37A4}
-		{824CC449-B5DA-4D00-BE23-96C282C9BBBA} = {E50E35F4-DE0D-454A-B545-6A7D410E37A4}
-		{06F9278D-FF03-4730-B5CA-F75DA96E1416} = {E50E35F4-DE0D-454A-B545-6A7D410E37A4}
 	EndGlobalSection
 EndGlobal

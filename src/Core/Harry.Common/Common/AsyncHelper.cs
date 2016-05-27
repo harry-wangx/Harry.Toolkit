@@ -20,12 +20,16 @@ namespace Harry.Common
         /// <returns></returns>
         public static TResult RunSync<TResult>(Func<Task<TResult>> func)
         {
-            //var cultureUi = CultureInfo.CurrentUICulture;
-            //var culture = CultureInfo.CurrentCulture;
+#if NET451
+            var cultureUi = CultureInfo.CurrentUICulture;
+            var culture = CultureInfo.CurrentCulture;
+#endif
             return _myTaskFactory.StartNew(() =>
             {
-                //Thread.CurrentThread.CurrentCulture = culture;
-                //Thread.CurrentThread.CurrentUICulture = cultureUi;
+#if NET451
+                Thread.CurrentThread.CurrentCulture = culture;
+                Thread.CurrentThread.CurrentUICulture = cultureUi;
+#endif
                 return func();
             }).Unwrap().GetAwaiter().GetResult();
         }
@@ -36,12 +40,17 @@ namespace Harry.Common
         /// <param name="func"></param>
         public static void RunSync(Func<Task> func)
         {
-            //var cultureUi = CultureInfo.CurrentUICulture;
-            //var culture = CultureInfo.CurrentCulture;
+#if NET451
+            var cultureUi = CultureInfo.CurrentUICulture;
+            var culture = CultureInfo.CurrentCulture;
+#endif
             _myTaskFactory.StartNew(() =>
             {
-                //Thread.CurrentThread.CurrentCulture = culture;
-                //Thread.CurrentThread.CurrentUICulture = cultureUi;
+
+#if NET451
+                Thread.CurrentThread.CurrentCulture = culture;
+                Thread.CurrentThread.CurrentUICulture = cultureUi;
+#endif
                 return func();
             }).Unwrap().GetAwaiter().GetResult();
         }
