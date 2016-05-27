@@ -46,7 +46,6 @@ namespace Harry.Common
 #endif
             _myTaskFactory.StartNew(() =>
             {
-
 #if NET451
                 Thread.CurrentThread.CurrentCulture = culture;
                 Thread.CurrentThread.CurrentUICulture = cultureUi;

@@ -1,28 +1,19 @@
 ﻿{
   "version": "1.0.0-*",
-  "description": "Harry.Common Class Library",
-  "authors": [ "Harry" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
+  "description": "Harry Toolkit Common",
+  "dependencies": {
+    "NETStandard.Library": "1.5.0-rc2-*"
+  },
 
   "frameworks": {
-    "net451": { },
-    "dotnet5.4": {
+    "net451": {},
+    "netstandard1.5": {
+      "imports": [
+        "dnxcore50",
+        "portable-net45+win8"
+      ],
       "dependencies": {
-        "Microsoft.CSharp": "4.0.1-*",
-        "System.Collections": "4.0.11-*",
-        "System.Linq": "4.0.1-*",
-        "System.Runtime": "4.0.21-*",
-        "System.Threading": "4.0.11-*"
-      }
-    },
-    "netcore50": {
-      "dependencies": {
-        "System.Dynamic.Runtime": "4.0.10",
-        "System.IO": "4.0.10",
-        "System.IO.FileSystem": "4.0.0",
-        "System.IO.FileSystem.Primitives": "4.0.0",
+
       }
     }
   }
