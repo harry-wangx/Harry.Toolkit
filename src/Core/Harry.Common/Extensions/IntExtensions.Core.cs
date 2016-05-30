@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace System
+namespace Harry.Extensions
 {
     public static partial class IntExtensions
     {

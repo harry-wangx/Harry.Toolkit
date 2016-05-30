@@ -42,11 +42,21 @@
     <Compile Include="..\..\Core\Harry.Common\Common\Utils.cs">
       <Link>Common\Utils.cs</Link>
     </Compile>
+    <Compile Include="..\..\Core\Harry.Common\Extensions\BytesExtensions.Core.cs">
+      <Link>Extensions\BytesExtensions.Core.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Harry.Common\Extensions\DateTimeExtensions.Core.cs">
+      <Link>Extensions\DateTimeExtensions.Core.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Harry.Common\Extensions\IntExtensions.Core.cs">
+      <Link>Extensions\IntExtensions.Core.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Core\Harry.Common\Extensions\StringExtensions.Core.cs">
+      <Link>Extensions\StringExtensions.Core.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Extensions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
