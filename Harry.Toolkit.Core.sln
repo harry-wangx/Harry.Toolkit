@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{21036777-C7B1-40E1-9F1E-C8A45BEED7F9}"
 	ProjectSection(SolutionItems) = preProject
@@ -11,6 +11,8 @@ EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Harry.Common", "src\Core\Harry.Common\Harry.Common.xproj", "{EADC6D83-2728-4064-876C-BA8C1280A9F8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{E50E35F4-DE0D-454A-B545-6A7D410E37A4}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Harry.Data", "src\Core\Harry.Data\Harry.Data.xproj", "{19389052-DAA8-4D9F-A987-DA0A29176B6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,6 +24,10 @@ Global
 		{EADC6D83-2728-4064-876C-BA8C1280A9F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EADC6D83-2728-4064-876C-BA8C1280A9F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EADC6D83-2728-4064-876C-BA8C1280A9F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19389052-DAA8-4D9F-A987-DA0A29176B6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19389052-DAA8-4D9F-A987-DA0A29176B6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19389052-DAA8-4D9F-A987-DA0A29176B6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19389052-DAA8-4D9F-A987-DA0A29176B6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
