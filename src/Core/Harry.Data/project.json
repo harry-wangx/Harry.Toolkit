@@ -2,12 +2,30 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "NETStandard.Library": "1.6.0"
+
   },
 
   "frameworks": {
     "net20": {
 
+    },
+    "net35": {
+
+    },
+
+    "net40": {
+
+    },
+    "net45": {
+
+    },
+    "net451": {
+
+    },
+    "netstandard1.3": {
+      "dependencies": {
+        "System.Linq": "4.1.0"
+      }
     }
   }
 }
