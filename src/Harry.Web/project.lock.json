@@ -1,0 +1,119 @@
+{
+  "locked": false,
+  "version": 2,
+  "targets": {
+    ".NETFramework,Version=v2.0": {
+      "Harry.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v2.0",
+        "compile": {
+          "net20/Harry.Common.dll": {}
+        },
+        "runtime": {
+          "net20/Harry.Common.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v3.5": {
+      "Harry.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v3.5",
+        "compile": {
+          "net35/Harry.Common.dll": {}
+        },
+        "runtime": {
+          "net35/Harry.Common.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.0": {
+      "Harry.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.0",
+        "frameworkAssemblies": [
+          "System.Data",
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "net40/Harry.Common.dll": {}
+        },
+        "runtime": {
+          "net40/Harry.Common.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.5": {
+      "Harry.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5",
+        "frameworkAssemblies": [
+          "System.Data",
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "net45/Harry.Common.dll": {}
+        },
+        "runtime": {
+          "net45/Harry.Common.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.5.1": {
+      "Harry.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "frameworkAssemblies": [
+          "System.Data",
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "net451/Harry.Common.dll": {}
+        },
+        "runtime": {
+          "net451/Harry.Common.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Harry.Common/1.0.0": {
+      "type": "project",
+      "path": "../Harry.Common/project.json",
+      "msbuildProject": "../Harry.Common/Harry.Common.xproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "": [
+      "Harry.Common >= 1.0.0-*"
+    ],
+    ".NETFramework,Version=v2.0": [
+      "System.Web >= 2.0.0"
+    ],
+    ".NETFramework,Version=v3.5": [
+      "System.Web >= 2.0.0"
+    ],
+    ".NETFramework,Version=v4.0": [
+      "System.Data >= 4.0.0",
+      "System.Web >= 4.0.0",
+      "System.Xml >= 4.0.0",
+      "System.Xml.Linq >= 4.0.0"
+    ],
+    ".NETFramework,Version=v4.5": [
+      "System.Data >= 4.0.0",
+      "System.Web >= 4.0.0",
+      "System.Xml >= 4.0.0",
+      "System.Xml.Linq >= 4.0.0"
+    ],
+    ".NETFramework,Version=v4.5.1": [
+      "System.Data >= 4.0.0",
+      "System.Web >= 4.0.0",
+      "System.Xml >= 4.0.0",
+      "System.Xml.Linq >= 4.0.0"
+    ]
+  },
+  "tools": {},
+  "projectFileToolGroups": {}
+}
