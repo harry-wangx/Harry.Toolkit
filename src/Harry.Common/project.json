@@ -18,7 +18,6 @@
     },
     "net40": {
       "frameworkAssemblies": {
-        "System.Data": "4.0.0.0",
         "System.Xml": "4.0.0.0",
         "System.Xml.Linq": "4.0.0.0"
       }
@@ -28,9 +27,11 @@
         "define": [ "ASYNC" ]
       },
       "frameworkAssemblies": {
-        "System.Data": "4.0.0.0",
         "System.Xml": "4.0.0.0",
         "System.Xml.Linq": "4.0.0.0"
+      },
+      "dependencies": {
+
       }
     },
     "net451": {
@@ -38,9 +39,11 @@
         "define": [ "ASYNC" ]
       },
       "frameworkAssemblies": {
-        "System.Data": "4.0.0.0",
         "System.Xml": "4.0.0.0",
         "System.Xml.Linq": "4.0.0.0"
+      },
+      "dependencies": {
+
       }
     },
     "netstandard1.3": {
@@ -67,7 +70,8 @@
         "System.Threading.Thread": "4.0.0",
         "System.Xml.XDocument": "4.0.11",
         "System.Xml.XmlDocument": "4.0.1",
-        "System.Security.Cryptography.Algorithms": "4.2.0"
+        "System.Security.Cryptography.Algorithms": "4.2.0",
+        "System.Diagnostics.Debug": "4.0.11"
       }
     }
   }

@@ -35,7 +35,11 @@ namespace Harry.Web
             var ipArray = Common.Utils.HasValue(request.ServerVariables["HTTP_X_FORWARDED_FOR"]) ? request.ServerVariables["HTTP_X_FORWARDED_FOR"].Split(separator, StringSplitOptions.RemoveEmptyEntries) : null;
             if (ipArray != null && ipArray.Length > 0)
             {
-                realIP = ipArray[0];
+                realIP = ipArray[0].Trim();
+                if (!Common.Utils.IsIPv4(realIP))
+                {
+                    realIP = null;
+                }
             }
             else
             {

@@ -31,7 +31,6 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.0",
         "frameworkAssemblies": [
-          "System.Data",
           "System.Xml",
           "System.Xml.Linq"
         ],
@@ -48,7 +47,6 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.5",
         "frameworkAssemblies": [
-          "System.Data",
           "System.Xml",
           "System.Xml.Linq"
         ],
@@ -65,7 +63,6 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "frameworkAssemblies": [
-          "System.Data",
           "System.Xml",
           "System.Xml.Linq"
         ],
@@ -96,22 +93,13 @@
       "System.Web >= 2.0.0"
     ],
     ".NETFramework,Version=v4.0": [
-      "System.Data >= 4.0.0",
-      "System.Web >= 4.0.0",
-      "System.Xml >= 4.0.0",
-      "System.Xml.Linq >= 4.0.0"
+      "System.Web >= 4.0.0"
     ],
     ".NETFramework,Version=v4.5": [
-      "System.Data >= 4.0.0",
-      "System.Web >= 4.0.0",
-      "System.Xml >= 4.0.0",
-      "System.Xml.Linq >= 4.0.0"
+      "System.Web >= 4.0.0"
     ],
     ".NETFramework,Version=v4.5.1": [
-      "System.Data >= 4.0.0",
-      "System.Web >= 4.0.0",
-      "System.Xml >= 4.0.0",
-      "System.Xml.Linq >= 4.0.0"
+      "System.Web >= 4.0.0"
     ]
   },
   "tools": {},
