@@ -9,14 +9,6 @@ namespace Harry.Logging
         /// <summary>
         /// Creates a new ILogger instance using the full name of the given type.
         /// </summary>
-        /// <typeparam name="T">The type.</typeparam>
-        public  Logger<T> CreateLogger<T>()
-        {
-            return new Logger<T>(this);
-        }
-        /// <summary>
-        /// Creates a new ILogger instance using the full name of the given type.
-        /// </summary>
         /// <param name="type">The type.</param>
         public  Logger CreateLogger(Type type)
         {

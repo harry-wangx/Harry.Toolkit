@@ -57,10 +57,6 @@
       "Harry.Common/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.0",
-        "frameworkAssemblies": [
-          "System.Xml",
-          "System.Xml.Linq"
-        ],
         "compile": {
           "net40/Harry.Common.dll": {}
         },
@@ -462,10 +458,6 @@
       "Harry.Common/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5",
-        "frameworkAssemblies": [
-          "System.Xml",
-          "System.Xml.Linq"
-        ],
         "compile": {
           "net45/Harry.Common.dll": {}
         },
@@ -877,10 +869,6 @@
       "Harry.Common/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
-        "frameworkAssemblies": [
-          "System.Xml",
-          "System.Xml.Linq"
-        ],
         "compile": {
           "net451/Harry.Common.dll": {}
         },

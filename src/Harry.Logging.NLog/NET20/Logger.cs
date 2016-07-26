@@ -19,8 +19,9 @@ namespace NLog
 
         public void Log(string msg, Exception ex, LogLevel level)
         {
-            string fileName = Name + "_" + ".txt";
-            string path = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, level.ToString());
+            string fileName = Name + ".txt";
+            string path = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Log");
+            path = System.IO.Path.Combine(path, level.ToString());
             path = System.IO.Path.Combine(path, DateTime.Now.ToString("yyyy-MM-dd"));
 
             if (!Directory.Exists(path))
@@ -35,8 +36,11 @@ namespace NLog
             }
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}] {ex?.Message} msg:{msg}");
-            sb.AppendLine("==>");
-            sb.AppendLine(ex?.StackTrace);
+            if (ex != null)
+            {
+                sb.Append("==>");
+                sb.AppendLine(ex.StackTrace);
+            }
             sb.AppendLine(new string('-', 30));
             System.IO.File.AppendAllText(System.IO.Path.Combine(path, fileName), sb.ToString());
         }

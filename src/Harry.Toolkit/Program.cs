@@ -10,9 +10,6 @@ namespace Harry.Toolkit
     {
         public static void Main(string[] args)
         {
-            DateTime dt = new DateTime(1970, 1, 1);
-            Console.WriteLine(Utils.IsEmail("gamelong@qq.com"));
-            Console.WriteLine(Utils.IsEmail("game@long@qq.com"));
             Console.ReadLine();
         }
     }
