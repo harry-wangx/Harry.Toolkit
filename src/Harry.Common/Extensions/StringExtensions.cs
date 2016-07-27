@@ -11,12 +11,7 @@ namespace Harry.Extensions
     {
         public static bool HasValue(this string value)
         {
-#if NET35
-            return !string.IsNullOrEmpty(value);
-#else
             return !string.IsNullOrWhiteSpace(value);
-#endif
-
         }
 
 #region 字符串转其它格式
@@ -199,17 +194,12 @@ namespace Harry.Extensions
             {
                 return defaultValue;
             }
-#if NET35
-            return ToEnum<T>(value);
-#else
             T result;
             if (Enum.TryParse<T>(value, out result))
             {
                 return result;
             }
             return defaultValue;
-#endif
-
         }
 #endregion
 

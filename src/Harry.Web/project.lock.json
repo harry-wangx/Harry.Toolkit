@@ -3,7 +3,7 @@
   "version": 2,
   "targets": {
     ".NETFramework,Version=v2.0": {
-      "Harry.Common/1.0.0": {
+      "Harry.Common/0.1.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v2.0",
         "compile": {
@@ -14,20 +14,8 @@
         }
       }
     },
-    ".NETFramework,Version=v3.5": {
-      "Harry.Common/1.0.0": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v3.5",
-        "compile": {
-          "net35/Harry.Common.dll": {}
-        },
-        "runtime": {
-          "net35/Harry.Common.dll": {}
-        }
-      }
-    },
     ".NETFramework,Version=v4.0": {
-      "Harry.Common/1.0.0": {
+      "Harry.Common/0.1.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.0",
         "compile": {
@@ -39,7 +27,7 @@
       }
     },
     ".NETFramework,Version=v4.5": {
-      "Harry.Common/1.0.0": {
+      "Harry.Common/0.1.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5",
         "compile": {
@@ -51,7 +39,7 @@
       }
     },
     ".NETFramework,Version=v4.5.1": {
-      "Harry.Common/1.0.0": {
+      "Harry.Common/0.1.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "compile": {
@@ -64,7 +52,7 @@
     }
   },
   "libraries": {
-    "Harry.Common/1.0.0": {
+    "Harry.Common/0.1.0": {
       "type": "project",
       "path": "../Harry.Common/project.json",
       "msbuildProject": "../Harry.Common/Harry.Common.xproj"
@@ -72,12 +60,9 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "Harry.Common >= 1.0.0-*"
+      "Harry.Common >= 0.1.0-*"
     ],
     ".NETFramework,Version=v2.0": [
-      "System.Web >= 2.0.0"
-    ],
-    ".NETFramework,Version=v3.5": [
       "System.Web >= 2.0.0"
     ],
     ".NETFramework,Version=v4.0": [

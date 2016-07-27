@@ -1,19 +1,19 @@
-{
+﻿{
+  "title": "Harry.Data.Dapper",
   "version": "0.1.0-*",
+  "buildOptions": {
 
-  "dependencies": {
-    "Harry.Common": "0.1-*"
   },
-
+  "dependencies": {
+    "Harry.Common": "0.1-*",
+    "Dapper": "1.50.2"
+  },
   "frameworks": {
-    "net20": {
-      "frameworkAssemblies": {
-        "System.Web": "2.0.0.0"
-      }
-    },
     "net40": {
+      "dependencies": {
+
+      },
       "frameworkAssemblies": {
-        "System.Web": "4.0.0.0"
       }
     },
     "net45": {
@@ -21,7 +21,10 @@
         "define": [ "ASYNC" ]
       },
       "frameworkAssemblies": {
-        "System.Web": "4.0.0.0"
+
+      },
+      "dependencies": {
+
       }
     },
     "net451": {
@@ -29,7 +32,18 @@
         "define": [ "ASYNC" ]
       },
       "frameworkAssemblies": {
-        "System.Web": "4.0.0.0"
+
+      },
+      "dependencies": {
+
+      }
+    },
+    "netstandard1.3": {
+      "buildOptions": {
+        "define": [ "ASYNC", "COREFX" ]
+      },
+      "dependencies": {
+
       }
     }
   }

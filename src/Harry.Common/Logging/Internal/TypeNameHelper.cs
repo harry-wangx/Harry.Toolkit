@@ -31,7 +31,7 @@ namespace Harry.Logging.Abstractions.Internal
 
         public static string GetTypeDisplayName(Type type)
         {
-#if !NET20 && !NET35 && !NET40
+#if !NET20 && !NET40
 
             if (type.GetTypeInfo().IsGenericType)
             {
@@ -75,7 +75,7 @@ namespace Harry.Logging.Abstractions.Internal
             {
                 var fullName = type.FullName;
 
-#if NET20 || NET35 || NET40
+#if NET20 || NET40
 
                 // Nested types (public or private) have a '+' in their full name
                 var parts = fullName.Split('+');

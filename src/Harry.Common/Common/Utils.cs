@@ -6,10 +6,12 @@ namespace Harry.Common
 {
     public static class Utils
     {
-        private static DateTime Jan1st1970Utc = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        public readonly static DateTime Jan1st1970 = new DateTime(1970, 1, 1, 0, 0, 0);
+        public readonly static DateTimeOffset Jan1st1970Offset = new DateTimeOffset(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc));
         /// <summary>
         /// 获取时间戳
         /// </summary>
+        /// <param name="dt">DateTime.UtcNow 与 DateTime.Now 返回的结果是不一样的</param>
         /// <returns></returns>
         public static long GetTimeStamp(DateTime? dt = null)
         {
@@ -17,7 +19,21 @@ namespace Harry.Common
             {
                 dt = DateTime.UtcNow;
             }
-            return (long)((dt.Value - Jan1st1970Utc).TotalMilliseconds);
+            return (long)((dt.Value - Jan1st1970).TotalMilliseconds);
+        }
+
+        /// <summary>
+        /// 获取时间戳
+        /// </summary>
+        /// <param name="dt">DateTimeOffset.UtcNow 与 DateTimeOffset.Now 返回结果一样</param>
+        /// <returns></returns>
+        public static long GetTimeStamp(DateTimeOffset? dt = null)
+        {
+            if (dt == null)
+            {
+                dt = DateTimeOffset.UtcNow;
+            }
+            return (long)((dt.Value - Jan1st1970Offset).TotalMilliseconds);
         }
 
         /// <summary>
@@ -27,7 +43,7 @@ namespace Harry.Common
         /// <returns></returns>
         public static bool HasValue(string value)
         {
-#if NET35 || NET20
+#if NET20
             return !string.IsNullOrEmpty(value);
 #else
             return !string.IsNullOrWhiteSpace(value);
@@ -36,7 +52,9 @@ namespace Harry.Common
 
         public static bool IsIPv4(string ip)
         {
-            return Regex.IsMatch(ip, @"^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$");
+            const string pattern = @"^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$";
+            const RegexOptions options = RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture;
+            return Regex.IsMatch(ip, pattern,options);
         }
 
 

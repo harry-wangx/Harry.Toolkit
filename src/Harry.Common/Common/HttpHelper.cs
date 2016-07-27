@@ -8,7 +8,7 @@ namespace Harry.Common
 {
     public static class HttpHelper
     {
-#if NET20 || NET35 || NET40 || NET45 || NET451
+#if !COREFX
         public static string Get(string strUrl, Encoding encoding, int timeout = 120000)
         {
             HttpWebRequest myReq = (HttpWebRequest)HttpWebRequest.Create(strUrl);

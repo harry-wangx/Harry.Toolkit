@@ -1,24 +1,17 @@
 {
-  "version": "1.0.0-*",
+  "version": "0.1.0-*",
 
   "dependencies": {
-    "Harry.Common": "1.0.0-*",
-    "NETStandard.Library": "1.6.0"
+    "Harry.Common": "0.1-*"
   },
 
   "frameworks": {
     "net20": {
       "frameworkAssemblies": {
+        "System.Configuration": "2.0.0.0"
       },
       "dependencies": {
 
-      }
-    },
-    "net35": {
-      "frameworkAssemblies": {
-      },
-      "dependencies": {
-        "NLog": "4.3.6"
       }
     },
     "net40": {
