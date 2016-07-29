@@ -3,25 +3,8 @@ using Harry.Logging.Abstractions.Internal;
 
 namespace Harry.Logging
 {
-#if NET20
-    public partial class LoggerFactory : ILoggerFactory
-    {
-        /// <summary>
-        /// Creates a new ILogger instance using the full name of the given type.
-        /// </summary>
-        /// <param name="type">The type.</param>
-        public  Logger CreateLogger(Type type)
-        {
-            if (type == null)
-            {
-                throw new ArgumentNullException(nameof(type));
-            }
-            return this.CreateLogger(TypeNameHelper.GetTypeDisplayName(type));
-        }
-    }
-#else
     /// <summary>
-    /// ILoggerFactory �չ
+    /// ILoggerFactory
     /// </summary>
     public static class LoggerFactoryExtensions
     {
@@ -58,5 +41,5 @@ namespace Harry.Logging
             return factory.CreateLogger(TypeNameHelper.GetTypeDisplayName(type));
         }
     } 
-#endif
+
 } 

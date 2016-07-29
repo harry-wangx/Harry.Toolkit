@@ -54,32 +54,6 @@
         }
       }
     },
-    ".NETFramework,Version=v4.5.1": {
-      "Dapper/1.50.2": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System.Data",
-          "System.Xml",
-          "System.Xml.Linq"
-        ],
-        "compile": {
-          "lib/net451/Dapper.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Dapper.dll": {}
-        }
-      },
-      "Harry.Common/0.1.0": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
-        "compile": {
-          "net451/Harry.Common.dll": {}
-        },
-        "runtime": {
-          "net451/Harry.Common.dll": {}
-        }
-      }
-    },
     ".NETStandard,Version=v1.3": {
       "Dapper/1.50.2": {
         "type": "package",
@@ -1151,8 +1125,6 @@
           "System.Dynamic.Runtime": "4.0.11",
           "System.Linq": "4.1.0",
           "System.Reflection": "4.1.0",
-          "System.Reflection.Emit": "4.0.1",
-          "System.Reflection.Emit.Lightweight": "4.0.1",
           "System.Reflection.Extensions": "4.0.1",
           "System.Reflection.TypeExtensions": "4.1.0",
           "System.Runtime": "4.1.0",
@@ -1161,9 +1133,7 @@
           "System.Security.Cryptography.Algorithms": "4.2.0",
           "System.Text.RegularExpressions": "4.1.0",
           "System.Threading": "4.0.11",
-          "System.Threading.Thread": "4.0.0",
-          "System.Xml.XDocument": "4.0.11",
-          "System.Xml.XmlDocument": "4.0.1"
+          "System.Threading.Thread": "4.0.0"
         },
         "compile": {
           "netstandard1.3/Harry.Common.dll": {}
@@ -4275,7 +4245,6 @@
     ],
     ".NETFramework,Version=v4.0": [],
     ".NETFramework,Version=v4.5": [],
-    ".NETFramework,Version=v4.5.1": [],
     ".NETStandard,Version=v1.3": []
   },
   "tools": {},

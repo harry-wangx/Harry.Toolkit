@@ -27,17 +27,6 @@
 
       }
     },
-    "net451": {
-      "buildOptions": {
-        "define": [ "ASYNC" ]
-      },
-      "frameworkAssemblies": {
-
-      },
-      "dependencies": {
-
-      }
-    },
     "netstandard1.3": {
       "buildOptions": {
         "define": [ "ASYNC", "COREFX" ]

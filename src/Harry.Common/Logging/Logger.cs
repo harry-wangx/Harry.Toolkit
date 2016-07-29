@@ -3,11 +3,7 @@ using System.Collections.Generic;
 
 namespace Harry.Logging
 {
-#if NET20
-    public partial class Logger : ILogger
-#else
     internal class Logger : ILogger
-#endif
     {
         private static readonly NullScope _nullScope = new NullScope();
 

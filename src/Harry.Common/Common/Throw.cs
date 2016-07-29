@@ -4,7 +4,6 @@ namespace Harry.Common
 {
     public static class Throw
     {
-#if !NET20
         public static string IfEmpty(string value, Func<string> getMsg)
         {
             if (string.IsNullOrEmpty(value))
@@ -13,7 +12,6 @@ namespace Harry.Common
             }
             return value.Trim();
         } 
-#endif
 
         public static string IfEmpty(string value, string msg = "")
         {

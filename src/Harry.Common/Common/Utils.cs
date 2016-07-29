@@ -43,11 +43,7 @@ namespace Harry.Common
         /// <returns></returns>
         public static bool HasValue(string value)
         {
-#if NET20
-            return !string.IsNullOrEmpty(value);
-#else
             return !string.IsNullOrWhiteSpace(value);
-#endif
         }
 
         public static bool IsIPv4(string ip)

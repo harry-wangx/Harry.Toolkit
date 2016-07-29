@@ -138,13 +138,7 @@ namespace Harry.Logging.Internal
                     var enumerable = value as IEnumerable;
                     if (enumerable != null)
                     {
-#if NET20 
-                        values[i] = string.Join(", ",
-                            LinqHelper.ToArray(LinqHelper.Where(LinqHelper.Cast<string>(enumerable), m=>m!=null)));
-#else
                         values[i] = string.Join(", ", enumerable.Cast<string>().Where(obj => obj != null).ToArray());
-#endif
-
                     }
                 }
             }

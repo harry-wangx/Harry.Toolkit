@@ -13,11 +13,7 @@ namespace Harry.Logging
         private readonly object _sync = new object();
         private bool _disposed = false;
 
-#if NET20
-        private static LoggerFactory _instance = null;
-#else
         private static ILoggerFactory _instance = null; 
-#endif
         private static object locker = new object();
 
         /// <summary>
@@ -25,11 +21,7 @@ namespace Harry.Logging
         /// </summary>
         /// <param name="categoryName"></param>
         /// <returns></returns>
-#if NET20
-        public Logger CreateLogger(string categoryName)
-#else
         public ILogger CreateLogger(string categoryName) 
-#endif
         {
             Logger logger;
             lock (_sync)
@@ -47,7 +39,7 @@ namespace Harry.Logging
         /// 添加Provider
         /// </summary>
         /// <param name="provider"></param>
-        public void AddProvider(ILoggerProvider provider)
+        public ILoggerFactory AddProvider(ILoggerProvider provider)
         {
             lock (_sync)
             {
@@ -58,6 +50,7 @@ namespace Harry.Logging
                     logger.Value.AddProvider(provider);
                 }
             }
+            return this;
         }
 
         internal ILoggerProvider[] GetProviders()
@@ -88,11 +81,7 @@ namespace Harry.Logging
         /// <summary>
         /// logger工厂实例
         /// </summary>
-#if NET20
-        public static LoggerFactory Instance
-#else
         public static ILoggerFactory Instance 
-#endif
         {
             get
             {

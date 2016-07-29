@@ -22,13 +22,13 @@ namespace Harry.Common
         /// <returns></returns>
         public static TResult RunSync<TResult>(Func<Task<TResult>> func)
         {
-#if NET45 || NET451
+#if NET45 
             var cultureUi = CultureInfo.CurrentUICulture;
             var culture = CultureInfo.CurrentCulture;
 #endif
             return _myTaskFactory.StartNew(() =>
             {
-#if NET45 || NET451
+#if NET45 
                 Thread.CurrentThread.CurrentCulture = culture;
                 Thread.CurrentThread.CurrentUICulture = cultureUi;
 #endif
@@ -42,13 +42,13 @@ namespace Harry.Common
         /// <param name="func"></param>
         public static void RunSync(Func<Task> func)
         {
-#if NET45 || NET451
+#if NET45 
             var cultureUi = CultureInfo.CurrentUICulture;
             var culture = CultureInfo.CurrentCulture;
 #endif
             _myTaskFactory.StartNew(() =>
             {
-#if NET45 || NET451
+#if NET45 
                 Thread.CurrentThread.CurrentCulture = culture;
                 Thread.CurrentThread.CurrentUICulture = cultureUi;
 #endif

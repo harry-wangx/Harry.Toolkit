@@ -2,18 +2,6 @@
   "locked": false,
   "version": 2,
   "targets": {
-    ".NETFramework,Version=v2.0": {
-      "Harry.Common/0.1.0": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v2.0",
-        "compile": {
-          "net20/Harry.Common.dll": {}
-        },
-        "runtime": {
-          "net20/Harry.Common.dll": {}
-        }
-      }
-    },
     ".NETFramework,Version=v4.0": {
       "Harry.Common/0.1.0": {
         "type": "project",
@@ -37,18 +25,6 @@
           "net45/Harry.Common.dll": {}
         }
       }
-    },
-    ".NETFramework,Version=v4.5.1": {
-      "Harry.Common/0.1.0": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
-        "compile": {
-          "net451/Harry.Common.dll": {}
-        },
-        "runtime": {
-          "net451/Harry.Common.dll": {}
-        }
-      }
     }
   },
   "libraries": {
@@ -62,16 +38,10 @@
     "": [
       "Harry.Common >= 0.1.0-*"
     ],
-    ".NETFramework,Version=v2.0": [
-      "System.Web >= 2.0.0"
-    ],
     ".NETFramework,Version=v4.0": [
       "System.Web >= 4.0.0"
     ],
     ".NETFramework,Version=v4.5": [
-      "System.Web >= 4.0.0"
-    ],
-    ".NETFramework,Version=v4.5.1": [
       "System.Web >= 4.0.0"
     ]
   },

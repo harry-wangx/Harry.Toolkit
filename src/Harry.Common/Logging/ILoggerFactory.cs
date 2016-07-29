@@ -12,21 +12,17 @@ namespace Harry.Logging
     /// </summary>
     public interface ILoggerFactory : IDisposable
     {
-#if NET20
-        Logger CreateLogger(string categoryName);
-#else
         /// <summary>
         /// Creates a new <see cref="ILogger"/> instance.
         /// </summary>
         /// <param name="categoryName">The category name for messages produced by the logger.</param>
         /// <returns>The <see cref="ILogger"/>.</returns>
         ILogger CreateLogger(string categoryName); 
-#endif
 
         /// <summary>
         /// Adds an <see cref="ILoggerProvider"/> to the logging system.
         /// </summary>
         /// <param name="provider">The <see cref="ILoggerProvider"/>.</param>
-        void AddProvider(ILoggerProvider provider);
+        ILoggerFactory AddProvider(ILoggerProvider provider);
     }
 } 

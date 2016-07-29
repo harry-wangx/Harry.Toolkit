@@ -8,28 +8,13 @@
     "Harry.Common": "0.1-*"
   },
   "frameworks": {
-    "net20": {
-      "frameworkAssemblies": {
 
-      }
-    },
     "net40": {
       "frameworkAssemblies": {
 
       }
     },
     "net45": {
-      "buildOptions": {
-        "define": [ "ASYNC" ]
-      },
-      "frameworkAssemblies": {
-
-      },
-      "dependencies": {
-
-      }
-    },
-    "net451": {
       "buildOptions": {
         "define": [ "ASYNC" ]
       },
