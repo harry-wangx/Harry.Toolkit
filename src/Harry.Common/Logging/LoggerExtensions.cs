@@ -132,14 +132,14 @@ namespace Harry.Logging
         /// <param name="exception">The exception to log.</param>
         /// <param name="message">Format string of the log message.</param>
         /// <param name="args">An object array that contains zero or more objects to format.</param>
-        public static void Information(this ILogger logger, EventId eventId, Exception exception, string message, params object[] args)
+        public static void Info(this ILogger logger, EventId eventId, Exception exception, string message, params object[] args)
         {
             if (logger == null)
             {
                 throw new ArgumentNullException(nameof(logger));
             }
 
-            logger.Log(LogLevel.Information, eventId, new FormattedLogValues(message, args), exception, _messageFormatter);
+            logger.Log(LogLevel.Info, eventId, new FormattedLogValues(message, args), exception, _messageFormatter);
         }
 
         /// <summary>
@@ -149,14 +149,14 @@ namespace Harry.Logging
         /// <param name="eventId">The event id associated with the log.</param>
         /// <param name="message">Format string of the log message.</param>
         /// <param name="args">An object array that contains zero or more objects to format.</param>
-        public static void Information(this ILogger logger, EventId eventId, string message, params object[] args)
+        public static void Info(this ILogger logger, EventId eventId, string message, params object[] args)
         {
             if (logger == null)
             {
                 throw new ArgumentNullException(nameof(logger));
             }
 
-            logger.Log(LogLevel.Information, eventId, new FormattedLogValues(message, args), null, _messageFormatter);
+            logger.Log(LogLevel.Info, eventId, new FormattedLogValues(message, args), null, _messageFormatter);
         }
 
         /// <summary>
@@ -165,14 +165,14 @@ namespace Harry.Logging
         /// <param name="logger">The <see cref="ILogger"/> to write to.</param>
         /// <param name="message">Format string of the log message.</param>
         /// <param name="args">An object array that contains zero or more objects to format.</param>
-        public static void Information(this ILogger logger, string message, params object[] args)
+        public static void Info(this ILogger logger, string message, params object[] args)
         {
             if (logger == null)
             {
                 throw new ArgumentNullException(nameof(logger));
             }
 
-            logger.Log(LogLevel.Information, 0, new FormattedLogValues(message, args), null, _messageFormatter);
+            logger.Log(LogLevel.Info, 0, new FormattedLogValues(message, args), null, _messageFormatter);
         }
 
         //------------------------------------------WARNING------------------------------------------//
@@ -185,14 +185,14 @@ namespace Harry.Logging
         /// <param name="exception">The exception to log.</param>
         /// <param name="message">Format string of the log message.</param>
         /// <param name="args">An object array that contains zero or more objects to format.</param>
-        public static void Warning(this ILogger logger, EventId eventId, Exception exception, string message, params object[] args)
+        public static void Warn(this ILogger logger, EventId eventId, Exception exception, string message, params object[] args)
         {
             if (logger == null)
             {
                 throw new ArgumentNullException(nameof(logger));
             }
 
-            logger.Log(LogLevel.Warning, eventId, new FormattedLogValues(message, args), exception, _messageFormatter);
+            logger.Log(LogLevel.Warn, eventId, new FormattedLogValues(message, args), exception, _messageFormatter);
         }
 
         /// <summary>
@@ -202,14 +202,14 @@ namespace Harry.Logging
         /// <param name="eventId">The event id associated with the log.</param>
         /// <param name="message">Format string of the log message.</param>
         /// <param name="args">An object array that contains zero or more objects to format.</param>
-        public static void Warning(this ILogger logger, EventId eventId, string message, params object[] args)
+        public static void Warn(this ILogger logger, EventId eventId, string message, params object[] args)
         {
             if (logger == null)
             {
                 throw new ArgumentNullException(nameof(logger));
             }
 
-            logger.Log(LogLevel.Warning, eventId, new FormattedLogValues(message, args), null, _messageFormatter);
+            logger.Log(LogLevel.Warn, eventId, new FormattedLogValues(message, args), null, _messageFormatter);
         }
 
         /// <summary>
@@ -218,14 +218,14 @@ namespace Harry.Logging
         /// <param name="logger">The <see cref="ILogger"/> to write to.</param>
         /// <param name="message">Format string of the log message.</param>
         /// <param name="args">An object array that contains zero or more objects to format.</param>
-        public static void Warning(this ILogger logger, string message, params object[] args)
+        public static void Warn(this ILogger logger, string message, params object[] args)
         {
             if (logger == null)
             {
                 throw new ArgumentNullException(nameof(logger));
             }
 
-            logger.Log(LogLevel.Warning, 0, new FormattedLogValues(message, args), null, _messageFormatter);
+            logger.Log(LogLevel.Warn, 0, new FormattedLogValues(message, args), null, _messageFormatter);
         }
 
         //------------------------------------------ERROR------------------------------------------//
@@ -291,14 +291,14 @@ namespace Harry.Logging
         /// <param name="exception">The exception to log.</param>
         /// <param name="message">Format string of the log message.</param>
         /// <param name="args">An object array that contains zero or more objects to format.</param>
-        public static void Critical(this ILogger logger, EventId eventId, Exception exception, string message, params object[] args)
+        public static void Fatal(this ILogger logger, EventId eventId, Exception exception, string message, params object[] args)
         {
             if (logger == null)
             {
                 throw new ArgumentNullException(nameof(logger));
             }
 
-            logger.Log(LogLevel.Critical, eventId, new FormattedLogValues(message, args), exception, _messageFormatter);
+            logger.Log(LogLevel.Fatal, eventId, new FormattedLogValues(message, args), exception, _messageFormatter);
         }
 
         /// <summary>
@@ -308,14 +308,14 @@ namespace Harry.Logging
         /// <param name="eventId">The event id associated with the log.</param>
         /// <param name="message">Format string of the log message.</param>
         /// <param name="args">An object array that contains zero or more objects to format.</param>
-        public static void Critical(this ILogger logger, EventId eventId, string message, params object[] args)
+        public static void Fatal(this ILogger logger, EventId eventId, string message, params object[] args)
         {
             if (logger == null)
             {
                 throw new ArgumentNullException(nameof(logger));
             }
 
-            logger.Log(LogLevel.Critical, eventId, new FormattedLogValues(message, args), null, _messageFormatter);
+            logger.Log(LogLevel.Fatal, eventId, new FormattedLogValues(message, args), null, _messageFormatter);
         }
 
         /// <summary>
@@ -324,14 +324,14 @@ namespace Harry.Logging
         /// <param name="logger">The <see cref="ILogger"/> to write to.</param>
         /// <param name="message">Format string of the log message.</param>
         /// <param name="args">An object array that contains zero or more objects to format.</param>
-        public static void Critical(this ILogger logger, string message, params object[] args)
+        public static void Fatal(this ILogger logger, string message, params object[] args)
         {
             if (logger == null)
             {
                 throw new ArgumentNullException(nameof(logger));
             }
 
-            logger.Log(LogLevel.Critical, 0, new FormattedLogValues(message, args), null, _messageFormatter);
+            logger.Log(LogLevel.Fatal, 0, new FormattedLogValues(message, args), null, _messageFormatter);
         }
 
         //------------------------------------------Scope------------------------------------------//

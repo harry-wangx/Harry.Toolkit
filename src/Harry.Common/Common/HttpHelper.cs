@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
+using Harry.Extensions;
 
 namespace Harry.Common
 {
@@ -77,7 +78,7 @@ namespace Harry.Common
             Dictionary<string, string> dicArray = new Dictionary<string, string>();
             foreach (KeyValuePair<string, string> temp in dicArrayPre)
             {
-                if (temp.Value != "" && temp.Value != null && !Common.Utils.Contains(strArray, temp.Key))
+                if (temp.Value.HasValue() && !Common.Utils.Contains(strArray, temp.Key))
                 {
                     dicArray.Add(temp.Key, temp.Value);
                 }
@@ -101,7 +102,7 @@ namespace Harry.Common
         /// </summary>
         /// <param name="sArray">需要拼接的数组</param>
         /// <returns>拼接完成以后的字符串</returns>
-        public static string CreateLinkString(Dictionary<string, string> dicArray
+        public static string CreateLinkString(IDictionary<string, string> dicArray
             , Func<string, string> encoderFun = null
             )
         {
@@ -122,7 +123,7 @@ namespace Harry.Common
                 }
             }
 
-            //去掉最後一個&字符
+            //去掉最后一个&字符
             int nLen = prestr.Length;
             prestr.Remove(nLen - 1, 1);
 

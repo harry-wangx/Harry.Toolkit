@@ -77,15 +77,15 @@ namespace Harry.Logging
                     return NLog.LogLevel.Trace;
                 case Logging.LogLevel.Debug:
                     return NLog.LogLevel.Debug;
-                case Logging.LogLevel.Information:
+                case Logging.LogLevel.Info:
                     return NLog.LogLevel.Info;
-                case Logging.LogLevel.Warning:
+                case Logging.LogLevel.Warn:
                     return NLog.LogLevel.Warn;
                 case Logging.LogLevel.Error:
                     return NLog.LogLevel.Error;
-                case Logging.LogLevel.Critical:
+                case Logging.LogLevel.Fatal:
                     return NLog.LogLevel.Fatal;
-                case Logging.LogLevel.None:
+                case Logging.LogLevel.Off:
                     return NLog.LogLevel.Off;
                 default:
                     return NLog.LogLevel.Debug;
