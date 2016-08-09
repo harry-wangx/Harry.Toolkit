@@ -1,0 +1,40 @@
+﻿{
+  "version": "0.1.0-*",
+
+  "dependencies": {
+    "Newtonsoft.Json": "9.0.1"
+  },
+
+  "frameworks": {
+    "net20": {
+      "frameworkAssemblies": {
+
+      }
+    },
+    "net40": {
+      "frameworkAssemblies": {
+
+      }
+    },
+    "net45": {
+      "buildOptions": {
+        "define": [ "ASYNC" ]
+      },
+      "frameworkAssemblies": {
+
+      },
+      "dependencies": {
+
+      }
+    },
+
+    "netstandard1.3": {
+      "buildOptions": {
+        "define": [ "ASYNC", "COREFX" ]
+      },
+      "dependencies": {
+        "System.Runtime.InteropServices": "4.1.0"
+      }
+    }
+  }
+}

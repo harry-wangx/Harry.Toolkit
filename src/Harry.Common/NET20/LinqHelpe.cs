@@ -7,10 +7,10 @@ namespace System.Linq
 {
     public static class LinqHelper
     {
-        public static IEnumerable<TResult> Cast<TResult>(IEnumerable source)
-        {
-            foreach (object obj in source) yield return (TResult)obj;
-        }
+        //public static IEnumerable<TResult> Cast<TResult>(IEnumerable source)
+        //{
+        //    foreach (object obj in source) yield return (TResult)obj;
+        //}
 
         //public static IEnumerable<TResult> Where<TResult>(IEnumerable<TResult> source, Func<TResult, bool> predicate)
         //{
@@ -23,15 +23,15 @@ namespace System.Linq
         //    }
         //}
 
-        public static TResult[] ToArray <TResult>(IEnumerable<TResult> source)
-        {
-            List<TResult> results = new List<TResult>();
-            foreach (TResult obj in source)
-            {
-                results.Add(obj);
-            }
-            return results.ToArray();
-        }
+        //public static TResult[] ToArray <TResult>(IEnumerable<TResult> source)
+        //{
+        //    List<TResult> results = new List<TResult>();
+        //    foreach (TResult obj in source)
+        //    {
+        //        results.Add(obj);
+        //    }
+        //    return results.ToArray();
+        //}
 
         public static bool SequenceEqual<TSource>(IEnumerable<TSource> first, IEnumerable<TSource> second, IEqualityComparer<TSource> comparer=null)
         {
