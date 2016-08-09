@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Harry.Extensions
 {
-    public static class BytesExtensions
+    public static class ByteExtensions
     {
         //public static string ToString(this byte[] bytes, string format, string connector = "", string preString = "")
         //{

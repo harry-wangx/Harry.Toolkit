@@ -2,7 +2,7 @@
   "version": "0.1.0-*",
 
   "dependencies": {
-    "Harry.Common": "0.1-*"
+    "Harry.Logging": "0.1-*"
   },
 
   "frameworks": {

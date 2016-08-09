@@ -1,13 +1,38 @@
 {
+  "packOptions": {
+    "summary": "",
+    "tags": [],
+    "owners": [ "Harry" ],
+    "projectUrl": "",
+    "licenseUrl": "",
+    "repository": {
+      "type": "git",
+      "url": ""
+    }
+  },
+
   "title": "Harry.Common",
-  "version": "0.1.0-*",
+  "version": "0.1.0-alpha2",
+  "authors": [ "Harry" ],
+  "description": "",
+
   "buildOptions": {
-     
+
   },
   "dependencies": {
-    
+
   },
   "frameworks": {
+    "net20": {
+      "frameworkAssemblies": {
+
+      }
+    },
+    "net35": {
+      "frameworkAssemblies": {
+
+      }
+    },
     "net40": {
       "frameworkAssemblies": {
 

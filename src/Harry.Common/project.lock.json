@@ -2,6 +2,8 @@
   "locked": false,
   "version": 2,
   "targets": {
+    ".NETFramework,Version=v2.0": {},
+    ".NETFramework,Version=v3.5": {},
     ".NETFramework,Version=v4.0": {},
     ".NETFramework,Version=v4.5": {},
     ".NETStandard,Version=v1.3": {
@@ -2224,6 +2226,8 @@
   },
   "projectFileDependencyGroups": {
     "": [],
+    ".NETFramework,Version=v2.0": [],
+    ".NETFramework,Version=v3.5": [],
     ".NETFramework,Version=v4.0": [],
     ".NETFramework,Version=v4.5": [],
     ".NETStandard,Version=v1.3": [

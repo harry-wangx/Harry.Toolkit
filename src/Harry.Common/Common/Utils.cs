@@ -43,7 +43,12 @@ namespace Harry.Common
         /// <returns></returns>
         public static bool HasValue(string value)
         {
+#if NET20 || NET35
+            return !string.IsNullOrEmpty(value);
+#else
             return !string.IsNullOrWhiteSpace(value);
+#endif
+            
         }
 
         public static bool IsIPv4(string ip)
@@ -54,7 +59,7 @@ namespace Harry.Common
         }
 
 
-        #region System.ComponentModel.DataAnnotations
+#region System.ComponentModel.DataAnnotations
         //
         //private static Regex _regexEmail = CreateEmailRegEx();
 
@@ -107,7 +112,7 @@ namespace Harry.Common
             const RegexOptions options = RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture;
             return Regex.IsMatch(input, pattern, options);
         }
-        #endregion
+#endregion
 
         public static bool Contains(string[] array, string value, StringComparison comparison = StringComparison.OrdinalIgnoreCase)
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !NET20
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -10,10 +11,10 @@ namespace Harry.Extensions
     {
         public static bool HasValue(this string value)
         {
-            return !string.IsNullOrWhiteSpace(value);
+            return Common.Utils.HasValue(value);
         }
 
-#region 字符串转其它格式
+        #region 字符串转其它格式
         public static Int16 ToInt16(this string s)
         {
             return Int16.Parse(s);
@@ -193,14 +194,26 @@ namespace Harry.Extensions
             {
                 return defaultValue;
             }
+#if NET35
+            try
+            {
+                return (T)Enum.Parse(typeof(T), value);
+            }
+            catch {
+
+            }
+#else
             T result;
             if (Enum.TryParse<T>(value, out result))
             {
                 return result;
-            }
+            } 
+#endif
             return defaultValue;
         }
-#endregion
+        #endregion
 
     }
-} 
+}
+
+#endif

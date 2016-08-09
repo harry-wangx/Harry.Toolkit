@@ -19,7 +19,11 @@ namespace Harry.Domain
             {
                 return false;
             }
+#if NET20
+            return LinqHelper.SequenceEqual(GetAttributesToIncludeInEqualityCheck(), other.GetAttributesToIncludeInEqualityCheck());
+#else
             return GetAttributesToIncludeInEqualityCheck().SequenceEqual(other.GetAttributesToIncludeInEqualityCheck());
+#endif
         }
 
         public override int GetHashCode()
