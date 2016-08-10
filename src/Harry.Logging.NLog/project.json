@@ -1,17 +1,46 @@
 {
-  "version": "0.1.0-*",
+  "packOptions": {
+    "summary": "",
+    "tags": [],
+    "owners": [ "Harry" ],
+    "projectUrl": "",
+    "licenseUrl": "",
+    "repository": {
+      "type": "git",
+      "url": ""
+    }
+  },
+
+  "title": "Harry.Logging.NLog",
+  "version": "0.1.0",
+  "authors": [ "Harry" ],
+  "description": "",
 
   "dependencies": {
-    "Harry.Logging": "0.1-*"
+    "Harry.Common": "0.1-*"
   },
 
   "frameworks": {
-    "net40": {
+    "net20": {
       "frameworkAssemblies": {
 
       },
+      "dependencies": { "NLog": "2.1.0" }
+    },
+    "net35": {
+      "frameworkAssemblies": {
+        "System.Xml": "2.0.0.0"
+      },
       "dependencies": {
-        "NLog": "4.3.6"
+        "NLog": "4.3.7"
+      }
+    },
+    "net40": {
+      "frameworkAssemblies": {
+        "System.Xml": "4.0.0.0"
+      },
+      "dependencies": {
+        "NLog": "4.3.7"
       }
     },
     "net45": {
@@ -19,10 +48,10 @@
         "define": [ "ASYNC" ]
       },
       "frameworkAssemblies": {
-
+        "System.Xml": "4.0.0.0"
       },
       "dependencies": {
-        "NLog": "4.3.6"
+        "NLog": "4.3.7"
       }
     },
     "netstandard1.3": {
@@ -30,7 +59,7 @@
         "define": [ "ASYNC", "COREFX" ]
       },
       "dependencies": {
-        "NLog": "4.4.0-betaV15"
+        "NLog": "4.4-*"
       }
     }
   }
