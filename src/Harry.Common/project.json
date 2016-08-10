@@ -1,13 +1,13 @@
 {
   "packOptions": {
-    "summary": "",
+    "summary": "Harry.Common",
     "tags": [],
     "owners": [ "Harry" ],
-    "projectUrl": "",
+    "projectUrl": "https://github.com/harry-wangx/Harry.Toolkit",
     "licenseUrl": "",
     "repository": {
       "type": "git",
-      "url": ""
+      "url": "https://github.com/harry-wangx/Harry.Toolkit"
     }
   },
 
