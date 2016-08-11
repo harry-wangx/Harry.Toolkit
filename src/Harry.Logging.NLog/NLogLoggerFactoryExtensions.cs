@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace Harry.Logging
 {
-    public static class LoggerFactoryExtensions
+    public static class NLogLoggerFactoryExtensions
     {
 
         public static ILoggerFactory AddNLog(this ILoggerFactory factory, string configurationFilePath = null)
@@ -16,7 +16,7 @@ namespace Harry.Logging
             LogManager.AddHiddenAssembly(Assembly.Load(new AssemblyName("Microsoft.Extensions.Logging")));
             LogManager.AddHiddenAssembly(Assembly.Load(new AssemblyName("Microsoft.Extensions.Logging.Abstractions")));
 #if !NET20 && !NET35 && !NET40
-            LogManager.AddHiddenAssembly(typeof(LoggerFactoryExtensions).GetTypeInfo().Assembly);
+            LogManager.AddHiddenAssembly(typeof(NLogLoggerFactoryExtensions).GetTypeInfo().Assembly);
 #endif
 
             using (var provider = new NLogLoggerProvider())

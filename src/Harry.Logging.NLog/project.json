@@ -1,10 +1,10 @@
 {
   "packOptions": {
     "summary": "Harry.Logging.NLog",
-    "tags": [],
+    "tags": [ "toolkit" ],
     "owners": [ "Harry" ],
     "projectUrl": "https://github.com/harry-wangx/Harry.Toolkit",
-    "licenseUrl": "",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
     "repository": {
       "type": "git",
       "url": "https://github.com/harry-wangx/Harry.Toolkit"
@@ -12,12 +12,12 @@
   },
 
   "title": "Harry.Logging.NLog",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "authors": [ "Harry" ],
-  "description": "",
+  "description": "Harry.Logging.NLog",
 
   "dependencies": {
-    "Harry.Common": "0.1-*"
+    "Harry.Common": "0.1.*"
   },
 
   "frameworks": {

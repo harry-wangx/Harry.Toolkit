@@ -12,7 +12,7 @@
           "lib/net20/NLog.dll": {}
         }
       },
-      "Harry.Common/0.1.0": {
+      "Harry.Common/0.1.1": {
         "type": "project",
         "framework": ".NETFramework,Version=v2.0",
         "compile": {
@@ -33,7 +33,7 @@
           "lib/net35/NLog.dll": {}
         }
       },
-      "Harry.Common/0.1.0": {
+      "Harry.Common/0.1.1": {
         "type": "project",
         "framework": ".NETFramework,Version=v3.5",
         "compile": {
@@ -54,7 +54,7 @@
           "lib/net40/NLog.dll": {}
         }
       },
-      "Harry.Common/0.1.0": {
+      "Harry.Common/0.1.1": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.0",
         "compile": {
@@ -75,7 +75,7 @@
           "lib/net45/NLog.dll": {}
         }
       },
-      "Harry.Common/0.1.0": {
+      "Harry.Common/0.1.1": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5",
         "compile": {
@@ -1424,7 +1424,7 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
-      "Harry.Common/0.1.0": {
+      "Harry.Common/0.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.3",
         "dependencies": {
@@ -5348,7 +5348,7 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "Harry.Common/0.1.0": {
+    "Harry.Common/0.1.1": {
       "type": "project",
       "path": "../Harry.Common/project.json",
       "msbuildProject": "../Harry.Common/Harry.Common.xproj"
@@ -5356,7 +5356,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "Harry.Common >= 0.1.0-*"
+      "Harry.Common >= 0.1.*"
     ],
     ".NETFramework,Version=v2.0": [
       "NLog >= 2.1.0"
