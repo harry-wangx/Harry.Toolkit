@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7CC9C392-6F7F-4D7F-810D-D967EF9EAD3C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Harry</RootNamespace>
+    <AssemblyName>Harry.Common</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NET20</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NET20</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Harry.Common\Common\AssemblyLoader.cs">
+      <Link>Common\AssemblyLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Harry.Common\Common\AsyncHelper.cs">
+      <Link>Common\AsyncHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Harry.Common\Common\HttpHelper.cs">
+      <Link>Common\HttpHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Harry.Common\Common\IdHelper.cs">
+      <Link>Common\IdHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Harry.Common\Common\Throw.cs">
+      <Link>Common\Throw.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Harry.Common\Common\TypeHelper.cs">
+      <Link>Common\TypeHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Harry.Common\Common\TypeNameHelper.cs">
+      <Link>Common\TypeNameHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Harry.Common\Common\Utils.cs">
+      <Link>Common\Utils.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Harry.Common\Domain\Entity.cs">
+      <Link>Domain\Entity.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Harry.Common\Domain\Money.cs">
+      <Link>Domain\Money.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Harry.Common\Domain\ValueObject.cs">
+      <Link>Domain\ValueObject.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Harry.Common\Logging\EventId.cs">
+      <Link>Logging\EventId.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Harry.Common\Logging\ILogger.cs">
+      <Link>Logging\ILogger.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Harry.Common\Logging\ILoggerFactory.cs">
+      <Link>Logging\ILoggerFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Harry.Common\Logging\ILoggerProvider.cs">
+      <Link>Logging\ILoggerProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Harry.Common\Logging\Logger.cs">
+      <Link>Logging\Logger.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Harry.Common\Logging\LoggerFactory.cs">
+      <Link>Logging\LoggerFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Harry.Common\Logging\LogLevel.cs">
+      <Link>Logging\LogLevel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Harry.Common\NET20\LinqHelpe.cs">
+      <Link>NET20\LinqHelpe.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Harry.Common\Result.cs">
+      <Link>Result.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Harry.Common\Security\MD5.cs">
+      <Link>Security\MD5.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Harry.Common\Security\SHA1.cs">
+      <Link>Security\SHA1.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
