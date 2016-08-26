@@ -5,7 +5,7 @@
 
   },
   "dependencies": {
-    "Harry.Common": "0.1-*"
+    "Harry.Common": "0.1.*"
   },
   "frameworks": {
 

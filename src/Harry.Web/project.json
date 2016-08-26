@@ -2,10 +2,20 @@
   "version": "0.1.0-*",
 
   "dependencies": {
-    "Harry.Common": "0.1-*"
+    "Harry.Common": "0.1.*"
   },
 
   "frameworks": {
+    "net20": {
+      "frameworkAssemblies": {
+        "System.Web": "2.0.0.0"
+      }
+    },
+    "net35": {
+      "frameworkAssemblies": {
+        "System.Web": "2.0.0.0"
+      }
+    },
     "net40": {
       "frameworkAssemblies": {
         "System.Web": "4.0.0.0"
@@ -17,6 +27,14 @@
       },
       "frameworkAssemblies": {
         "System.Web": "4.0.0.0"
+      }
+    },
+    "netstandard1.3": {
+      "buildOptions": {
+        "define": [ "ASYNC", "COREFX" ]
+      },
+      "dependencies": {
+        "Microsoft.AspNetCore.Http.Abstractions": "1.0.0"
       }
     }
   }

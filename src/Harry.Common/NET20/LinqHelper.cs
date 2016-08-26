@@ -33,6 +33,16 @@ namespace System.Linq
         //    return results.ToArray();
         //}
 
+        public static List<TResult> ToList<TResult>(IEnumerable<TResult> source)
+        {
+            List<TResult> results = new List<TResult>();
+            foreach (TResult obj in source)
+            {
+                results.Add(obj);
+            }
+            return results;
+        }
+
         public static bool SequenceEqual<TSource>(IEnumerable<TSource> first, IEnumerable<TSource> second, IEqualityComparer<TSource> comparer=null)
         {
             if (comparer == null) comparer = EqualityComparer<TSource>.Default;

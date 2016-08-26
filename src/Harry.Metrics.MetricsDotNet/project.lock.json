@@ -1,0 +1,56 @@
+{
+  "locked": false,
+  "version": 2,
+  "targets": {
+    ".NETFramework,Version=v4.5": {
+      "Metrics.NET/0.3.7": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Metrics.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Metrics.dll": {}
+        }
+      },
+      "Harry.Common/0.1.2": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5",
+        "compile": {
+          "net45/Harry.Common.dll": {}
+        },
+        "runtime": {
+          "net45/Harry.Common.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Metrics.NET/0.3.7": {
+      "sha512": "GCdUUnvazGDws8UBoXTX5WTKQLY2Styuj4fa7nYmZTyb/xUg3nFqk4k+h49J59R6efiX5y/rfkyr/kBlAbZzjw==",
+      "type": "package",
+      "path": "Metrics.NET/0.3.7",
+      "files": [
+        "Metrics.NET.0.3.7.nupkg.sha512",
+        "Metrics.NET.nuspec",
+        "lib/net45/Metrics.XML",
+        "lib/net45/Metrics.dll",
+        "lib/net45/Metrics.pdb"
+      ]
+    },
+    "Harry.Common/0.1.2": {
+      "type": "project",
+      "path": "../Harry.Common/project.json",
+      "msbuildProject": "../Harry.Common/Harry.Common.xproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "": [
+      "Harry.Common >= 0.1.2"
+    ],
+    ".NETFramework,Version=v4.5": [
+      "Metrics.NET >= 0.3.7"
+    ]
+  },
+  "tools": {},
+  "projectFileToolGroups": {}
+}

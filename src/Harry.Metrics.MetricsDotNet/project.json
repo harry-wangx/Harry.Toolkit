@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+
+  "dependencies": {
+    "Harry.Common": "0.1.2"
+  },
+
+  "frameworks": {
+    "net45": {
+      "buildOptions": {
+        "define": [ "ASYNC" ]
+      },
+      "frameworkAssemblies": {
+
+      },
+      "dependencies": {
+        "Metrics.NET": "0.3.7"
+      }
+    }
+  }
+}

@@ -36,6 +36,10 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Harry.Toolkit", "src\Harry.
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Harry.Logging.NLog", "src\Harry.Logging.NLog\Harry.Logging.NLog.xproj", "{1329EAE9-0043-404C-83BB-99D74BD8FC51}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Harry.Metrics.MetricsDotNet", "src\Harry.Metrics.MetricsDotNet\Harry.Metrics.MetricsDotNet.xproj", "{36EFB984-1F57-4CB4-B4B2-585662A1ECC3}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Harry.Web.Performance", "src\Harry.Web.Performance\Harry.Web.Performance.xproj", "{D342BB30-E425-4070-980E-6DAA69E385E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,6 +82,14 @@ Global
 		{1329EAE9-0043-404C-83BB-99D74BD8FC51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1329EAE9-0043-404C-83BB-99D74BD8FC51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1329EAE9-0043-404C-83BB-99D74BD8FC51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36EFB984-1F57-4CB4-B4B2-585662A1ECC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36EFB984-1F57-4CB4-B4B2-585662A1ECC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36EFB984-1F57-4CB4-B4B2-585662A1ECC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36EFB984-1F57-4CB4-B4B2-585662A1ECC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D342BB30-E425-4070-980E-6DAA69E385E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D342BB30-E425-4070-980E-6DAA69E385E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D342BB30-E425-4070-980E-6DAA69E385E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D342BB30-E425-4070-980E-6DAA69E385E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -93,5 +105,7 @@ Global
 		{6BA51EFE-BCD4-4C96-A63B-3DD3F23C17F5} = {19059B59-2C0E-4616-8AB6-63AFA41C7348}
 		{8BC57B02-F5A0-4DAA-AF6D-25AB2AD8E384} = {D52F5C5D-DA46-4103-85C6-E05040E92C6C}
 		{1329EAE9-0043-404C-83BB-99D74BD8FC51} = {D52F5C5D-DA46-4103-85C6-E05040E92C6C}
+		{36EFB984-1F57-4CB4-B4B2-585662A1ECC3} = {D52F5C5D-DA46-4103-85C6-E05040E92C6C}
+		{D342BB30-E425-4070-980E-6DAA69E385E7} = {D52F5C5D-DA46-4103-85C6-E05040E92C6C}
 	EndGlobalSection
 EndGlobal

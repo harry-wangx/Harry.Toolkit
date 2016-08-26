@@ -1,6 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using Harry.Extensions;
+
+#if COREFX
+using Microsoft.AspNetCore.Http;
+#else
 using System.Web;
+#endif
 
 namespace Harry.Web
 {
@@ -10,6 +16,14 @@ namespace Harry.Web
 
         public const string UnknownIP = "0.0.0.0";
 
+
+
+#if COREFX
+        public static string GetClientIP(HttpContext context = null)
+        {
+            return context?.Connection?.RemoteIpAddress?.ToString();
+        }
+#else
         public static string GetClientIP(HttpRequest request = null)
         {
             if (request == null)
@@ -48,7 +62,8 @@ namespace Harry.Web
                 ipForwarded = null;
             }
             return request?.UserHostAddress;
-        }
+        } 
+#endif
 
         /// <summary>
         /// 是否为内网IP 
