@@ -1,5 +1,20 @@
 {
-  "version": "0.1.0-*",
+  "packOptions": {
+    "summary": "Harry.Web",
+    "tags": [ "toolkit" ],
+    "owners": [ "Harry" ],
+    "projectUrl": "https://github.com/harry-wangx/Harry.Toolkit",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/harry-wangx/Harry.Toolkit"
+    }
+  },
+
+  "title": "Harry.Web",
+  "version": "0.1.0",
+  "authors": [ "Harry" ],
+  "description": "Harry.Web",
 
   "dependencies": {
     "Harry.Common": "0.1.*"

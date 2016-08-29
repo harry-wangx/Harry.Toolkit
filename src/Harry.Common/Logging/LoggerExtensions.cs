@@ -39,6 +39,16 @@ namespace Harry.Logging
             logger.Log(LogLevel.Trace, 0, null, message);
         }
 
+        public static void Trace(this ILogger logger, Func<string> func)
+        {
+            if (logger == null)
+            {
+                throw new ArgumentNullException(nameof(logger));
+            }
+
+            logger.Log(LogLevel.Trace, 0, null, func());
+        }
+
 
         //------------------------------------------DEBUG------------------------------------------//
 
@@ -71,6 +81,16 @@ namespace Harry.Logging
             }
 
             logger.Log(LogLevel.Debug, 0, null, message);
+        }
+
+        public static void Debug(this ILogger logger, Func<string> func)
+        {
+            if (logger == null)
+            {
+                throw new ArgumentNullException(nameof(logger));
+            }
+
+            logger.Log(LogLevel.Debug, 0, null, func());
         }
 
         //------------------------------------------Info------------------------------------------//
@@ -106,6 +126,16 @@ namespace Harry.Logging
             logger.Log(LogLevel.Info, 0,  null, message);
         }
 
+        public static void Info(this ILogger logger, Func<string> func)
+        {
+            if (logger == null)
+            {
+                throw new ArgumentNullException(nameof(logger));
+            }
+
+            logger.Log(LogLevel.Info, 0, null, func());
+        }
+
         //------------------------------------------Warn------------------------------------------//
 
         public static void Warn(this ILogger logger, EventId eventId, Exception exception, string message)
@@ -136,6 +166,16 @@ namespace Harry.Logging
             }
 
             logger.Log(LogLevel.Warn, 0,  null, message);
+        }
+
+        public static void Warn(this ILogger logger, Func<string> func)
+        {
+            if (logger == null)
+            {
+                throw new ArgumentNullException(nameof(logger));
+            }
+
+            logger.Log(LogLevel.Warn, 0, null, func());
         }
 
         //------------------------------------------ERROR------------------------------------------//
@@ -170,6 +210,16 @@ namespace Harry.Logging
             logger.Log(LogLevel.Error, 0,  null, message);
         }
 
+        public static void Error(this ILogger logger, Func<string> func)
+        {
+            if (logger == null)
+            {
+                throw new ArgumentNullException(nameof(logger));
+            }
+
+            logger.Log(LogLevel.Error, 0, null, func());
+        }
+
         //------------------------------------------Fatal------------------------------------------//
 
         public static void Fatal(this ILogger logger, EventId eventId, Exception exception, string message)
@@ -200,6 +250,16 @@ namespace Harry.Logging
             }
 
             logger.Log(LogLevel.Fatal, 0,  null, message);
+        }
+
+        public static void Fatal(this ILogger logger, Func<string> func)
+        {
+            if (logger == null)
+            {
+                throw new ArgumentNullException(nameof(logger));
+            }
+
+            logger.Log(LogLevel.Fatal, 0, null, func());
         }
     }
 
