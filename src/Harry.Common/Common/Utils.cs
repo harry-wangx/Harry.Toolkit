@@ -6,30 +6,35 @@ namespace Harry.Common
 {
     public static class Utils
     {
-        public readonly static DateTime Jan1st1970 = new DateTime(1970, 1, 1, 0, 0, 0);
-        public readonly static DateTimeOffset Jan1st1970Offset = new DateTimeOffset(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc));
-        /// <summary>
-        /// 获取时间戳
-        /// </summary>
-        /// <param name="dt">DateTime.UtcNow 与 DateTime.Now 返回的结果是不一样的</param>
-        /// <returns></returns>
-        public static long GetTimeStamp(DateTime? dt = null)
-        {
-            if (dt == null)
-            {
-                dt = DateTime.UtcNow;
-            }
-            return (long)((dt.Value - Jan1st1970).TotalMilliseconds);
-        }
+        //public readonly static DateTime Jan1st1970 = new DateTime(1970, 1, 1, 0, 0, 0);
+        public readonly static DateTimeOffset Jan1st1970 = new DateTimeOffset(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc));
+        ///// <summary>
+        ///// 获取时间戳
+        ///// </summary>
+        ///// <param name="dt">DateTime.UtcNow 与 DateTime.Now 返回的结果是不一样的</param>
+        ///// <returns></returns>
+        //public static long GetTimeStamp(DateTime? dt = null)
+        //{
+        //    if (dt == null)
+        //    {
+        //        dt = DateTime.UtcNow;
+        //    }
+        //    return (long)((dt.Value - Jan1st1970).TotalMilliseconds);
+        //}
 
         /// <summary>
         /// 获取时间戳
         /// </summary>
         /// <param name="dt">DateTimeOffset.UtcNow 与 DateTimeOffset.Now 返回结果一样</param>
         /// <returns></returns>
-        public static long GetTimeStamp(DateTimeOffset dt )
+        public static long GetTimeStamp(DateTimeOffset? dt = null)
         {
-            return (long)((dt - Jan1st1970Offset).TotalMilliseconds);
+            if (dt == null)
+            {
+                dt = DateTime.Now;
+            }
+
+            return (long)((dt.Value - Jan1st1970).TotalMilliseconds);
         }
 
         /// <summary>
