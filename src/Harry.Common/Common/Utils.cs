@@ -27,13 +27,9 @@ namespace Harry.Common
         /// </summary>
         /// <param name="dt">DateTimeOffset.UtcNow 与 DateTimeOffset.Now 返回结果一样</param>
         /// <returns></returns>
-        public static long GetTimeStamp(DateTimeOffset? dt = null)
+        public static long GetTimeStamp(DateTimeOffset dt )
         {
-            if (dt == null)
-            {
-                dt = DateTimeOffset.UtcNow;
-            }
-            return (long)((dt.Value - Jan1st1970Offset).TotalMilliseconds);
+            return (long)((dt - Jan1st1970Offset).TotalMilliseconds);
         }
 
         /// <summary>

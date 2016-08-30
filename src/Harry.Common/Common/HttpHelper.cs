@@ -107,6 +107,10 @@ namespace Harry.Common
 #endif
             )
         {
+            if (dicArray == null || dicArray.Count <= 0)
+            {
+                return null;
+            }
             StringBuilder prestr = new StringBuilder();
 
 #if NET20
