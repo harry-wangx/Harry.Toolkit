@@ -6,8 +6,13 @@ namespace Harry.Performance
     /// </summary>
     public class TrackInfo
     {
-        public string ContextName { get; set; }
+        public TrackInfo(string contextName, string name)
+        {
+            this.ContextName = contextName;
+            this.Name = name;
+        }
+        public string ContextName { get; private set; }
 
-        public string  Name { get; set; }
+        public string  Name { get;private set; }
     }
 }

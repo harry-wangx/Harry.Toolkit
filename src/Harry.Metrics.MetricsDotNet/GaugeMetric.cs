@@ -5,16 +5,16 @@ namespace Harry.Metrics.MetricsDotNet
 {
     public class GaugeMetric : IGauge
     {
-        public void Update(string contextName, string name, double value, string unit, params string[] tags)
+        private double currentValue = 0;
+
+        public GaugeMetric(string contextName, string name, string unit, params string[] tags)
         {
-            Metrics_Net.Metric.Context(contextName).Gauge(name, () => value, unit, tags);
+            Metrics_Net.Metric.Context(contextName).Gauge(name, () => this.currentValue, unit, tags);
         }
 
-#if !NET20
-        public void Update(string contextName, string name, Func<double> valueProvider, string unit, params string[] tags)
+        public void Update(double value)
         {
-            Metrics_Net.Metric.Context(contextName).Gauge(name, valueProvider, unit, tags);
+            this.currentValue = value;
         }
-#endif
     }
 }

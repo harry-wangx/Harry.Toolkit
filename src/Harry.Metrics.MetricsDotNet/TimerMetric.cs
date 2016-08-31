@@ -13,7 +13,7 @@ namespace Harry.Metrics.MetricsDotNet
 
         public void Record(long time, string userValue = null)
         {
-            timer.Record(time, Metrics_Net.TimeUnit.Nanoseconds, userValue);
+            timer.Record(time, Metrics_Net.TimeUnit.Milliseconds, userValue);
         }
 
         public void Reset()

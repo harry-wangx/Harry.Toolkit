@@ -9,13 +9,13 @@ namespace Harry.Performance.Metrics
     /// </summary>
     public class TimerForEachRequestMetric : PerformanceMetricBase
     {
-        private ITimer averageTimeCounter;
+        private ITimer metric;
 
 
         public TimerForEachRequestMetric(TrackInfo info)
             : base(info)
         {
-            this.averageTimeCounter = Metric.Timer(info.ContextName, info.Name, "Requests");
+            this.metric = Metric.Timer(info.ContextName, info.Name, "Requests");
         }
 
 
@@ -26,7 +26,8 @@ namespace Harry.Performance.Metrics
         /// <param name="exceptionThrown"></param>
         public override void OnComplete(long elapsedTicks, bool exceptionThrown)
         {
-            averageTimeCounter.Record(elapsedTicks);
+            long milliseconds = this.ConvertTicksToMilliseconds(elapsedTicks);
+            metric.Record(milliseconds); 
         }
 
 

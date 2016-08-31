@@ -7,7 +7,7 @@ namespace Harry.Performance
 
     public abstract class PerformanceMetricBase : IDisposable
     {
-        public PerformanceMetricBase(string contextName,string name):this(new TrackInfo() { ContextName=contextName,Name=name })
+        public PerformanceMetricBase(string contextName,string name):this(new TrackInfo(contextName, name))
         {
 
         }

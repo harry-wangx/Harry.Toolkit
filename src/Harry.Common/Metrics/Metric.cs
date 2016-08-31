@@ -9,13 +9,10 @@ namespace Harry.Metrics
     {
         private static readonly List<IMetricProvider> _providers = new List<IMetricProvider>();
 
-        private static readonly object _sync = new object();
-        private static readonly GaugeMetric gauge = new GaugeMetric(_providers.ToArray());
 
-
-        public static void Gauge(string contextName, string name, double value, string unit, params string[] tags)
+        public static IGauge Gauge(string contextName, string name,string unit, params string[] tags)
         {
-            gauge.Update(contextName, name, value, unit, tags);
+            return  new GaugeMetric(_providers.ToArray(), contextName, name, unit, tags);
         }
 
         public static ICounter Counter(string contextName, string name, string unit, params string[] tags)
@@ -45,7 +42,6 @@ namespace Harry.Metrics
         public static void AddProvider(IMetricProvider provider)
         {
             _providers.Add(provider);
-            gauge.AddProvider(provider);
         }
 
 

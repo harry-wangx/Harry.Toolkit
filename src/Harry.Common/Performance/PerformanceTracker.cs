@@ -32,7 +32,6 @@ namespace Harry.Performance
 
         }
 
-        public TimeSpan Elapsed { get; private set; }
 
         /// <summary>
         /// 启动监控
@@ -80,7 +79,6 @@ namespace Harry.Performance
             try
             {
                 this.stopwatch.Stop();
-                this.Elapsed = stopwatch.Elapsed;
 
                 if (performanceMetrics != null && performanceMetrics.Count > 0)
                 {
