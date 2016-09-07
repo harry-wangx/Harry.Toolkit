@@ -98,7 +98,7 @@
           "lib/net40/Newtonsoft.Json.dll": {}
         }
       },
-      "Harry.Common/0.1.2": {
+      "Harry.Common/0.1.3": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.0",
         "compile": {
@@ -196,7 +196,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Harry.Common/0.1.2": {
+      "Harry.Common/0.1.3": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5",
         "compile": {
@@ -1350,7 +1350,7 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "Harry.Common/0.1.2": {
+      "Harry.Common/0.1.3": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.3",
         "dependencies": {
@@ -4875,7 +4875,7 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "Harry.Common/0.1.2": {
+    "Harry.Common/0.1.3": {
       "type": "project",
       "path": "../Harry.Common/project.json",
       "msbuildProject": "../Harry.Common/Harry.Common.xproj"
@@ -4883,7 +4883,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "Harry.Common >= 0.1.2"
+      "Harry.Common >= 0.1.*"
     ],
     ".NETFramework,Version=v4.0": [
       "Microsoft.AspNet.Mvc >= 4.0.30506",

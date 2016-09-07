@@ -2,6 +2,27 @@
   "locked": false,
   "version": 2,
   "targets": {
+    ".NETFramework,Version=v4.0": {
+      "Metrics.NET-net40/0.2.15": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Metrics.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Metrics.dll": {}
+        }
+      },
+      "Harry.Common/0.1.4": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.0",
+        "compile": {
+          "net40/Harry.Common.dll": {}
+        },
+        "runtime": {
+          "net40/Harry.Common.dll": {}
+        }
+      }
+    },
     ".NETFramework,Version=v4.5": {
       "Metrics.NET/0.3.7": {
         "type": "package",
@@ -12,7 +33,7 @@
           "lib/net45/Metrics.dll": {}
         }
       },
-      "Harry.Common/0.1.2": {
+      "Harry.Common/0.1.4": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5",
         "compile": {
@@ -37,7 +58,19 @@
         "lib/net45/Metrics.pdb"
       ]
     },
-    "Harry.Common/0.1.2": {
+    "Metrics.NET-net40/0.2.15": {
+      "sha512": "asN07zYd+3dw3AYuZu3Wxuhc4hVm6s5Lxrodr3D7f7yN2tbh5vDBH4Gfm7/+SNyDMx3pDlqKPd3Z1VFPeHEFoA==",
+      "type": "package",
+      "path": "Metrics.NET-net40/0.2.15",
+      "files": [
+        "Metrics.NET-net40.0.2.15.nupkg.sha512",
+        "Metrics.NET-net40.nuspec",
+        "lib/net40/Metrics.XML",
+        "lib/net40/Metrics.dll",
+        "lib/net40/Metrics.pdb"
+      ]
+    },
+    "Harry.Common/0.1.4": {
       "type": "project",
       "path": "../Harry.Common/project.json",
       "msbuildProject": "../Harry.Common/Harry.Common.xproj"
@@ -45,7 +78,10 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "Harry.Common >= 0.1.2"
+      "Harry.Common >= 0.1.*"
+    ],
+    ".NETFramework,Version=v4.0": [
+      "Metrics.NET-net40 >= 0.2.15"
     ],
     ".NETFramework,Version=v4.5": [
       "Metrics.NET >= 0.3.7"

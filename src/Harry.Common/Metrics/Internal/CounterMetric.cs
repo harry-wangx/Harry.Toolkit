@@ -117,16 +117,5 @@ namespace Harry.Metrics.Internal
                 }
             }
         }
-
-        //internal void AddProvider(IMetricProvider provider)
-        //{
-        //    if (provider == null)
-        //        return;
-
-        //    lock (_sync)
-        //    {
-        //        counters.Add(provider.CreateCounter(ContextName, Name, Unit, Tags));
-        //    }
-        //}
     }
 }

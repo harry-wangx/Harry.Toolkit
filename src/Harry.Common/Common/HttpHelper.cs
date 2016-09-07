@@ -65,6 +65,26 @@ namespace Harry.Common
                 return strBuilder.ToString();
             }
         }
+
+        public static string Post(string strUrl, byte[] body, Encoding encoding, int timeout = 120000)
+        {
+            HttpWebRequest myReq = (HttpWebRequest)HttpWebRequest.Create(strUrl);
+            myReq.Method = "POST";
+            myReq.Timeout = timeout;
+            myReq.ContentLength = body.Length;
+            myReq.GetRequestStream().Write(body, 0, body.Length);
+            HttpWebResponse HttpWResp = (HttpWebResponse)myReq.GetResponse();
+            using (Stream myStream = HttpWResp.GetResponseStream())
+            using (StreamReader sr = new StreamReader(myStream, encoding))
+            {
+                StringBuilder strBuilder = new StringBuilder();
+                while (-1 != sr.Peek())
+                {
+                    strBuilder.Append(sr.ReadLine());
+                }
+                return strBuilder.ToString();
+            }
+        }
 #endif
 
         /// <summary>
@@ -107,6 +127,10 @@ namespace Harry.Common
 #endif
             )
         {
+            if (dicArray == null || dicArray.Count <= 0)
+            {
+                return null;
+            }
             StringBuilder prestr = new StringBuilder();
 
 #if NET20

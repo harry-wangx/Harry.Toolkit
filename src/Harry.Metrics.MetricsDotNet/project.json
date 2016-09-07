@@ -1,11 +1,37 @@
 {
-  "version": "0.1.0",
+  "packOptions": {
+    "summary": "Harry.Metrics.MetricsDotNet",
+    "tags": [ "toolkit" ],
+    "owners": [ "Harry" ],
+    "projectUrl": "https://github.com/harry-wangx/Harry.Toolkit",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/harry-wangx/Harry.Toolkit"
+    }
+  },
 
+  "title": "Harry.Metrics.MetricsDotNet",
+  "version": "0.1.1",
+  "authors": [ "Harry" ],
+  "description": "Harry.Metrics.MetricsDotNet",
+
+  "buildOptions": {
+
+  },
   "dependencies": {
-    "Harry.Common": "0.1.2"
+    "Harry.Common": "0.1.*"
   },
 
   "frameworks": {
+    "net40": {
+      "frameworkAssemblies": {
+
+      },
+      "dependencies": {
+        "Metrics.NET-net40": "0.2.15"
+      }
+    },
     "net45": {
       "buildOptions": {
         "define": [ "ASYNC" ]

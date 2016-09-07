@@ -1,12 +1,14 @@
 ﻿
+using System;
+
 namespace Harry.Metrics.MetricsDotNet
 {
     public class MetricsDotNetProvider : IMetricProvider
     {
 
-        public IGauge CreateGauge()
+        public IGauge CreateGauge(string contextName, string name, string unit, params string[] tags)
         {
-            return new GaugeMetric();
+            return new GaugeMetric(contextName, name, unit, tags);
         }
 
         public ICounter CreateCounter(string contextName, string name, string unit, params string[] tags)
@@ -33,5 +35,7 @@ namespace Harry.Metrics.MetricsDotNet
         {
             
         }
+
+
     }
 }

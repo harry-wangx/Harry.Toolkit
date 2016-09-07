@@ -13,8 +13,11 @@ namespace Harry.Logging
         public static ILoggerFactory AddNLog(this ILoggerFactory factory, string configurationFilePath = null)
         {
             //ignore this
+#if COREFX
             LogManager.AddHiddenAssembly(Assembly.Load(new AssemblyName("Microsoft.Extensions.Logging")));
             LogManager.AddHiddenAssembly(Assembly.Load(new AssemblyName("Microsoft.Extensions.Logging.Abstractions")));
+#endif
+
 #if !NET20 && !NET35 && !NET40
             LogManager.AddHiddenAssembly(typeof(NLogLoggerFactoryExtensions).GetTypeInfo().Assembly);
 #endif

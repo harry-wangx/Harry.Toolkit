@@ -11,19 +11,18 @@ namespace Harry.Performance.Metrics
     public class LastCallElapsedTimeMetric : PerformanceMetricBase
     {
         public const String COUNTER_NAME = "Last Call Elapsed Time";
+        private IGauge callsInProgressCounter;
 
         public LastCallElapsedTimeMetric(TrackInfo info)
             : base(info)
         {
+            this.callsInProgressCounter = Metric.Gauge(info.ContextName, info.Name + " " + COUNTER_NAME, "ms");
         }
 
         public override void OnComplete(long elapsedTicks, bool exceptionThrown)
         {
-            // Need to convert the elapsed ticks into milliseconds for this counter
             long milliseconds = this.ConvertTicksToMilliseconds(elapsedTicks);
-;
-            string name = string.Format("{0} {1} ", this.TrackInfo.Name, COUNTER_NAME);
-            Metric.Gauge(this.TrackInfo.ContextName, name, milliseconds, "Milliseconds");
+            callsInProgressCounter.Update(milliseconds);
         }
 
         public override void Dispose()

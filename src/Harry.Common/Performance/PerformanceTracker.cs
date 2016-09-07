@@ -14,7 +14,7 @@ namespace Harry.Performance
     /// <summary>
     /// 性能跟踪类
     /// </summary>
-    public class PerformanceTracker
+    public class PerformanceTracker:IDisposable
     {
         private Stopwatch stopwatch;
         private List<PerformanceMetricBase> performanceMetrics;
@@ -32,7 +32,6 @@ namespace Harry.Performance
 
         }
 
-        public TimeSpan Elapsed { get; private set; }
 
         /// <summary>
         /// 启动监控
@@ -80,7 +79,6 @@ namespace Harry.Performance
             try
             {
                 this.stopwatch.Stop();
-                this.Elapsed = stopwatch.Elapsed;
 
                 if (performanceMetrics != null && performanceMetrics.Count > 0)
                 {
@@ -115,5 +113,12 @@ namespace Harry.Performance
             }
         }
 
+        public void Dispose()
+        {
+            if (stopwatch.IsRunning)
+            {
+                ProcessComplete();
+            }
+        }
     }
 }
