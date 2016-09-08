@@ -1,4 +1,5 @@
 ﻿#if !NET20
+using Harry.Logging.NLog;
 using NLog;
 using NLog.Config;
 using System;

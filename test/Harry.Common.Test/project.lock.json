@@ -2565,7 +2565,7 @@
           "lib/netstandard1.1/xunit.runner.utility.dotnet.dll": {}
         }
       },
-      "Harry.Common/0.1.2": {
+      "Harry.Common/0.1.6": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.3",
         "dependencies": {
@@ -2997,7 +2997,7 @@
           "lib/net45/xunit.runner.utility.desktop.dll": {}
         }
       },
-      "Harry.Common/0.1.2": {
+      "Harry.Common/0.1.6": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5",
         "compile": {
@@ -8100,7 +8100,7 @@
         "xunit.runner.utility.nuspec"
       ]
     },
-    "Harry.Common/0.1.2": {
+    "Harry.Common/0.1.6": {
       "type": "project",
       "path": "../../src/Harry.Common/project.json",
       "msbuildProject": "../../src/Harry.Common/Harry.Common.xproj"
@@ -8108,7 +8108,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "Harry.Common >= 0.1.0-alpha2",
+      "Harry.Common >= 0.1.*",
       "Moq >= 4.6.25-*",
       "dotnet-test-xunit >= 2.2.0-*",
       "xunit >= 2.2.0-*"

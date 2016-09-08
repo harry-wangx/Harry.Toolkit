@@ -1,13 +1,13 @@
 ﻿using System;
-
-namespace Harry.Logging
+using _NLog = NLog;
+namespace Harry.Logging.NLog
 {
 
     internal class NLogLogger : ILogger
     {
-        private readonly NLog.Logger _logger;
+        private readonly _NLog.Logger _logger;
 
-        public NLogLogger(NLog.Logger logger)
+        public NLogLogger(_NLog.Logger logger)
         {
             _logger = logger;
         }
@@ -20,7 +20,7 @@ namespace Harry.Logging
                 if (!string.IsNullOrEmpty(message))
                 {
                     //message arguments are not needed as it is already checked that the loglevel is enabled.
-                    var eventInfo = NLog.LogEventInfo.Create(nLogLogLevel, _logger.Name, message);
+                    var eventInfo = _NLog.LogEventInfo.Create(nLogLogLevel, _logger.Name, message);
                     eventInfo.Exception = exception;
                     eventInfo.Properties["EventId.Id"] = eventId.Id;
                     eventInfo.Properties["EventId.Name"] = eventId.Name;
@@ -44,32 +44,32 @@ namespace Harry.Logging
         /// <summary>
         /// Is logging enabled for this logger at this <paramref name="logLevel"/>?
         /// </summary>
-        private bool IsEnabled(NLog.LogLevel logLevel)
+        private bool IsEnabled(_NLog.LogLevel logLevel)
         {
             return _logger.IsEnabled(logLevel);
         }
 
 
-        private static NLog.LogLevel ConvertLogLevel(Logging.LogLevel logLevel)
+        private static _NLog.LogLevel ConvertLogLevel(Logging.LogLevel logLevel)
         {
             switch (logLevel)
             {                
                 case Logging.LogLevel.Trace:
-                    return NLog.LogLevel.Trace;
+                    return _NLog.LogLevel.Trace;
                 case Logging.LogLevel.Debug:
-                    return NLog.LogLevel.Debug;
+                    return _NLog.LogLevel.Debug;
                 case Logging.LogLevel.Info:
-                    return NLog.LogLevel.Info;
+                    return _NLog.LogLevel.Info;
                 case Logging.LogLevel.Warn:
-                    return NLog.LogLevel.Warn;
+                    return _NLog.LogLevel.Warn;
                 case Logging.LogLevel.Error:
-                    return NLog.LogLevel.Error;
+                    return _NLog.LogLevel.Error;
                 case Logging.LogLevel.Fatal:
-                    return NLog.LogLevel.Fatal;
+                    return _NLog.LogLevel.Fatal;
                 case Logging.LogLevel.Off:
-                    return NLog.LogLevel.Off;
+                    return _NLog.LogLevel.Off;
                 default:
-                    return NLog.LogLevel.Debug;
+                    return _NLog.LogLevel.Debug;
             }
         }
 

@@ -1,4 +1,6 @@
-﻿namespace Harry.Logging
+﻿using _NLog = NLog;
+
+namespace Harry.Logging.NLog
 {
     /// <summary>
     /// Provider logger for NLog.
@@ -19,7 +21,7 @@
         /// <returns>New Logger</returns>
         public Logging.ILogger CreateLogger(string name)
         {
-            return new NLogLogger(NLog.LogManager.GetLogger(name));
+            return new NLogLogger(_NLog.LogManager.GetLogger(name));
         }
 
         /// <summary>

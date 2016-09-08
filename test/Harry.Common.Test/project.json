@@ -3,7 +3,7 @@
 
   "dependencies": {
     "dotnet-test-xunit": "2.2.0-*",
-    "Harry.Common": "0.1.0-alpha2",
+    "Harry.Common": "0.1.*",
     "Moq": "4.6.25-*",
     "xunit": "2.2.0-*"
   },

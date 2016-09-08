@@ -141,10 +141,7 @@ namespace Harry.Web.Performance
 
         public TrackInfo GetTrackInfo()
         {
-            return new TrackInfo() {
-                ContextName =$"[{ProcessId}]:{ConfigInfo.Value.PerformanceCategoryName}",
-                Name= SanitizedInstanceName
-            };
+            return new TrackInfo($"[{ProcessId}]:{ConfigInfo.Value.PerformanceCategoryName}", SanitizedInstanceName);
         }
 
     }
