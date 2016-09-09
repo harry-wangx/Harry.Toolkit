@@ -9,7 +9,7 @@ namespace Harry.Common
     /// 实例编号占10位,范围为0-1023
     /// 时间戳和索引共占53位
     /// </summary>
-    public class IdCreator
+    public sealed class IdCreator
     {
         long timestamp = 0;//当前时间戳
         long index = 0;//索引/计数器
@@ -23,13 +23,24 @@ namespace Harry.Common
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="instanceID">实例编号</param>
+        /// <param name="instanceID">实例编号(0-1024)</param>
         /// <param name="beginTime">起始时间</param>
         /// <param name="tsType">时间戳类型</param>
         /// <param name="indexBitLength">索引可用位数(1-32)</param>
-        public IdCreator(int instanceID, DateTime beginTime, TimeStampType tsType, int indexBitLength)
+        /// <param name="initTimestamp">当之前同一实例生成ID的timestamp值大于当前时间的时间戳时,
+        /// 有可能会产生重复ID(如持续一段时间的大并发请求).设置initTimestamp比最后的时间戳大一些,可避免这种问题</param>
+        public IdCreator(int instanceID, DateTime beginTime, TimeStampType tsType, int indexBitLength, long? initTimestamp = null)
         {
-            this.instanceID = Math.Abs(instanceID) % 1024;
+            if (instanceID < 0)
+            {
+                Random r = new Random();
+                this.instanceID = r.Next(0, 1024);
+            }
+            else
+            {
+                this.instanceID = instanceID % 1024;
+            }
+            
             this.beginTime = beginTime;
             this.tsType = tsType;
             if (indexBitLength >= 1 && indexBitLength <= 32)
@@ -42,6 +53,28 @@ namespace Harry.Common
             }
             tsMax = Convert.ToInt64(new string('1', 53 - indexBitLength), 2);
             indexMax = Convert.ToInt64(new string('1', indexBitLength), 2);
+
+            if (initTimestamp != null)
+            {
+                this.timestamp = initTimestamp.Value;
+            }
+        }
+
+        /// <summary>
+        /// 默认每秒生成65536个ID,从1970年1月1日起,累计可使用4358年
+        /// </summary>
+        public IdCreator():this(-1)
+        {
+
+        }
+
+        /// <summary>
+        /// 默认每实例每秒生成65536个ID,从1970年1月1日起,累计可使用4358年
+        /// </summary>
+        /// <param name="instanceID">实例编号(0-1024)</param>
+        public IdCreator(int instanceID) : this(instanceID, new DateTime(1970, 1, 1), TimeStampType.Second, 16)
+        {
+
         }
 
         /// <summary>
@@ -68,6 +101,7 @@ namespace Harry.Common
 
                 if (ts < 0)
                 {
+                    //本来想把这个挪到构造函数里面,以提高性能.但是突然想到,如果在系统运行期间,系统时间被修改,有可能会产生问题
                     throw new Exception("beginTime不能大于当前时间");
                 }
                 ts = ts % tsMax; //2199023255551; //如果超过41位,从0开始
@@ -97,6 +131,17 @@ namespace Harry.Common
             }
 
             return id;
+        }
+
+        /// <summary>
+        /// 获取当前实例的时间戳
+        /// </summary>
+        public long CurrentTimestamp
+        {
+            get
+            {
+                return this.timestamp;
+            }
         }
     }
 
