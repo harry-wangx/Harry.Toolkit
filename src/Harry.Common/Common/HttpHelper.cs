@@ -122,9 +122,7 @@ namespace Harry.Common
         /// <param name="sArray">需要拼接的数组</param>
         /// <returns>拼接完成以后的字符串</returns>
         public static string CreateLinkString(IDictionary<string, string> dicArray
-#if !NET20
             , Func<string, string> encoderFun = null
-#endif
             )
         {
             if (dicArray == null || dicArray.Count <= 0)
@@ -133,12 +131,7 @@ namespace Harry.Common
             }
             StringBuilder prestr = new StringBuilder();
 
-#if NET20
-                foreach (KeyValuePair<string, string> temp in dicArray)
-                {
-                    prestr.Append(temp.Key + "=" + temp.Value + "&");
-                }
-#else
+
             if (encoderFun != null)
             {
                 foreach (KeyValuePair<string, string> temp in dicArray)
@@ -153,7 +146,6 @@ namespace Harry.Common
                     prestr.Append(temp.Key + "=" + temp.Value + "&");
                 }
             } 
-#endif
 
             //去掉最后一个&字符
             int nLen = prestr.Length;

@@ -23,7 +23,7 @@ namespace Harry.Common
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="instanceID">实例编号(0-1024)</param>
+        /// <param name="instanceID">实例编号(0-1023)</param>
         /// <param name="beginTime">起始时间</param>
         /// <param name="tsType">时间戳类型</param>
         /// <param name="indexBitLength">索引可用位数(1-32)</param>
@@ -71,7 +71,7 @@ namespace Harry.Common
         /// <summary>
         /// 默认每实例每秒生成65536个ID,从1970年1月1日起,累计可使用4358年
         /// </summary>
-        /// <param name="instanceID">实例编号(0-1024)</param>
+        /// <param name="instanceID">实例编号(0-1023)</param>
         public IdCreator(int instanceID) : this(instanceID, new DateTime(1970, 1, 1), TimeStampType.Second, 16)
         {
 
