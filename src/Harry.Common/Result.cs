@@ -27,7 +27,7 @@ namespace Harry
 
     }
 
-    public class Result<T> : Result
+    public sealed class Result<T> : Result
     {
         public Result() { }
 
