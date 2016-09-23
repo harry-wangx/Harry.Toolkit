@@ -25,7 +25,7 @@ namespace Harry.Common
         /// </summary>
         /// <param name="instanceID">实例编号(0-1023)</param>
         /// <param name="indexBitLength">索引可用位数(1-32).每秒可生成ID数等于2的indexBitLength次方.大并发情况下,当前秒内ID数达到最大值时,将使用下一秒的时间戳,不影响获取ID.</param>
-        /// <param name="initTimestamp">当之前同一实例生成ID的timestamp值大于当前时间的时间戳时,
+        /// <param name="initTimestamp">初始化时间戳,精确到秒.当之前同一实例生成ID的timestamp值大于当前时间的时间戳时,
         /// 有可能会产生重复ID(如持续一段时间的大并发请求).设置initTimestamp比最后的时间戳大一些,可避免这种问题</param>
         public IdCreator(int instanceID, int indexBitLength, long? initTimestamp = null)
         {
