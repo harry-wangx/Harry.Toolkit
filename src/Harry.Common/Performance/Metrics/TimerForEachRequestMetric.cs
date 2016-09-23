@@ -7,7 +7,7 @@ namespace Harry.Performance.Metrics
     /// <summary>
     /// 跟踪统计耗时情况
     /// </summary>
-    public class TimerForEachRequestMetric : PerformanceMetricBase
+    public sealed class TimerForEachRequestMetric : PerformanceMetricBase
     {
         private ITimer metric;
 

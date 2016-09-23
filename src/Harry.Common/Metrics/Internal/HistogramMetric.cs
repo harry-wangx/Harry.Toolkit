@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Harry.Metrics.Internal
 {
-    internal class HistogramMetric: IHistogram
+    internal sealed class HistogramMetric: IHistogram
     {
         List<IHistogram> histograms = new List<IHistogram>();
         private readonly object _sync = new object();

@@ -14,7 +14,7 @@ namespace Harry.Performance
     /// <summary>
     /// 性能跟踪类
     /// </summary>
-    public class PerformanceTracker:IDisposable
+    public sealed class PerformanceTracker:IDisposable
     {
         private Stopwatch stopwatch;
         private List<PerformanceMetricBase> performanceMetrics;

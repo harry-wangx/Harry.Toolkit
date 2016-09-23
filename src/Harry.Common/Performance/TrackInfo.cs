@@ -4,7 +4,7 @@ namespace Harry.Performance
     /// <summary>
     /// 跟踪对象信息
     /// </summary>
-    public class TrackInfo
+    public sealed class TrackInfo
     {
         public TrackInfo(string contextName, string name)
         {

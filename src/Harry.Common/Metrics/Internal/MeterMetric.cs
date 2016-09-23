@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Harry.Metrics.Internal
 {
-    internal class MeterMetric : IMeter
+    internal sealed class MeterMetric : IMeter
     {
         List<IMeter> meters = new List<IMeter>();
         private readonly object _sync = new object();

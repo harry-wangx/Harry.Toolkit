@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Harry.Metrics.Internal
 {
-    internal class GaugeMetric : IGauge,Harry.Common.IHideObjectMembers
+    internal sealed class GaugeMetric : IGauge,Harry.Common.IHideObjectMembers
     {
         List<IGauge> gauges = new List<IGauge>();
         private readonly object _sync = new object();

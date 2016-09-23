@@ -4,9 +4,9 @@ using System.Collections.Generic;
 namespace Harry.Domain
 {
 
-    public class Money : ValueObject<Money>
+    public sealed class Money : ValueObject<Money>
     {
-        protected readonly decimal Value;
+        public  readonly decimal Value;
 
         public Money()
             : this(0m)
@@ -35,7 +35,7 @@ namespace Harry.Domain
             return new List<Object>() { Value };
         }
 
-        protected virtual void validate(decimal value)
+        void validate(decimal value)
         {
             if (value % 0.01m != 0)
                 throw new Exception("小数点后位数超过2位");
@@ -46,4 +46,4 @@ namespace Harry.Domain
         }
     }
 
-} 
+}

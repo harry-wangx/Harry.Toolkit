@@ -8,7 +8,7 @@ namespace Harry.Performance.Metrics
     /// <summary>
     /// 最后一次请求所耗时间
     /// </remarks>
-    public class LastCallElapsedTimeMetric : PerformanceMetricBase
+    public sealed class LastCallElapsedTimeMetric : PerformanceMetricBase
     {
         public const String COUNTER_NAME = "Last Call Elapsed Time";
         private IGauge callsInProgressCounter;

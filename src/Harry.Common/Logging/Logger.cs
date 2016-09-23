@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Harry.Logging
 {
-    internal class Logger : ILogger
+    internal sealed class Logger : ILogger
     {
 
         private readonly LoggerFactory _loggerFactory;

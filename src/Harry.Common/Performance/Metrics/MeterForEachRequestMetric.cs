@@ -7,7 +7,7 @@ namespace Harry.Performance.Metrics
     /// <summary>
     /// 统计请求的分布情况
     /// </summary>
-    public class MeterForEachRequestMetric : PerformanceMetricBase
+    public sealed class MeterForEachRequestMetric : PerformanceMetricBase
     {
         private IMeter metric;
         public MeterForEachRequestMetric(TrackInfo info)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Harry.Metrics.Internal
 {
-    internal class TimerMetric : ITimer
+    internal sealed class TimerMetric : ITimer
     {
 
         List<ITimer> timers = new List<ITimer>();

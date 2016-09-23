@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Harry.Metrics.Internal
 {
-    internal class CounterMetric : ICounter
+    internal sealed class CounterMetric : ICounter
     {
         List<ICounter> counters = new List<ICounter>();
         private readonly object _sync = new object();

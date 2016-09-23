@@ -8,7 +8,7 @@ namespace Harry.Performance.Metrics
     /// <summary>
     /// 统计请求用时情况(单位:毫秒)
     /// </summary>
-    public class HistogramForEachRequestMetric: PerformanceMetricBase
+    public sealed class HistogramForEachRequestMetric: PerformanceMetricBase
     {
         public const string METRIC_NAME = "Call Elapsed Time";
         private IHistogram metric;

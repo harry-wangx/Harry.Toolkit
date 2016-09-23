@@ -6,7 +6,7 @@ namespace Harry.Logging
     /// <summary>
     /// 
     /// </summary>
-    public partial class LoggerFactory : ILoggerFactory
+    public sealed class LoggerFactory : ILoggerFactory
     {
         private readonly Dictionary<string, Logger> _loggers = new Dictionary<string, Logger>(StringComparer.Ordinal);
         private List<ILoggerProvider> _providers = new List<ILoggerProvider>();

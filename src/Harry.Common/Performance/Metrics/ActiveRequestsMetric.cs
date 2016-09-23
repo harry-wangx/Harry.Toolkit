@@ -8,7 +8,7 @@ namespace Harry.Performance.Metrics
     /// <summary>
     /// 统计当前正在请求数量
     /// </summary>
-    public class ActiveRequestsMetric : PerformanceMetricBase
+    public sealed class ActiveRequestsMetric : PerformanceMetricBase
     {
         public const String COUNTER_NAME = "ActiveRequests";
         private ICounter callsInProgressCounter;
