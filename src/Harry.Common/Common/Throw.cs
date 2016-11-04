@@ -30,9 +30,9 @@ namespace Harry.Common
         /// 合并多个异常
         /// </summary>
         /// <param name="exceptions"></param>
-        public static Exception  MergeExceptions(List<Exception> exceptions)
+        public static Exception MergeExceptions(IEnumerable<Exception> exceptions)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder(1024);
             foreach (var item in exceptions)
             {
                 sb.Append(item.Message

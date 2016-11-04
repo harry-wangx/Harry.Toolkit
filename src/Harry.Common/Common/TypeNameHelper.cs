@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Harry.Common
 {
-    public class TypeNameHelper
+    public static class TypeNameHelper
     {
         private static readonly Dictionary<Type, string> _builtInTypeNames = new Dictionary<Type, string>
             {
@@ -33,37 +33,10 @@ namespace Harry.Common
             if (type.GetTypeInfo().IsGenericType)
             {
                 var fullName = type.GetGenericTypeDefinition().FullName;
-
-                // Nested types (public or private) have a '+' in their full name
-                var parts = fullName.Split('+');
-
-                // Handle nested generic types
-                // Examples:
-                // ConsoleApp.Program+Foo`1+Bar
-                // ConsoleApp.Program+Foo`1+Bar`1
-                for (var i = 0; i < parts.Length; i++)
-                {
-                    var partName = parts[i];
-
-                    var backTickIndex = partName.IndexOf('`');
-                    if (backTickIndex >= 0)
-                    {
-                        // Since '.' is typically used to filter log messages in a hierarchy kind of scenario,
-                        // do not include any generic type information as part of the name.
-                        // Example:
-                        // Microsoft.AspNetCore.Mvc -> log level set as Warning
-                        // Microsoft.AspNetCore.Mvc.ModelBinding -> log level set as Verbose
-                        partName = partName.Substring(0, backTickIndex);
-                    }
-
-                    parts[i] = partName;
-                }
-
-                return string.Join(".", parts);
+                return getTypeDisplayName(fullName);
             }
             else
 #endif
-
             if (_builtInTypeNames.ContainsKey(type))
             {
                 return _builtInTypeNames[type];
@@ -71,35 +44,9 @@ namespace Harry.Common
             else
             {
                 var fullName = type.FullName;
+#if NET40 || NET35 || NET20
 
-#if  NET40 || NET35 || NET20
-
-                // Nested types (public or private) have a '+' in their full name
-                var parts = fullName.Split('+');
-
-                // Handle nested generic types
-                // Examples:
-                // ConsoleApp.Program+Foo`1+Bar
-                // ConsoleApp.Program+Foo`1+Bar`1
-                for (var i = 0; i < parts.Length; i++)
-                {
-                    var partName = parts[i];
-
-                    var backTickIndex = partName.IndexOf('`');
-                    if (backTickIndex >= 0)
-                    {
-                        // Since '.' is typically used to filter log messages in a hierarchy kind of scenario,
-                        // do not include any generic type information as part of the name.
-                        // Example:
-                        // Microsoft.AspNetCore.Mvc -> log level set as Warning
-                        // Microsoft.AspNetCore.Mvc.ModelBinding -> log level set as Verbose
-                        partName = partName.Substring(0, backTickIndex);
-                    }
-
-                    parts[i] = partName;
-                }
-
-                fullName= string.Join(".", parts);
+                fullName = getTypeDisplayName(fullName);
 #else
                 if (type.IsNested)
                 {
@@ -108,6 +55,36 @@ namespace Harry.Common
 #endif
                 return fullName;
             }
+        }
+
+        static string getTypeDisplayName(string fullName)
+        {
+            // Nested types (public or private) have a '+' in their full name
+            var parts = fullName.Split('+');
+
+            // Handle nested generic types
+            // Examples:
+            // ConsoleApp.Program+Foo`1+Bar
+            // ConsoleApp.Program+Foo`1+Bar`1
+            for (var i = 0; i < parts.Length; i++)
+            {
+                var partName = parts[i];
+
+                var backTickIndex = partName.IndexOf('`');
+                if (backTickIndex >= 0)
+                {
+                    // Since '.' is typically used to filter log messages in a hierarchy kind of scenario,
+                    // do not include any generic type information as part of the name.
+                    // Example:
+                    // Microsoft.AspNetCore.Mvc -> log level set as Warning
+                    // Microsoft.AspNetCore.Mvc.ModelBinding -> log level set as Verbose
+                    partName = partName.Substring(0, backTickIndex);
+                }
+
+                parts[i] = partName;
+            }
+
+            return string.Join(".", parts);
         }
     }
 }

@@ -11,12 +11,13 @@ namespace Harry.Common
     /// </summary>
     public sealed class IdCreator
     {
-        long timestamp = 0;//当前时间戳
-        long index = 0;//索引/计数器
-        long instanceID;//实例编号
-        int indexBitLength;//索引可用位数
-        long tsMax = 0;//时间戳最大值
-        long indexMax = 0;
+        private readonly long instanceID;//实例编号
+        private readonly int indexBitLength;//索引可用位数
+        private readonly long tsMax = 0;//时间戳最大值
+        private readonly long indexMax = 0;
+
+        private long timestamp = 0;//当前时间戳
+        private long index = 0;//索引/计数器
 
         static IdCreator _default = new IdCreator();
 
