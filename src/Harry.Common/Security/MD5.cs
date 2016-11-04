@@ -7,20 +7,28 @@ namespace Harry.Security
 {
     public static class MD5
     {
-
+#if !NET20 && !NET35
+        static Lazy<System.Security.Cryptography.MD5> _md5 = new Lazy<System.Security.Cryptography.MD5>(() => System.Security.Cryptography.MD5.Create(), true);
+#else
+        static System.Security.Cryptography.MD5 _md5 = System.Security.Cryptography.MD5.Create();
+#endif
         /// <summary>
         /// MD5加密
         /// </summary>
         /// <param name="sFile">文件流</param>
-        /// <returns></returns>
+        /// <returns>返回大写MD5值</returns>
         public static string ComputeHash(Stream sFile)
         {
-            System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create();
-            byte[] t = md5.ComputeHash(sFile);
+            byte[] t =
+#if !NET20 && !NET35
+                _md5.Value.ComputeHash(sFile);
+#else
+                _md5.ComputeHash(sFile);
+#endif
             StringBuilder sb = new StringBuilder(32);
             for (int i = 0; i < t.Length; i++)
             {
-                sb.Append(t[i].ToString("x").PadLeft(2, '0'));
+                sb.Append(t[i].ToString("X").PadLeft(2, '0'));
             }
             return sb.ToString();
         }
@@ -29,15 +37,19 @@ namespace Harry.Security
         /// MD5加密
         /// </summary>
         /// <param name="data">待加密数据</param>
-        /// <returns></returns>
+        /// <returns>返回大写MD5值</returns>
         public static string ComputeHash(byte[] data)
         {
-            System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create();
-            byte[] t = md5.ComputeHash(data);
+            byte[] t =
+#if !NET20 && !NET35
+                _md5.Value.ComputeHash(data);
+#else
+                _md5.ComputeHash(data);
+#endif
             StringBuilder sb = new StringBuilder(32);
             for (int i = 0; i < t.Length; i++)
             {
-                sb.Append(t[i].ToString("x").PadLeft(2, '0'));
+                sb.Append(t[i].ToString("X").PadLeft(2, '0'));
             }
             return sb.ToString();
         }
@@ -50,14 +62,7 @@ namespace Harry.Security
         /// <returns></returns>
         public static string ComputeHash(string input, Encoding encoding)
         {
-            System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create();
-            byte[] t = md5.ComputeHash(encoding.GetBytes(input));
-            StringBuilder sb = new StringBuilder(32);
-            for (int i = 0; i < t.Length; i++)
-            {
-                sb.Append(t[i].ToString("x").PadLeft(2, '0'));
-            }
-            return sb.ToString();
+            return ComputeHash(encoding.GetBytes(input));
         }
 
         /// <summary>
