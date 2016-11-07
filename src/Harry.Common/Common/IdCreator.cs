@@ -11,15 +11,16 @@ namespace Harry.Common
     /// </summary>
     public sealed class IdCreator
     {
+        private static readonly Random r = new Random();
+        private static readonly IdCreator _default = new IdCreator();
+
         private readonly long instanceID;//实例编号
         private readonly int indexBitLength;//索引可用位数
         private readonly long tsMax = 0;//时间戳最大值
         private readonly long indexMax = 0;
-
+        
         private long timestamp = 0;//当前时间戳
         private long index = 0;//索引/计数器
-
-        static IdCreator _default = new IdCreator();
 
         /// <summary>
         /// 
@@ -33,7 +34,6 @@ namespace Harry.Common
             if (instanceID < 0)
             {
                 //这里给每个实例随机生成个实例编号
-                Random r = new Random();
                 this.instanceID = r.Next(0, 1024);
             }
             else
@@ -93,7 +93,7 @@ namespace Harry.Common
                 long ts = Harry.Common.Utils.GetTimeStamp() / 1000;
 
                 ts = ts % tsMax;  //如果超过时间戳允许的最大值,从0开始
-                id = ts << (10 + indexBitLength);//腾出后面部分,给实例编号和缩引编号使用
+                id = ts << (10 + indexBitLength);//腾出后面部分,给实例编号和索引编号使用
 
                 //增加实例部分
                 id = id | (instanceID << indexBitLength);
