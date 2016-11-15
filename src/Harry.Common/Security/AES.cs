@@ -13,13 +13,6 @@ namespace Harry.Security
 {
     public static class AES
     {
-        //public static string Encrypt(string key, string iv, string data)
-        //{
-        //    //System.Security.Cryptography.Rijndael.Create();
-        //    //System.Security.Cryptography.Aes a;
-        //    //System.Security.Cryptography.RijndaelManaged.Create();
-        //}
-
         /// <summary>
         /// AES加密
         /// </summary>
