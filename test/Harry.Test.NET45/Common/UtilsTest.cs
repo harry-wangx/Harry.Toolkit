@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Harry.Test.NETCore.Common
+namespace Harry.Test.NET45.Common
 {
     public class UtilsTest
     {
@@ -12,12 +13,12 @@ namespace Harry.Test.NETCore.Common
         public void TestDOTNET_VERSION()
         {
             //arrange
-
+            
             //act
             string version = Harry.Common.Utils.DOTNET_VERSION;
 
             //assert
-            Assert.Equal(version, Harry.Common.Utils.COREFX);
+            Assert.Equal(version, Harry.Common.Utils.NET45);
         }
     }
 }

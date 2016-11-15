@@ -7,7 +7,7 @@
     <ProjectGuid>{A1FAE2F9-BA9A-4841-99B9-F92BBD48A5D5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Harry.Test</RootNamespace>
+    <RootNamespace>Harry.Test.NET20</RootNamespace>
     <AssemblyName>Harry.Test.NET20</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

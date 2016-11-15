@@ -7,7 +7,7 @@
     <ProjectGuid>{9D4ED070-81ED-47F9-92DD-18AE7B3AB1FB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Harry.Test</RootNamespace>
+    <RootNamespace>Harry.Test.NET40</RootNamespace>
     <AssemblyName>Harry.Test.NET40</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
