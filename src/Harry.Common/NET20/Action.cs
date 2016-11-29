@@ -49,7 +49,7 @@ namespace System
 
     public delegate TOutput Converter<in TInput, out TOutput>(TInput input);
 
-    public delegate bool Predicate<in T>(T obj);
+    //public delegate bool Predicate<in T>(T obj);
 
 } 
 #endif

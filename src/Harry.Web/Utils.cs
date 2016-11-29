@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+#if !NET20
 using Harry.Extensions;
+#endif
 
 #if COREFX
 using Microsoft.AspNetCore.Http;
@@ -14,7 +16,7 @@ namespace Harry.Web
     {
         static char[] separator = new char[] { ',' };
 
-        public const string UnknownIP = "0.0.0.0";
+        public readonly static string UnknownIP = "0.0.0.0";
 
 
 
@@ -28,7 +30,7 @@ namespace Harry.Web
         {
             if (request == null)
             {
-                request = System.Web.HttpContext.Current.Request;
+                request = System.Web.HttpContext.Current?.Request;
             }
             return request?.UserHostAddress;
         }
@@ -46,7 +48,7 @@ namespace Harry.Web
         {
             if (request == null)
             {
-                request = System.Web.HttpContext.Current.Request;
+                request = System.Web.HttpContext.Current?.Request;
             }
             var ipArray = Common.Utils.HasValue(request.ServerVariables["HTTP_X_FORWARDED_FOR"]) ? request.ServerVariables["HTTP_X_FORWARDED_FOR"].Split(separator, StringSplitOptions.RemoveEmptyEntries) : null;
             if (ipArray != null && ipArray.Length > 0)
