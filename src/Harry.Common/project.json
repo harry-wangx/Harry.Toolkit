@@ -20,7 +20,7 @@
 
   },
   "dependencies": {
-
+    "Harry.Logging.Abstractions": "0.1.0"
   },
   "frameworks": {
     "net20": {

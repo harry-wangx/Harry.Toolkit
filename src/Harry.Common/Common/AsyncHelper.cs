@@ -1,18 +1,35 @@
-﻿#if ASYNC
+﻿
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
+#if ASYNC
 using System.Threading.Tasks;
+#endif
 
 
 namespace Harry.Common
 {
     public static class AsyncHelper
     {
+        public static void ExecuteSafely(object sync, Func<bool> canExecute, Action actiontoExecuteSafely)
+        {
+            if (canExecute())
+            {
+                lock (sync)
+                {
+                    if (canExecute())
+                    {
+                        actiontoExecuteSafely();
+                    }
+                }
+            }
+        }
+
+#if ASYNC
         private static readonly TaskFactory _myTaskFactory = new TaskFactory(CancellationToken.None,
-            TaskCreationOptions.None, TaskContinuationOptions.None, TaskScheduler.Default);
+    TaskCreationOptions.None, TaskContinuationOptions.None, TaskScheduler.Default);
 
         /// <summary>
         /// 同步调用异步方法
@@ -54,7 +71,8 @@ namespace Harry.Common
 #endif
                 return func();
             }).Unwrap().GetAwaiter().GetResult();
-        }
+        } 
+#endif
     }
 }
-#endif
+
