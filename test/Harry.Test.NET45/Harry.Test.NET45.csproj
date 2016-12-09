@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Harry.Common">
-      <HintPath>..\..\src\Harry.Common\bin\Debug\net45\Harry.Common.dll</HintPath>
+      <HintPath>..\..\src\Harry.Common\bin\Release\net45\Harry.Common.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

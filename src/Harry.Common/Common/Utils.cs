@@ -6,25 +6,25 @@ namespace Harry.Common
 {
     public static class Utils
     {
-        public const string NET20 = "NET20";
-        public const string NET35 = "NET35";
-        public const string NET40 = "NET40";
-        public const string NET45 = "NET45";
-        public const string COREFX = "COREFX";
+        public static readonly string NET20 = "NET20";
+        public static readonly string NET35 = "NET35";
+        public static readonly string NET40 = "NET40";
+        public static readonly string NET45 = "NET45";
+        public static readonly string COREFX = "COREFX";
 #if NET20
-        public const string DOTNET_VERSION = NET20;
+        public static readonly string DOTNET_VERSION = NET20;
 #endif
 #if NET35
-        public const string DOTNET_VERSION = NET35;
+        public static readonly string DOTNET_VERSION = NET35;
 #endif
 #if NET40
-        public const string DOTNET_VERSION = NET40;
+        public static readonly string DOTNET_VERSION = NET40;
 #endif
 #if NET45
-        public const string DOTNET_VERSION = NET45;
+        public static readonly string DOTNET_VERSION = NET45;
 #endif
 #if COREFX
-        public const string DOTNET_VERSION = COREFX;
+        public static readonly string DOTNET_VERSION = COREFX;
 #endif
 
         public readonly static DateTimeOffset Jan1st1970 = new DateTimeOffset(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc));

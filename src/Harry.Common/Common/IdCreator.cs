@@ -12,13 +12,15 @@ namespace Harry.Common
     public sealed class IdCreator
     {
         private static readonly Random r = new Random();
-        private static readonly IdCreator _default = new IdCreator();
+        private static readonly object type_lock = new object();
+        private static IdCreator _default = null;
 
         private readonly long instanceID;//实例编号
         private readonly int indexBitLength;//索引可用位数
         private readonly long tsMax = 0;//时间戳最大值
         private readonly long indexMax = 0;
-        
+        private readonly object m_lock = new object();
+
         private long timestamp = 0;//当前时间戳
         private long index = 0;//索引/计数器
 
@@ -87,7 +89,7 @@ namespace Harry.Common
         {
             long id = 0;
 
-            lock (this)
+            lock (m_lock)
             {
                 //增加时间戳部分
                 long ts = Harry.Common.Utils.GetTimeStamp() / 1000;
@@ -139,6 +141,35 @@ namespace Harry.Common
         {
             get
             {
+                if (_default != null) return _default;
+
+                //这里没有用lock关键字,
+                //据<clr via c#>里面说,把Monitor.Exit放在finally里面并不好,
+                //因为这时候,还有可能会有其它线程进入到该方法,
+                //这个时候应该挂起线程
+                System.Threading.Monitor.Enter(type_lock);
+                //Java这里有个BUG,JVM在读到第一个_default的时候,会把_default的NULL值放到CPU寄存器,
+                //在这里判断时,多个线程的结果都会为True,会创建多次IdCreator.
+                //.net不会这样,CLR任何锁方法的调用,都构成了一个完整的内存栅栏,在栅栏之前写入的任何
+                //变量都必须在栅栏之前完成;在栅栏之后的任何变量读取都必须在栅栏之后开始.
+                //也就是说下面获取的_default的值,总是最新的.
+                if (_default == null)
+                {
+                    //这里使用Volatile.Write方法,是因为编译器有可能这样做:为_default分配完内存,
+                    //将引用发布(赋给)_default,再调用构造器.当多线程并发执行的时候,有可能会造成
+                    //在调用构造器之前(这个时候_default不为NULL),就开始使用IdCreator.
+                    //Volatile.Write()能解决这个问题,但是只有.net4.5及以上的版本才支持.
+                    //使用volatile关键字也能解决这个问题,但同时会使所有读取操作具有"易变性",
+                    //会使性能受到损害.
+#if ASYNC
+                    var temp = new IdCreator();
+                    System.Threading.Volatile.Write(ref _default,temp);
+#else
+                    _default = new IdCreator();
+#endif
+                }
+                System.Threading.Monitor.Exit(type_lock);
+
                 return _default;
             }
         }
