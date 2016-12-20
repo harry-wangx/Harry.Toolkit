@@ -1,11 +1,11 @@
 ﻿#if NET20 || NET35
-namespace System
+namespace Harry
 {
 
     //public delegate void Action<in T>(T obj);
 
-// Action/Func delegates first shipped with .NET Framework 3.5 in System.Core.dll as part of LINQ
-// These were type forwarded to mscorlib.dll in .NET Framework 4.0 and in Silverlight 5.0
+    // Action/Func delegates first shipped with .NET Framework 3.5 in System.Core.dll as part of LINQ
+    // These were type forwarded to mscorlib.dll in .NET Framework 4.0 and in Silverlight 5.0
 
 #if NET20
     public delegate void Action();
@@ -51,5 +51,5 @@ namespace System
 
     //public delegate bool Predicate<in T>(T obj);
 
-} 
+}
 #endif

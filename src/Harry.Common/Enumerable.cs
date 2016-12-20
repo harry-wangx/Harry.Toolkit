@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Threading;
 
 
-namespace System.Linq
+namespace Harry.Linq
 {
     public static class Enumerable
     {

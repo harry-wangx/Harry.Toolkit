@@ -17,7 +17,7 @@ namespace Harry.Json
         /// <returns></returns>
         public static string SerializeObject(object input)
         {
-            return JsonConvert.SerializeObject(input,iso);
+            return JsonConvert.SerializeObject(input, iso);
         }
 
         /// <summary>

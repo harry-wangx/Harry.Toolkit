@@ -13,7 +13,7 @@ namespace Harry.Common
     {
         private static readonly Random r = new Random();
         private static readonly object type_lock = new object();
-        private static IdCreator _default = null;
+        private static IdCreator _default = new IdCreator();
 
         private readonly long instanceID;//实例编号
         private readonly int indexBitLength;//索引可用位数
@@ -143,33 +143,50 @@ namespace Harry.Common
             {
                 if (_default != null) return _default;
 
-                //这里没有用lock关键字,
-                //据<clr via c#>里面说,把Monitor.Exit放在finally里面并不好,
-                //因为这时候,还有可能会有其它线程进入到该方法,
-                //这个时候应该挂起线程
-                System.Threading.Monitor.Enter(type_lock);
-                //Java这里有个BUG,JVM在读到第一个_default的时候,会把_default的NULL值放到CPU寄存器,
-                //在这里判断时,多个线程的结果都会为True,会创建多次IdCreator.
-                //.net不会这样,CLR任何锁方法的调用,都构成了一个完整的内存栅栏,在栅栏之前写入的任何
-                //变量都必须在栅栏之前完成;在栅栏之后的任何变量读取都必须在栅栏之后开始.
-                //也就是说下面获取的_default的值,总是最新的.
-                if (_default == null)
-                {
-                    //这里使用Volatile.Write方法,是因为编译器有可能这样做:为_default分配完内存,
-                    //将引用发布(赋给)_default,再调用构造器.当多线程并发执行的时候,有可能会造成
-                    //在调用构造器之前(这个时候_default不为NULL),就开始使用IdCreator.
-                    //Volatile.Write()能解决这个问题,但是只有.net4.5及以上的版本才支持.
-                    //使用volatile关键字也能解决这个问题,但同时会使所有读取操作具有"易变性",
-                    //会使性能受到损害.
-#if ASYNC
-                    var temp = new IdCreator();
-                    System.Threading.Volatile.Write(ref _default,temp);
-#else
-                    _default = new IdCreator();
-#endif
-                }
-                System.Threading.Monitor.Exit(type_lock);
+                #region 方法一:通过双检索创建
+                //                //这里没有用lock关键字,
+                //                //据<clr via c#>里面说,把Monitor.Exit放在finally里面并不好,
+                //                //因为这时候,还有可能会有其它线程进入到该方法,
+                //                //这个时候应该挂起线程
+                //                System.Threading.Monitor.Enter(type_lock);
+                //                //Java这里有个BUG,JVM在读到第一个_default的时候,会把_default的NULL值放到CPU寄存器,
+                //                //第二次在这里判断时,多个线程的结果都会为True,会创建多次IdCreator.
+                //                //.net不会这样,CLR任何锁方法的调用,都构成了一个完整的内存栅栏,在栅栏之前写入的任何
+                //                //变量都必须在栅栏之前完成;在栅栏之后的任何变量读取都必须在栅栏之后开始.
+                //                //也就是说下面获取的_default的值,总是最新的.
+                //                if (_default == null)
+                //                {
+                //                    //这里使用Volatile.Write方法,是因为编译器有可能这样做:为_default分配完内存,
+                //                    //将引用发布(赋给)_default,再调用构造器.当多线程并发执行的时候,有可能会造成
+                //                    //在调用构造器之前(这个时候_default不为NULL),就开始使用IdCreator.
+                //                    //Volatile.Write()能解决这个问题,但是只有.net4.5及以上的版本才支持.
+                //                    //使用volatile关键字也能解决这个问题,但同时会使所有读取操作具有"易变性",
+                //                    //会使性能受到损害.
+                //#if ASYNC
+                //                    var temp = new IdCreator();
+                //                    System.Threading.Volatile.Write(ref _default,temp);
+                //#else
+                //                    _default = new IdCreator();
+                //#endif
+                //                }
+                //                System.Threading.Monitor.Exit(type_lock); 
+                #endregion
 
+                #region 方法二:使用Interlocked.CompareExchange创建,优势:速度快,不阻塞线程.劣势:可能会创建多个实例
+                ////创建一个新的单实例对象,并把它固定下来(如果另一个线程还没有固定它的话)
+                //IdCreator temp = new IdCreator();
+                //System.Threading.Interlocked.CompareExchange(ref _default, temp, null);
+
+                ////如果这个线程竞争失败,新建的第二个单实例对象会被垃圾回收
+                #endregion
+
+                #region 方法三:使用System.Lazy
+                //懒了,不写例子了
+                #endregion
+
+                #region 方法四:其实像这个例子中,直接给静态变量_default new一个对象也耗费不了多少资源.既省事,访问速度又快.
+
+                #endregion
                 return _default;
             }
         }

@@ -1,5 +1,5 @@
 ﻿{
-  "version": "0.1.0-*",
+  "version": "0.1.0",
 
   "dependencies": {
     "Newtonsoft.Json": "9.0.1"
@@ -7,6 +7,11 @@
 
   "frameworks": {
     "net20": {
+      "frameworkAssemblies": {
+
+      }
+    },
+    "net35": {
       "frameworkAssemblies": {
 
       }

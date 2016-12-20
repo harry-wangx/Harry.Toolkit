@@ -12,7 +12,7 @@
   },
 
   "title": "Harry.Common",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "authors": [ "Harry" ],
   "description": "Harry.Common",
 
@@ -20,7 +20,7 @@
 
   },
   "dependencies": {
-    "Newtonsoft.Json": "9.0.1"
+    "Harry.Logging.Abstractions": "0.1.0"
   },
   "frameworks": {
     "net20": {
@@ -57,9 +57,10 @@
       "dependencies": {
         "System.Collections": "4.3.0",
         "System.Collections.Concurrent": "4.3.0",
-        "System.Collections.NonGeneric": "4.3.0",
+        //"System.Collections.NonGeneric": "4.3.0",
         "System.Dynamic.Runtime": "4.3.0",
         "System.Diagnostics.Process": "4.3.0",
+        "System.IO": "4.3.0",
         "System.Linq": "4.3.0",
         "System.Reflection": "4.3.0",
         "System.Reflection.Extensions": "4.3.0",
