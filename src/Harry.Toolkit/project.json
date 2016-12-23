@@ -1,20 +1,56 @@
 {
-  "version": "0.1.0-*",
-  "buildOptions": {
-    "emitEntryPoint": true
-  },
+  "version": "0.1.0-alpha1",
 
   "dependencies": {
-    "Harry.Common": "0.1.*",
-    "Microsoft.NETCore.App": {
-      "type": "platform",
-      "version": "1.0.0"
-    }
+    "Harry.Common": "0.2.4-*",
+    "Newtonsoft.Json": "9.0.1"
   },
 
   "frameworks": {
-    "netcoreapp1.0": {
-      "imports": "dnxcore50"
+    "net20": {
+      "frameworkAssemblies": {
+        "System.Web": "2.0.0.0"
+      },
+      "dependencies": {
+
+      }
+    },
+    "net35": {
+      "frameworkAssemblies": {
+        "System.Web": "2.0.0.0"
+      },
+      "dependencies": {
+
+      }
+    },
+    "net40": {
+      "frameworkAssemblies": {
+        "System.Web": "4.0.0.0"
+      },
+      "dependencies": {
+
+      }
+    },
+    "net45": {
+      "buildOptions": {
+        "define": [ "ASYNC" ]
+      },
+      "frameworkAssemblies": {
+        "System.Web": "4.0.0.0"
+      },
+      "dependencies": {
+      }
+    },
+
+    "netstandard1.3": {
+      "buildOptions": {
+        "define": [ "ASYNC", "COREFX" ]
+      },
+      "dependencies": {
+        "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
+        "System.Threading.Tasks": "4.3.0",
+        "System.Runtime.InteropServices": "4.3.0"
+      }
     }
   }
 }
