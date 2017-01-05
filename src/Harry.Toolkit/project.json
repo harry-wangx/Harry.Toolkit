@@ -49,7 +49,8 @@
       "dependencies": {
         "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
         "System.Threading.Tasks": "4.3.0",
-        "System.Runtime.InteropServices": "4.3.0"
+        "System.Runtime.InteropServices": "4.3.0",
+        "Microsoft.AspNetCore.Cryptography.KeyDerivation": "1.1.0"
       }
     }
   }
