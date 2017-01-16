@@ -12,7 +12,7 @@
   },
 
   "title": "Harry.Common",
-  "version": "0.2.4-alpha2",
+  "version": "0.2.4-alpha3",
   "authors": [ "Harry" ],
   "description": "Harry.Common",
 
@@ -46,7 +46,7 @@
 
       },
       "dependencies": {
-
+        
       }
     },
 
@@ -71,7 +71,8 @@
         "System.Text.RegularExpressions": "4.3.0",
         "System.Threading": "4.3.0",
         "System.Threading.Thread": "4.3.0",
-        "System.Security.Cryptography.Algorithms": "4.3.0"
+        "System.Security.Cryptography.Algorithms": "4.3.0",
+        "System.IO.Compression": "4.3.0"
       }
     }
   } 
