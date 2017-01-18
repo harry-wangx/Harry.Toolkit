@@ -46,9 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Harry.Test.NETCore\Configuration\ConfigurationEntryTest.cs">
-      <Link>Configuration\ConfigurationEntryTest.cs</Link>
-    </Compile>
     <Compile Include="..\Harry.Test.NETCore\Configuration\MyConfiguration.cs">
       <Link>Configuration\MyConfiguration.cs</Link>
     </Compile>
