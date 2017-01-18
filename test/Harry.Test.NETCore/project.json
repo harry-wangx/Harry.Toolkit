@@ -4,10 +4,13 @@
   "dependencies": {
     "dotnet-test-xunit": "2.2.0-*",
     "xunit": "2.2.0-*",
-    "NETStandard.Library": "1.6.0",
-    "Harry.Common": "0.2.*"
+    "NETStandard.Library": "1.6.1",
+    "Harry.Toolkit": "0.1.0-*"
     //"xunit.runners": "2.0.0",
     //"xunit.runner.console": "2.1.0"
+  },
+  "buildOptions": {
+    "define": [ "ASYNC", "COREFX" ]
   },
   "testRunner": "xunit",
   "frameworks": {

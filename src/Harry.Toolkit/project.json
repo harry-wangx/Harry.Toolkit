@@ -1,14 +1,33 @@
 {
+  "title": "Harry.Toolkit",
   "version": "0.1.0-alpha1",
+  "authors": [ "Harry" ],
+  "description": "Harry.Toolkit",
+
+  "packOptions": {
+    "summary": "Harry.Toolkit",
+    "tags": [ "toolkit" ],
+    "owners": [ "Harry" ],
+    "projectUrl": "https://github.com/harry-wangx/Harry.Toolkit",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/harry-wangx/Harry.Toolkit"
+    }
+  },
+
+  "buildOptions": {
+
+  },
 
   "dependencies": {
-    "Harry.Common": "0.2.4-*",
     "Newtonsoft.Json": "9.0.1"
   },
 
   "frameworks": {
     "net20": {
       "frameworkAssemblies": {
+        "System.Xml": "2.0.0.0",
         "System.Web": "2.0.0.0"
       },
       "dependencies": {
@@ -17,6 +36,7 @@
     },
     "net35": {
       "frameworkAssemblies": {
+        "System.Xml": "2.0.0.0",
         "System.Web": "2.0.0.0"
       },
       "dependencies": {
@@ -25,6 +45,7 @@
     },
     "net40": {
       "frameworkAssemblies": {
+        "System.Xml": "4.0.0.0",
         "System.Web": "4.0.0.0"
       },
       "dependencies": {
@@ -36,9 +57,11 @@
         "define": [ "ASYNC" ]
       },
       "frameworkAssemblies": {
+        "System.Xml": "4.0.0.0",
         "System.Web": "4.0.0.0"
       },
       "dependencies": {
+
       }
     },
 
@@ -47,10 +70,12 @@
         "define": [ "ASYNC", "COREFX" ]
       },
       "dependencies": {
+        "NETStandard.Library": "1.6.1",
         "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
-        "System.Threading.Tasks": "4.3.0",
-        "System.Runtime.InteropServices": "4.3.0",
-        "Microsoft.AspNetCore.Cryptography.KeyDerivation": "1.1.0"
+        //"System.Threading.Tasks": "4.3.0",
+        //"System.Runtime.InteropServices": "4.3.0",
+        "Microsoft.AspNetCore.Cryptography.KeyDerivation": "1.1.0",
+        "System.Xml.XmlSerializer": "4.0.11"
       }
     }
   }
