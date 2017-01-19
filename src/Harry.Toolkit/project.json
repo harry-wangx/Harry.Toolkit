@@ -21,6 +21,7 @@
   },
 
   "dependencies": {
+    "Harry.Logging": "0.3.4",
     "Newtonsoft.Json": "9.0.1"
   },
 
