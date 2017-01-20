@@ -56,10 +56,11 @@ namespace Harry.Security
                     using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
                     {
                         csEncrypt.Write(plainData, 0, plainData.Length);
-                        //csEncrypt.Flush();
-                        csEncrypt.FlushFinalBlock();
-                        encrypted = msEncrypt.ToArray();
+
+                        //csEncrypt.FlushFinalBlock();
+                        //encrypted = msEncrypt.ToArray();
                     }
+                    encrypted = msEncrypt.ToArray();
                 }
             }
             return encrypted;

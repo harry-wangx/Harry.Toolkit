@@ -12,7 +12,7 @@
   },
 
   "title": "Harry.Common",
-  "version": "0.2.4-alpha3",
+  "version": "1.0.0-alpha1",
   "authors": [ "Harry" ],
   "description": "Harry.Common",
 
@@ -20,7 +20,7 @@
 
   },
   "dependencies": {
-    "Harry.Logging.Abstractions": "0.1.2"
+
   },
   "frameworks": {
     "net20": {

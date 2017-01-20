@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Http;
 using System.Web;
 #endif
 
-namespace Harry.Toolkit.Web
+namespace Harry.Web
 {
     public static class Utils
     {
