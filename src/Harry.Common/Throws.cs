@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Harry.Common
+namespace Harry
 {
-    public static class Throw
+    public static class Throws
     {
 #if !NET20
         public static string IfEmpty(string value, Func<string> getMsg)
@@ -24,6 +24,15 @@ namespace Harry.Common
                 throw new ArgumentNullException(nameof(value), msg);
             }
             return value.Trim();
+        }
+
+        public static T IfNull<T>(T value, string parameterName)
+        {
+            if (value == null)
+            {
+                throw new ArgumentNullException(parameterName);
+            }
+            return value;
         }
 
         /// <summary>
