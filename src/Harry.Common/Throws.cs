@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace Harry
 {
+    [DebuggerStepThrough]
     public static class Throws
     {
 #if !NET20
