@@ -14,6 +14,11 @@ namespace Harry.Extensions
             return Common.Utils.HasValue(value);
         }
 
+        public static bool Contains(this string value, char c)
+        {
+            return value.IndexOf(c) >= 0;
+        }
+
         #region 字符串转其它格式
         public static Int16 ToInt16(this string s)
         {
