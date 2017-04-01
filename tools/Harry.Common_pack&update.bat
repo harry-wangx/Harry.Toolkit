@@ -1,7 +1,7 @@
 set projectName=Harry.Common
 
 set version=1.0.0
-set suffix=alpha2
+set suffix=alpha4
 
 set fullVersion=%version%-%suffix%
 

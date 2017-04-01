@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using Harry.Extensions;
 
 namespace Harry.Common
 {
@@ -92,7 +92,7 @@ namespace Harry.Common
             lock (m_lock)
             {
                 //增加时间戳部分
-                long ts = Harry.Common.Utils.GetTimeStamp() / 1000;
+                long ts = DateTime.Now.ToTimeStamp();
 
                 ts = ts % tsMax;  //如果超过时间戳允许的最大值,从0开始
                 id = ts << (10 + indexBitLength);//腾出后面部分,给实例编号和索引编号使用

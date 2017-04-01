@@ -1,4 +1,4 @@
-﻿#if NET20 || NET35
+﻿#if NET35
 using Harry.Threading;
 using System;
 using System.Collections.Generic;

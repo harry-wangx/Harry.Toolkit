@@ -1,6 +1,4 @@
-﻿#if !NET20
-
-using System;
+﻿using System;
 
 
 namespace Harry.Extensions
@@ -11,5 +9,3 @@ namespace Harry.Extensions
     }
 }
 
-
-#endif

@@ -27,15 +27,6 @@
   },
 
   "frameworks": {
-    "net20": {
-      "frameworkAssemblies": {
-        "System.Xml": "2.0.0.0",
-        "System.Web": "2.0.0.0"
-      },
-      "dependencies": {
-
-      }
-    },
     "net35": {
       "frameworkAssemblies": {
         "System.Xml": "2.0.0.0",

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-#if !NET20
 using Harry.Extensions;
-#endif
 
 #if COREFX
 using Microsoft.AspNetCore.Http;
@@ -50,11 +48,11 @@ namespace Harry.Web
             {
                 request = System.Web.HttpContext.Current?.Request;
             }
-            var ipArray = Common.Utils.HasValue(request.ServerVariables["HTTP_X_FORWARDED_FOR"]) ? request.ServerVariables["HTTP_X_FORWARDED_FOR"].Split(separator, StringSplitOptions.RemoveEmptyEntries) : null;
+            var ipArray = request.ServerVariables["HTTP_X_FORWARDED_FOR"].HasValue() ? request.ServerVariables["HTTP_X_FORWARDED_FOR"].Split(separator, StringSplitOptions.RemoveEmptyEntries) : null;
             if (ipArray != null && ipArray.Length > 0)
             {
                 ipForwarded = ipArray[0].Trim();
-                if (!Common.Utils.IsIPv4(ipForwarded))
+                if (!ipForwarded.IsIPv4())
                 {
                     ipForwarded = null;
                 }

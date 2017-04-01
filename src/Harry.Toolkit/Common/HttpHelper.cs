@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Harry.Extensions;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -97,7 +98,7 @@ namespace Harry.Common
             Dictionary<string, string> dicArray = new Dictionary<string, string>();
             foreach (KeyValuePair<string, string> temp in dicArrayPre)
             {
-                if ( Common.Utils.HasValue(temp.Value) && !Common.Utils.Contains(strArray, temp.Key))
+                if (temp.Value.HasValue() && !strArray.Contains(temp.Key))
                 {
                     dicArray.Add(temp.Key, temp.Value);
                 }

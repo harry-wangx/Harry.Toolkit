@@ -1,6 +1,6 @@
-﻿#if !NET20
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Harry.Extensions
 {
@@ -35,7 +35,23 @@ namespace Harry.Extensions
             }
             return true;
         }
+
+        public static bool Contains(this IEnumerable<string> array, string value, StringComparison comparison = StringComparison.OrdinalIgnoreCase)
+        {
+            if (array == null || array.Count() <= 0)
+            {
+                return false;
+            }
+
+            foreach (var item in array)
+            {
+                if (item.Equals(value, comparison))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
 
-#endif

@@ -5,7 +5,7 @@
     "dotnet-test-xunit": "2.2.0-*",
     "xunit": "2.2.0-*",
     "NETStandard.Library": "1.6.1",
-    "Harry.Toolkit": "0.1.0-*"
+    "Harry.Toolkit": "1.0.0-*"
     //"xunit.runners": "2.0.0",
     //"xunit.runner.console": "2.1.0"
   },

@@ -8,7 +8,6 @@ namespace Harry
     [DebuggerStepThrough]
     public static class Throws
     {
-#if !NET20
         public static string IfEmpty(string value, Func<string> getMsg)
         {
             if (string.IsNullOrEmpty(value))
@@ -17,7 +16,6 @@ namespace Harry
             }
             return value.Trim();
         }
-#endif 
 
         public static string IfEmpty(string value, string msg = "")
         {

@@ -1,5 +1,4 @@
-﻿#if !NET20
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Harry.Toolkit.Json
@@ -12,5 +11,3 @@ namespace Harry.Toolkit.Json
         }
     }
 }
-
-#endif

@@ -7,7 +7,7 @@ namespace Harry.Security
 {
     public static class MD5
     {
-#if !NET20 && !NET35
+#if  !NET35
         static Lazy<System.Security.Cryptography.MD5> _md5 = new Lazy<System.Security.Cryptography.MD5>(() => System.Security.Cryptography.MD5.Create(), true);
 #else
         static System.Security.Cryptography.MD5 _md5 = System.Security.Cryptography.MD5.Create();
@@ -20,7 +20,7 @@ namespace Harry.Security
         public static string ComputeHash(Stream sFile)
         {
             byte[] t =
-#if !NET20 && !NET35
+#if  !NET35
                 _md5.Value.ComputeHash(sFile);
 #else
                 _md5.ComputeHash(sFile);
@@ -41,7 +41,7 @@ namespace Harry.Security
         public static string ComputeHash(byte[] data)
         {
             byte[] t =
-#if !NET20 && !NET35
+#if  !NET35
                 _md5.Value.ComputeHash(data);
 #else
                 _md5.ComputeHash(data);

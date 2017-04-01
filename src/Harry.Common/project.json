@@ -23,11 +23,6 @@
 
   },
   "frameworks": {
-    "net20": {
-      "frameworkAssemblies": {
-
-      }
-    },
     "net35": {
       "frameworkAssemblies": {
 

@@ -1,4 +1,4 @@
-﻿#if NET20 || NET35
+﻿#if NET35
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,32 +11,15 @@ namespace Harry.Collections.Concurrent
     {
         private readonly Dictionary<TKey, TValue> _dictionary;
         private readonly object _sync = new object();
-#if NET20
-        private const int DEFAULT_MILLISECONDS_TIMEOUT = 1000*10;
-        private readonly int millisecondsTimeout;
-        //ReaderWriterLock 超时会抛出System.ApplicationException异常
-        private readonly System.Threading.ReaderWriterLock m_lock = new System.Threading.ReaderWriterLock();
-#endif
-#if NET35
         private readonly System.Threading.ReaderWriterLockSlim m_lock_slim = new System.Threading.ReaderWriterLockSlim(System.Threading.LockRecursionPolicy.NoRecursion);
-#endif
 
         #region 构造函数
         /// <summary>
         /// 初始化 <see cref="Harry.Common.Collections.Concurrent.ConcurrentDictionary{TKey,TValue}"/> 类的新实例，
         /// 该实例为空且具有默认的初始容量，并使用键类型的默认相等比较器
         /// </summary>
-        public ConcurrentDictionary(
-#if NET20
-            int? millisecondsTimeout = null
-#endif
-            )
+        public ConcurrentDictionary()
         {
-#if NET20
-            millisecondsTimeout = millisecondsTimeout ?? DEFAULT_MILLISECONDS_TIMEOUT;
-            if (millisecondsTimeout < -1)
-                throw new ArgumentOutOfRangeException(nameof(millisecondsTimeout), GetResourceString("ArgumentOutOfRange_NeedNonNegOrNegative1"));
-#endif
             _dictionary = new Dictionary<TKey, TValue>();
         }
 
@@ -48,17 +31,8 @@ namespace Harry.Collections.Concurrent
         /// <exception cref="T:System.ArgumentOutOfRangeException">
         /// <paramref name="capacity"/> 小于0
         /// </exception>
-        public ConcurrentDictionary(int capacity
-#if NET20
-            ,int? millisecondsTimeout = null
-#endif
-            )
+        public ConcurrentDictionary(int capacity)
         {
-#if NET20
-            millisecondsTimeout = millisecondsTimeout ?? DEFAULT_MILLISECONDS_TIMEOUT;
-            if (millisecondsTimeout < -1)
-                throw new ArgumentOutOfRangeException(nameof(millisecondsTimeout), GetResourceString("ArgumentOutOfRange_NeedNonNegOrNegative1"));
-#endif
             _dictionary = new Dictionary<TKey, TValue>(capacity);
         }
 
@@ -69,17 +43,8 @@ namespace Harry.Collections.Concurrent
         /// <param name="comparer">比较键时要使用的 <see cref="System.Collections.Generic.IEqualityComparer{T}"/> 实现，
         /// 或者为 null，以便为键类型使用默认的 <see cref="System.Collections.Generic.IEqualityComparer{T}。
         /// </param>
-        public ConcurrentDictionary(IEqualityComparer<TKey> comparer
-#if NET20
-            , int? millisecondsTimeout = null
-#endif
-            )
+        public ConcurrentDictionary(IEqualityComparer<TKey> comparer)
         {
-#if NET20
-            millisecondsTimeout = millisecondsTimeout ?? DEFAULT_MILLISECONDS_TIMEOUT;
-            if (millisecondsTimeout < -1)
-                throw new ArgumentOutOfRangeException(nameof(millisecondsTimeout), GetResourceString("ArgumentOutOfRange_NeedNonNegOrNegative1"));
-#endif
             _dictionary = new Dictionary<TKey, TValue>(comparer);
         }
 
@@ -94,17 +59,8 @@ namespace Harry.Collections.Concurrent
         /// <paramref name="capacity"/> 小于0
         /// </exception>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="comparer"/>为null</exception>
-        public ConcurrentDictionary(int capacity, IEqualityComparer<TKey> comparer
-#if NET20
-            , int? millisecondsTimeout = null
-#endif
-            )
+        public ConcurrentDictionary(int capacity, IEqualityComparer<TKey> comparer )
         {
-#if NET20
-            millisecondsTimeout = millisecondsTimeout ?? DEFAULT_MILLISECONDS_TIMEOUT;
-            if (millisecondsTimeout < -1)
-                throw new ArgumentOutOfRangeException(nameof(millisecondsTimeout), GetResourceString("ArgumentOutOfRange_NeedNonNegOrNegative1"));
-#endif
             _dictionary = new Dictionary<TKey, TValue>(capacity, comparer);
         }
 
@@ -157,11 +113,7 @@ namespace Harry.Collections.Concurrent
         {
             TValue tmpValue;
 
-#if NET20
-            m_lock.AcquireWriterLock(millisecondsTimeout);
-#else
             m_lock_slim.EnterWriteLock();
-#endif
             //先获取元素
             bool result = _dictionary.TryGetValue(key, out tmpValue);
             if (result)
@@ -170,11 +122,7 @@ namespace Harry.Collections.Concurrent
                 result = _dictionary.Remove(key);
             }
 
-#if NET20
-            m_lock.ReleaseWriterLock();
-#else
             m_lock_slim.ExitWriteLock();
-#endif
 
 
             if (result)
@@ -200,20 +148,13 @@ namespace Harry.Collections.Concurrent
         {
             TValue tmpValue;
             //进入读锁
-#if NET20
-            m_lock.AcquireReaderLock(millisecondsTimeout);
-#else
             m_lock_slim.EnterReadLock();
-#endif
+
             //获取元素
             bool result = _dictionary.TryGetValue(key, out tmpValue);
 
             //离开读锁
-#if NET20
-            m_lock.ReleaseReaderLock();
-#else
             m_lock_slim.ExitReadLock();
-#endif
 
             if (result)
             {
@@ -244,11 +185,8 @@ namespace Harry.Collections.Concurrent
             IEqualityComparer<TValue> valueComparer = EqualityComparer<TValue>.Default;
 
             //进入写锁
-#if NET20
-            m_lock.AcquireWriterLock(millisecondsTimeout);
-#else
             m_lock_slim.EnterWriteLock();
-#endif
+
             TValue tmpValue;
             var result = _dictionary.TryGetValue(key, out tmpValue);
             if (result && valueComparer.Equals(tmpValue, comparisonValue))
@@ -261,11 +199,7 @@ namespace Harry.Collections.Concurrent
             }
 
             //离开写锁
-#if NET20
-            m_lock.ReleaseWriterLock();
-#else
             m_lock_slim.ExitWriteLock();
-#endif
             return result;
         }
 
@@ -275,20 +209,12 @@ namespace Harry.Collections.Concurrent
         public void Clear()
         {
             //进入写锁
-#if NET20
-            m_lock.AcquireWriterLock(millisecondsTimeout);
-#else
             m_lock_slim.EnterWriteLock();
-#endif
 
             _dictionary.Clear();
 
             //退出写锁
-#if NET20
-            m_lock.ReleaseWriterLock();
-#else
             m_lock_slim.ExitWriteLock();
-#endif
         }
 
 
@@ -298,11 +224,7 @@ namespace Harry.Collections.Concurrent
             if (index < 0) throw new ArgumentOutOfRangeException("index", GetResourceString("ConcurrentDictionary_IndexIsNegative"));
 
             //进入读锁
-#if NET20
-            m_lock.AcquireReaderLock(millisecondsTimeout);
-#else
             m_lock_slim.EnterReadLock();
-#endif
 
             if (array.Length - _dictionary.Count < index || _dictionary.Count < 0) //"count" itself or "count + index" can overflow
             {
@@ -312,32 +234,20 @@ namespace Harry.Collections.Concurrent
             CopyToPairs(array, index);
 
             //退出读锁
-#if NET20
-            m_lock.ReleaseReaderLock();
-#else
             m_lock_slim.ExitReadLock();
-#endif
         }
 
 
         public KeyValuePair<TKey, TValue>[] ToArray()
         {
             //进入读锁
-#if NET20
-            m_lock.AcquireReaderLock(millisecondsTimeout);
-#else
             m_lock_slim.EnterReadLock();
-#endif
 
             KeyValuePair<TKey, TValue>[] array = new KeyValuePair<TKey, TValue>[_dictionary.Count];
             CopyToPairs(array, 0);
 
             //退出读锁
-#if NET20
-            m_lock.ReleaseReaderLock();
-#else
             m_lock_slim.ExitReadLock();
-#endif
 
             return array;
         }
@@ -401,11 +311,7 @@ namespace Harry.Collections.Concurrent
         {
             bool result = false;
             //进入写锁
-#if NET20
-            m_lock.AcquireWriterLock(millisecondsTimeout);
-#else
             m_lock_slim.EnterWriteLock();
-#endif
             TValue tmpValue;
             try
             {
@@ -434,11 +340,7 @@ namespace Harry.Collections.Concurrent
             finally
             {
                 //退出写锁
-#if NET20
-                m_lock.ReleaseWriterLock();
-#else
                 m_lock_slim.ExitWriteLock();
-#endif
             }
             return result;
         }
@@ -483,20 +385,12 @@ namespace Harry.Collections.Concurrent
             get
             {
                 //进入读锁
-#if NET20
-                m_lock.AcquireReaderLock(millisecondsTimeout);
-#else
                 m_lock_slim.EnterReadLock();
-#endif
 
                 int count = _dictionary.Count;
 
                 //退出读锁
-#if NET20
-                m_lock.ReleaseReaderLock();
-#else
                 m_lock_slim.ExitReadLock();
-#endif
                 return count;
             }
         }
@@ -630,20 +524,12 @@ namespace Harry.Collections.Concurrent
             get
             {
                 //进入读锁
-#if NET20
-                m_lock.AcquireReaderLock(millisecondsTimeout);
-#else
                 m_lock_slim.EnterReadLock();
-#endif
 
                 var result = _dictionary.Count == 0;
 
                 //退出读锁
-#if NET20
-                m_lock.ReleaseReaderLock();
-#else
                 m_lock_slim.ExitReadLock();
-#endif
                 return result;
             }
         }
@@ -690,11 +576,7 @@ namespace Harry.Collections.Concurrent
                 TKey[] keys = null;
 
                 //进入读锁
-#if NET20
-                m_lock.AcquireReaderLock(millisecondsTimeout);
-#else
                 m_lock_slim.EnterReadLock();
-#endif
 
                 try
                 {
@@ -704,11 +586,7 @@ namespace Harry.Collections.Concurrent
                 finally
                 {
                     //退出读锁
-#if NET20
-                    m_lock.ReleaseReaderLock();
-#else
                     m_lock_slim.ExitReadLock();
-#endif
                 }
                 return new List<TKey>(keys);
             }
@@ -726,11 +604,7 @@ namespace Harry.Collections.Concurrent
             {
                 TValue[] values = null;
                 //进入读锁
-#if NET20
-                m_lock.AcquireReaderLock(millisecondsTimeout);
-#else
                 m_lock_slim.EnterReadLock();
-#endif
 
                 try
                 {
@@ -740,11 +614,7 @@ namespace Harry.Collections.Concurrent
                 finally
                 {
                     //退出读锁
-#if NET20
-                    m_lock.ReleaseReaderLock();
-#else
                     m_lock_slim.ExitReadLock();
-#endif
                 }
 
                 return new List<TValue>(values);
@@ -833,11 +703,7 @@ namespace Harry.Collections.Concurrent
             if (index < 0) throw new ArgumentOutOfRangeException("index", GetResourceString("ConcurrentDictionary_IndexIsNegative"));
 
             //进入读锁
-#if NET20
-            m_lock.AcquireReaderLock(millisecondsTimeout);
-#else
             m_lock_slim.EnterReadLock();
-#endif
             try
             {
                 if (array.Length - _dictionary.Count < index || _dictionary.Count < 0) //"count" itself or "count + index" can overflow
@@ -869,11 +735,7 @@ namespace Harry.Collections.Concurrent
             finally
             {
                 //退出读锁
-#if NET20
-                m_lock.ReleaseReaderLock();
-#else
                 m_lock_slim.ExitReadLock();
-#endif
             }
         }
 

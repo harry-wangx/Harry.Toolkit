@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Harry.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,7 +7,7 @@ namespace Harry.Security
 {
     public static class SHA1
     {
-#if !NET20 && !NET35
+#if  !NET35
         static Lazy<System.Security.Cryptography.SHA1> hasher = new Lazy<System.Security.Cryptography.SHA1>(() => System.Security.Cryptography.SHA1.Create(), true);
 #else
         static System.Security.Cryptography.SHA1 hasher = System.Security.Cryptography.SHA1.Create();
@@ -19,13 +20,13 @@ namespace Harry.Security
         /// <returns>返回大写SHA1值</returns>
         public static string ComputeHash(string input, Encoding encoding)
         {
-            if (!Common.Utils.HasValue(input))
+            if (!input.HasValue())
             {
                 throw new ArgumentNullException(nameof(input));
             }
 
             byte[] t =
-#if !NET20 && !NET35
+#if !NET35
                 hasher.Value.ComputeHash(encoding.GetBytes(input));
 #else
                 hasher.ComputeHash(encoding.GetBytes(input));

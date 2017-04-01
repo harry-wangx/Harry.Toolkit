@@ -112,7 +112,7 @@ namespace Harry.Configuration
             {
                 throw new ArgumentNullException(nameof(contentPath));
             }
-#if NET20 || NET35
+#if  NET35
             return Path.Combine(contentPath, String.Join(new string(Path.DirectorySeparatorChar,1), fileName.Split(new char[] { '/', '~', '\\' }, StringSplitOptions.RemoveEmptyEntries)));
 #else
             return Path.Combine(contentPath, Path.Combine(fileName.Split(new char[] { '/', '~', '\\' }, StringSplitOptions.RemoveEmptyEntries)));

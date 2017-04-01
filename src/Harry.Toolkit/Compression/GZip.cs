@@ -40,7 +40,7 @@ namespace Harry.Compression
             using (GZipStream decompressionStream = new GZipStream(originalStream, CompressionMode.Decompress))
             using (MemoryStream ms = new MemoryStream())
             {
-#if NET20 || NET35
+#if NET35
                 byte[] buffer = new byte[_DefaultCopyBufferSize];
                 int read;
                 while ((read = decompressionStream.Read(buffer, 0, buffer.Length)) != 0)

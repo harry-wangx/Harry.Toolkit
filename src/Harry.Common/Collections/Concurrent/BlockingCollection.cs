@@ -1,7 +1,7 @@
 ﻿/*
  * 原地址 https://referencesource.microsoft.com/#System/sys/system/collections/concurrent/BlockingCollection.cs
  */
-#if NET20 || NET35
+#if NET35
 using Harry.Threading;
 using System;
 using System.Collections;

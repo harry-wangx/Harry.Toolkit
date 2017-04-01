@@ -1,10 +1,10 @@
 ﻿/*******************************************************************************************
  *这个类是从https://referencesource.microsoft.com/#mscorlib/system/threading/SpinWait.cs扒下来的
- *因为NET20下面缺少一些API,这里根据我的理解,进行了部分修改
+ *这里根据我的理解,进行了部分修改
  * 
  *******************************************************************************************/
 
-#if NET20 || NET35
+#if NET35
 using System;
 using System.Collections.Generic;
 using System.Security.Permissions;

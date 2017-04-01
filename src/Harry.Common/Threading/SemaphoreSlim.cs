@@ -2,7 +2,7 @@
  * 原地址 https://referencesource.microsoft.com/#mscorlib/system/threading/SemaphoreSlim.cs
  */
 
-#if NET20 || NET35
+#if NET35
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

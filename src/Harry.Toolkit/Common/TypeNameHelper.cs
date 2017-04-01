@@ -28,7 +28,7 @@ namespace Harry.Common
 
         public static string GetTypeDisplayName(Type type)
         {
-#if !NET40 && !NET35 && !NET20
+#if !NET40 && !NET35 
 
             if (type.GetTypeInfo().IsGenericType)
             {
@@ -44,7 +44,7 @@ namespace Harry.Common
             else
             {
                 var fullName = type.FullName;
-#if NET40 || NET35 || NET20
+#if NET40 || NET35 
 
                 fullName = getTypeDisplayName(fullName);
 #else

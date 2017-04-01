@@ -32,14 +32,7 @@ namespace Harry.Security
                 throw new ArgumentNullException(nameof(plainData));
 
             byte[] encrypted;
-            using (var aesAlg =
-#if NET20
-                System.Security.Cryptography.Rijndael.Create()
-#else
-                System.Security.Cryptography.Aes.Create()
-#endif
-
-                )
+            using (var aesAlg =System.Security.Cryptography.Aes.Create())
             {
                 aesAlg.Key = key;
                 aesAlg.IV = iv;
@@ -92,14 +85,7 @@ namespace Harry.Security
             byte[] buffer = null;
             byte[] decrypted = null;
 
-            using (var aesAlg =
-#if NET20
-                System.Security.Cryptography.Rijndael.Create()
-#else
-                System.Security.Cryptography.Aes.Create()
-#endif
-
-)
+            using (var aesAlg = System.Security.Cryptography.Aes.Create())
             {
                 aesAlg.Key = key;
                 aesAlg.IV = iv;
