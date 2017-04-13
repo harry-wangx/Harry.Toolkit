@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Harry.Extensions
@@ -79,11 +80,12 @@ namespace Harry.Extensions
                 return defaultValue;
             }
         }
-        public static Int32 ToInt(this string s)
+
+        public static Int32 ToInt32(this string s)
         {
             return Int32.Parse(s);
         }
-        public static Int32 ToInt(this string s, Int32 defaultValue)
+        public static Int32 ToInt32(this string s, Int32 defaultValue)
         {
             if (!s.HasValue())
                 return defaultValue;
@@ -134,11 +136,11 @@ namespace Harry.Extensions
                 return defaultValue;
             }
         }
-        public static UInt32 ToUInt(this string s)
+        public static UInt32 ToUInt32(this string s)
         {
             return UInt32.Parse(s);
         }
-        public static UInt32 ToUInt(this string s, UInt32 defaultValue)
+        public static UInt32 ToUInt32(this string s, UInt32 defaultValue)
         {
             if (!s.HasValue())
                 return defaultValue;
@@ -231,7 +233,6 @@ namespace Harry.Extensions
         public static T ToEnum<T>(this string value)
         {
             return (T)Enum.Parse(typeof(T), value, true);
-
         }
 
         public static T ToEnum<T>(this string value, T defaultValue) where T : struct
@@ -245,7 +246,8 @@ namespace Harry.Extensions
             {
                 return (T)Enum.Parse(typeof(T), value);
             }
-            catch {
+            catch
+            {
 
             }
 #else
@@ -256,6 +258,31 @@ namespace Harry.Extensions
             } 
 #endif
             return defaultValue;
+        }
+
+        /// <summary>
+        /// 获取字符串的字节数组
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="encoding"></param>
+        /// <returns></returns>
+        public static byte[] ToBytes(this string value, Encoding encoding)
+        {
+            Throws.IfNull(value, nameof(value));
+            Throws.IfNull(encoding, nameof(encoding));
+
+            return encoding.GetBytes(value);
+        }
+
+        /// <summary>
+        /// 获取字符串的字节数组(默认格式为UTF8)
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static byte[] ToBytes(this string value)
+        {
+            Throws.IfNull(value, nameof(value));
+            return Encoding.UTF8.GetBytes(value);
         }
         #endregion
 

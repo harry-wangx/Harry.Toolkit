@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Harry.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
@@ -8,18 +9,18 @@ namespace Harry
     [DebuggerStepThrough]
     public static class Throws
     {
-        public static string IfEmpty(string value, Func<string> getMsg)
+        public static string IfNotHasValue(string value, Func<string> getMsg)
         {
-            if (string.IsNullOrEmpty(value))
+            if (!value.HasValue())
             {
                 throw new ArgumentNullException(nameof(value), getMsg());
             }
             return value.Trim();
         }
 
-        public static string IfEmpty(string value, string msg = "")
+        public static string IfNotHasValue(string value, string msg = "")
         {
-            if (string.IsNullOrEmpty(value))
+            if (!value.HasValue())
             {
                 throw new ArgumentNullException(nameof(value), msg);
             }
