@@ -68,7 +68,8 @@
         "System.Threading.Thread": "4.3.0",
         "System.Security.Cryptography.Algorithms": "4.3.0",
         "System.IO.Compression": "4.3.0",
-        "System.Diagnostics.Debug": "4.3.0"
+        "System.Diagnostics.Debug": "4.3.0",
+        "System.Threading.Timer": "4.3.0"
       }
     }
   } 
