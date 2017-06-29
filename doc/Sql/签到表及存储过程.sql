@@ -42,7 +42,7 @@ as
 begin
 	declare @now datetime =  GETDATE() --当前时间 cast('2017-7-3' as datetime) -- 
 	declare @dayStamp int --时间戳(精确到日)
-	declare @result int --返回结果
+	declare @result int --返回结果,1为签到成功,0为已签到,-1为错误
 	declare @counter int --新的签到计数
 	declare @continuousCounter int --新的连续签到计数
 
