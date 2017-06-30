@@ -15,9 +15,9 @@ create table dbo.QianDao
 	
 	[Counter] int not null,--当前活动签到数量
 	
-	Tag varchar(50) null , --自定义标记
 	Row_Version int not null default(0), --版本号.需要处理并发操作时用.
-	CreateTime datetime not null default(getdate())
+	CreateTime datetime not null default(getdate()),
+	Tag varchar(50) null  --自定义标记
 )
 go
 
@@ -29,7 +29,7 @@ on dbo.QianDao(
 	UserId asc
 )
 include([Counter])
-with(FILLFACTOR=80)
+with(FILLFACTOR=70)
 go
 
 
@@ -42,24 +42,26 @@ create proc dbo.up_qiandao_add
 @UserId varchar(50), --用户编号
 @Type int =1, --签到类型,1为累计签到,2为连续签到
 @MaxCount int =30,--最大签到次数
-@AutoStart bit=0 --签到完成后,是否自动新一轮签到
+@AutoStart bit=0, --签到完成后,是否自动新一轮签到
+@now datetime =null --签到时间
 as 
 begin
 	if(@Type<>1 and @Type<>2)
 		RAISERROR ('Parameter ''Type'' must be 1 or 2.' , 16, 1) WITH NOWAIT
-
-	declare @now datetime = GETDATE() --当前时间 cast('2017-7-3' as datetime) -- 
+	
 	declare @dayStamp int --时间戳(精确到日)
 	declare @result int --返回结果,1为签到成功,0为已签到,-1为错误
 	declare @counter int --新的签到计数
 	declare @lastDayStamp int --最后一次签到时间戳
 	declare @lastCounter int --最后一次签到计数
 
+	set @now =ISNULL(@now,GETDATE())
 	set @dayStamp=DATEDIFF(dd,'1970-1-1',@now)
 	
 	select top 1  @lastDayStamp=DayStamp,@lastCounter=[Counter]
-	  from dbo.QianDao with(nolock) where 
-		PromotionId=@PromotionId 
+	  from dbo.QianDao with(nolock,index=IX_QianDao) where 
+	    DayStamp>@dayStamp-@MaxCount
+		and PromotionId=@PromotionId 
 		and UserId=@UserId
 		order by Id desc
 		
@@ -108,22 +110,22 @@ end
 go
 
 
---获取最后一次签到记录
-IF OBJECT_ID (N'dbo.up_qiandao_get_last', N'P') IS NOT NULL
-	DROP proc dbo.up_qiandao_get_last;
-GO
-create proc dbo.up_qiandao_get_last
-@PromotionId int,
-@UserId varchar(50)
-as 
-begin 
-select top 1 * from dbo.QianDao with(nolock) where 
-				PromotionId=@PromotionId 
-				and UserId=@UserId
-				order by Id desc
-end
+----获取最后一次签到记录
+--IF OBJECT_ID (N'dbo.up_qiandao_get_last', N'P') IS NOT NULL
+--	DROP proc dbo.up_qiandao_get_last;
+--GO
+--create proc dbo.up_qiandao_get_last
+--@PromotionId int,
+--@UserId varchar(50)
+--as 
+--begin 
+--select top 1 * from dbo.QianDao with(nolock) where 
+--				PromotionId=@PromotionId 
+--				and UserId=@UserId
+--				order by Id desc
+--end
 
 
---execute dbo.up_qiandao_add 1,'abc',2,3,1
---execute dbo.up_qiandao_get_last 1,'abc'
+--execute dbo.up_qiandao_add 1,'abc',2,3,1,'2017-1-1'
+
 
