@@ -14,9 +14,7 @@ namespace Harry.Extensions
         /// 调用异步方法时,不提示未使用await错误
         /// </summary>
         /// <param name="task"></param>
-#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-#endif
         public static void NoWarning(this Task task) { }
     }
 }

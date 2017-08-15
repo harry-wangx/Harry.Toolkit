@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Harry.Json;
+using System;
 using System.Collections.Generic;
 
-namespace Harry.Toolkit.Json
+namespace Harry.Extensions
 {
     public static class JsonExtensions
     {
