@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Harry
@@ -9,6 +10,9 @@ namespace Harry
     [DebuggerStepThrough]
     public static class Throws
     {
+#if COREFX
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static string IfNotHasValue(string value, Func<string> getMsg)
         {
             if (!value.HasValue())
@@ -18,6 +22,9 @@ namespace Harry
             return value.Trim();
         }
 
+#if COREFX
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static string IfNotHasValue(string value, string msg = "")
         {
             if (!value.HasValue())
@@ -27,6 +34,9 @@ namespace Harry
             return value.Trim();
         }
 
+#if COREFX
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static T IfNull<T>(T value, string parameterName)
         {
             if (value == null)

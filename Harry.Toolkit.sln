@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Harry.Toolkit", "Harry.Toolkit\Harry.Toolkit.csproj", "{8CDB9BF1-4E69-49F7-9597-961AEAC43450}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harry.Common", "Harry.Common\Harry.Common.csproj", "{486D0A33-D0F8-411B-A7DB-2AF18C4293EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Harry.Common", "Harry.Common\Harry.Common.csproj", "{486D0A33-D0F8-411B-A7DB-2AF18C4293EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
