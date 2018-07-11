@@ -10,7 +10,7 @@ namespace Harry
     [DebuggerStepThrough]
     public static class Throws
     {
-#if COREFX
+#if COREFX || NET45
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
 #endif
         public static string IfNotHasValue(string value, Func<string> getMsg)
@@ -22,7 +22,7 @@ namespace Harry
             return value.Trim();
         }
 
-#if COREFX
+#if COREFX || NET45
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
 #endif
         public static string IfNotHasValue(string value, string msg = "")
@@ -34,7 +34,7 @@ namespace Harry
             return value.Trim();
         }
 
-#if COREFX
+#if COREFX || NET45
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
 #endif
         public static T IfNull<T>(T value, string parameterName)
