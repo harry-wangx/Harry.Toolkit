@@ -8,6 +8,7 @@ namespace Harry.Common
     /// Implements <see cref="IGuidGenerator"/> by creating sequential Guids.
     /// This code is taken from https://github.com/jhtodd/SequentialGuid/blob/master/SequentialGuid/Classes/SequentialGuid.cs
     /// </summary>
+    [Obsolete]
     public class SequentialGuidGenerator : IGuidGenerator
     {
         /// <summary>

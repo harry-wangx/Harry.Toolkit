@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Harry.Toolkit", "Harry.Tool
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Harry.Common", "Harry.Common\Harry.Common.csproj", "{486D0A33-D0F8-411B-A7DB-2AF18C4293EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harry.Common.Test", "Harry.Common.Test\Harry.Common.Test.csproj", "{B4A87805-F35D-4C06-B6E1-E5C0B34DC688}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7822CDA4-72DD-4576-9EEA-85F822E9E08E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +25,16 @@ Global
 		{486D0A33-D0F8-411B-A7DB-2AF18C4293EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{486D0A33-D0F8-411B-A7DB-2AF18C4293EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{486D0A33-D0F8-411B-A7DB-2AF18C4293EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4A87805-F35D-4C06-B6E1-E5C0B34DC688}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4A87805-F35D-4C06-B6E1-E5C0B34DC688}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4A87805-F35D-4C06-B6E1-E5C0B34DC688}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4A87805-F35D-4C06-B6E1-E5C0B34DC688}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B4A87805-F35D-4C06-B6E1-E5C0B34DC688} = {7822CDA4-72DD-4576-9EEA-85F822E9E08E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1084F7FC-4392-4E22-BB69-3479163A5609}

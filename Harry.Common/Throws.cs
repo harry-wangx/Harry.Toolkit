@@ -10,6 +10,7 @@ namespace Harry
     [DebuggerStepThrough]
     public static class Throws
     {
+
 #if COREFX || NET45
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
 #endif

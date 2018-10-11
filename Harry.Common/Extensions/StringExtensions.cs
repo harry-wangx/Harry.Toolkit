@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -6,6 +7,9 @@ namespace Harry.Extensions
 {
     public static partial class StringExtensions
     {
+#if COREFX || NET45
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static bool HasValue(this string value)
         {
 #if NET35
@@ -255,7 +259,7 @@ namespace Harry.Extensions
             if (Enum.TryParse<T>(value, out result))
             {
                 return result;
-            } 
+            }
 #endif
             return defaultValue;
         }

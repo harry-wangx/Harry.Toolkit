@@ -30,6 +30,7 @@ namespace Harry.Compression
 
         }
 
+        /// <summary>
         /// 解压数据
         /// </summary>
         /// <param name="data"></param>
