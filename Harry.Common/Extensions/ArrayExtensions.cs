@@ -36,21 +36,19 @@ namespace Harry.Extensions
             return true;
         }
 
-        public static bool Contains(this IEnumerable<string> array, string value, StringComparison comparison = StringComparison.OrdinalIgnoreCase)
+        public static void ForEach<T>(this IEnumerable<T> array, Action<T> action)
         {
+            Check.NotNull(action, nameof(action));
+
             if (array == null || array.Count() <= 0)
             {
-                return false;
+                return;
             }
 
             foreach (var item in array)
             {
-                if (item.Equals(value, comparison))
-                {
-                    return true;
-                }
+                action.Invoke(item);
             }
-            return false;
         }
     }
 }

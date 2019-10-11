@@ -16,8 +16,7 @@ namespace Harry.Extensions
         /// <returns></returns>
         public static TValue TryGetValue<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key)
         {
-            if (dictionary == null)
-                throw new ArgumentNullException(nameof(dictionary));
+            Check.NotNull(dictionary, nameof(dictionary));
 
             if (dictionary.TryGetValue(key, out TValue value))
             {
@@ -38,10 +37,9 @@ namespace Harry.Extensions
         /// <param name="key"></param>
         /// <param name="defaultValue"></param>
         /// <returns></returns>
-        public static TValue TryGetValue<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key,TValue defaultValue)
+        public static TValue TryGetValue<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, TValue defaultValue)
         {
-            if (dictionary == null)
-                throw new ArgumentNullException(nameof(dictionary));
+            Check.NotNull(dictionary, nameof(dictionary));
 
             if (dictionary.TryGetValue(key, out TValue value))
             {

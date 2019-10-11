@@ -16,6 +16,7 @@ namespace Harry.Extensions
         /// <param name="action">Action (to be executed)</param>
         public static void Locking(this object source, Action action)
         {
+            Check.NotNull(source, nameof(source));
             lock (source)
             {
                 action();
@@ -30,6 +31,7 @@ namespace Harry.Extensions
         /// <param name="action">Action (to be executed)</param>
         public static void Locking<T>(this T source, Action<T> action) where T : class
         {
+            Check.NotNull(source, nameof(source));
             lock (source)
             {
                 action(source);
@@ -45,6 +47,7 @@ namespace Harry.Extensions
         /// <returns>Return value of the <paramref name="func"/></returns>
         public static TResult Locking<TResult>(this object source, Func<TResult> func)
         {
+            Check.NotNull(source, nameof(source));
             lock (source)
             {
                 return func();
@@ -61,6 +64,7 @@ namespace Harry.Extensions
         /// <returns>Return value of the <paramnref name="func"/></returns>
         public static TResult Locking<T, TResult>(this T source, Func<T, TResult> func) where T : class
         {
+            Check.NotNull(source, nameof(source));
             lock (source)
             {
                 return func(source);

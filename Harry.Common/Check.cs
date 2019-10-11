@@ -11,35 +11,51 @@ namespace Harry
     public static class Check
     {
         #region NotNull
-#if COREFX || NET45
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-#endif
-        public static void NotNull<T>(T value, string paramName) where T : class
+        public static T NotNull<T>(T value, string paramName) where T : class
         {
             if (value == null)
                 throw new ArgumentNullException(paramName);
+
+            return value;
         }
 
-#if COREFX || NET45
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-#endif
-        public static void NotNull<T>(T? value, string paramName) where T : struct
+        public static T NotNull<T>(T? value, string paramName) where T : struct
         {
             if (value == null)
                 throw new ArgumentNullException(paramName);
+
+            return value.Value;
         }
         #endregion
 
         #region NotEmpty
-#if COREFX || NET45
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-#endif
-        public static void NotNullOrEmpty(string value, string paramName)
+        public static string NotNullOrEmpty(string value, string paramName)
         {
             if (!value.HasValue())
                 throw new ArgumentNullException(paramName);
+
+            return value;
         }
         #endregion
+
+        /// <summary>
+        /// 合并多个异常
+        /// </summary>
+        /// <param name="exceptions"></param>
+        public static Exception MergeExceptions(IEnumerable<Exception> exceptions)
+        {
+            StringBuilder sb = new StringBuilder(1024);
+            foreach (var item in exceptions)
+            {
+                sb.AppendLine(item.Message);
+                sb.AppendLine(item.StackTrace);
+                sb.AppendLine("----------------------------------------------------");
+            }
+            return new Exception(sb.ToString());
+        }
 
     }
 }

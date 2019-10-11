@@ -6,6 +6,7 @@ using System.Threading;
 
 namespace Harry.Common
 {
+    //todo:整个类待确定
     public enum CoordinationStatus { AllDone, Timeout, Cancel };
     public sealed class AsyncCoordinator
     {

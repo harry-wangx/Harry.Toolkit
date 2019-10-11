@@ -1,5 +1,4 @@
-﻿#if !NET35
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace Harry.Services
 {
@@ -8,5 +7,3 @@ namespace Harry.Services
         Task SendEmailAsync(string email, string subject, string htmlMessage);
     }
 }
-
-#endif

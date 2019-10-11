@@ -1,5 +1,4 @@
-﻿#if COREFX
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
@@ -12,8 +11,6 @@ namespace Harry.Common
 {
     public static class AsyncHelper
     {
-
-
         private static readonly TaskFactory _myTaskFactory = new TaskFactory(CancellationToken.None,
     TaskCreationOptions.None, TaskContinuationOptions.None, TaskScheduler.Default);
 
@@ -74,5 +71,4 @@ namespace Harry.Common
 
     }
 }
-#endif
 

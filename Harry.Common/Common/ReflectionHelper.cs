@@ -18,10 +18,9 @@ namespace Harry.Common
         /// <param name="genericType">Generic type</param>
         public static bool IsAssignableToGenericType(Type givenType, Type genericType)
         {
-#if COREFX
-            var givenTypeInfo = givenType.GetTypeInfo();
+            //var givenTypeInfo = givenType.GetTypeInfo();
 
-            if (givenTypeInfo.IsGenericType && givenType.GetGenericTypeDefinition() == genericType)
+            if (givenType.IsGenericType && givenType.GetGenericTypeDefinition() == genericType)
             {
                 return true;
             }
@@ -34,33 +33,12 @@ namespace Harry.Common
                 }
             }
 
-            if (givenTypeInfo.BaseType == null)
-            {
-                return false;
-            }
-
-            return IsAssignableToGenericType(givenTypeInfo.BaseType, genericType);
-#else
-            if (givenType.IsGenericType && givenType.GetGenericTypeDefinition() == genericType)
-            {
-                return true;
-            }
-
-            foreach (var interfaceType in givenType.GetInterfaces())
-            {
-                if (interfaceType.IsGenericType && interfaceType.GetGenericTypeDefinition() == genericType)
-                {
-                    return true;
-                }
-            }
-
             if (givenType.BaseType == null)
             {
                 return false;
             }
 
             return IsAssignableToGenericType(givenType.BaseType, genericType);
-#endif
         }
 
         /// <summary>
@@ -259,11 +237,7 @@ namespace Harry.Common
             if (properties.Length == 1)
             {
                 property = objectType.GetProperty(properties.First());
-#if COREFX
                 property.SetValue(obj, value);
-#else
-                property.SetValue(obj, value, null);
-#endif
                 return;
             }
 
@@ -275,11 +249,7 @@ namespace Harry.Common
             }
 
             property = currentType.GetProperty(properties.Last());
-#if COREFX
             property.SetValue(obj, value);
-#else
-            property.SetValue(obj, value, null);
-#endif
         }
     }
 }

@@ -7,21 +7,20 @@ namespace Harry.Extensions
 {
     public static partial class StringExtensions
     {
-#if COREFX || NET45
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-#endif
         public static bool HasValue(this string value)
         {
-#if NET35
-            return !string.IsNullOrEmpty(value);
-#else
             return !string.IsNullOrWhiteSpace(value);
-#endif
         }
 
+        /// <summary>
+        /// 是否包含指定的char字符
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool Contains(this string value, char c)
         {
-            return value.IndexOf(c) >= 0;
+            return Check.NotNull(value, nameof(value))
+                .IndexOf(c) >= 0;
         }
 
         /// <summary>
@@ -31,6 +30,7 @@ namespace Harry.Extensions
         /// <returns></returns>
         public static bool IsIPv4(this string ip)
         {
+            Check.NotNull(ip, nameof(ip));
             const string pattern = @"^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$";
             const RegexOptions options = RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture;
             return Regex.IsMatch(ip, pattern, options);
@@ -46,6 +46,7 @@ namespace Harry.Extensions
         /// <returns></returns>
         public static bool IsEmail(this string input)
         {
+            Check.NotNull(input, nameof(input));
             const string pattern = @"^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$";
             const RegexOptions options = RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture;
             return Regex.IsMatch(input, pattern, options);
@@ -58,6 +59,8 @@ namespace Harry.Extensions
         /// <returns></returns>
         public static bool IsUrl(this string input)
         {
+            Check.NotNull(input, nameof(input));
+
             const string pattern = @"^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$";
 
             const RegexOptions options = RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture;
@@ -66,16 +69,17 @@ namespace Harry.Extensions
         #endregion
 
         #region 字符串转其它格式
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Int16 ToInt16(this string s)
         {
             return Int16.Parse(s);
         }
+
         public static Int16 ToInt16(this string s, Int16 defaultValue)
         {
             if (!s.HasValue())
                 return defaultValue;
-            Int16 result = 0;
-            if (Int16.TryParse(s, out result))
+            if (Int16.TryParse(s, out Int16 result))
             {
                 return result;
             }
@@ -85,6 +89,7 @@ namespace Harry.Extensions
             }
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Int32 ToInt32(this string s)
         {
             return Int32.Parse(s);
@@ -93,8 +98,7 @@ namespace Harry.Extensions
         {
             if (!s.HasValue())
                 return defaultValue;
-            Int32 result = 0;
-            if (Int32.TryParse(s, out result))
+            if (Int32.TryParse(s, out int result))
             {
                 return result;
             }
@@ -103,6 +107,8 @@ namespace Harry.Extensions
                 return defaultValue;
             }
         }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Int64 ToInt64(this string s)
         {
             return Int64.Parse(s);
@@ -111,8 +117,7 @@ namespace Harry.Extensions
         {
             if (!s.HasValue())
                 return defaultValue;
-            Int64 result = 0;
-            if (Int64.TryParse(s, out result))
+            if (Int64.TryParse(s, out long result))
             {
                 return result;
             }
@@ -122,6 +127,7 @@ namespace Harry.Extensions
             }
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static UInt16 ToUInt16(this string s)
         {
             return UInt16.Parse(s);
@@ -130,8 +136,7 @@ namespace Harry.Extensions
         {
             if (!s.HasValue())
                 return defaultValue;
-            UInt16 result = 0;
-            if (UInt16.TryParse(s, out result))
+            if (UInt16.TryParse(s, out ushort result))
             {
                 return result;
             }
@@ -140,6 +145,8 @@ namespace Harry.Extensions
                 return defaultValue;
             }
         }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static UInt32 ToUInt32(this string s)
         {
             return UInt32.Parse(s);
@@ -148,8 +155,7 @@ namespace Harry.Extensions
         {
             if (!s.HasValue())
                 return defaultValue;
-            UInt32 result = 0;
-            if (UInt32.TryParse(s, out result))
+            if (UInt32.TryParse(s, out uint result))
             {
                 return result;
             }
@@ -158,6 +164,8 @@ namespace Harry.Extensions
                 return defaultValue;
             }
         }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static UInt64 ToUInt64(this string s)
         {
             return UInt64.Parse(s);
@@ -166,8 +174,7 @@ namespace Harry.Extensions
         {
             if (!s.HasValue())
                 return defaultValue;
-            UInt64 result = 0;
-            if (UInt64.TryParse(s, out result))
+            if (UInt64.TryParse(s, out ulong result))
             {
                 return result;
             }
@@ -177,6 +184,7 @@ namespace Harry.Extensions
             }
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static decimal ToDecimal(this string s)
         {
             return decimal.Parse(s);
@@ -185,8 +193,7 @@ namespace Harry.Extensions
         {
             if (!s.HasValue())
                 return defaultValue;
-            decimal result = 0;
-            if (decimal.TryParse(s, out result))
+            if (decimal.TryParse(s, out decimal result))
             {
                 return result;
             }
@@ -196,6 +203,7 @@ namespace Harry.Extensions
             }
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float ToSingle(this string s)
         {
             return float.Parse(s);
@@ -204,8 +212,7 @@ namespace Harry.Extensions
         {
             if (!s.HasValue())
                 return defaultValue;
-            float result = 0f;
-            if (float.TryParse(s, out result))
+            if (float.TryParse(s, out float result))
             {
                 return result;
             }
@@ -215,6 +222,7 @@ namespace Harry.Extensions
             }
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double ToDouble(this string s)
         {
             return double.Parse(s);
@@ -223,8 +231,7 @@ namespace Harry.Extensions
         {
             if (!s.HasValue())
                 return defaultValue;
-            double result = 0f;
-            if (double.TryParse(s, out result))
+            if (double.TryParse(s, out double result))
             {
                 return result;
             }
@@ -234,33 +241,30 @@ namespace Harry.Extensions
             }
         }
 
+        /// <summary>
+        /// 字符串转成对应的枚举类型
+        /// </summary>
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T ToEnum<T>(this string value)
         {
             return (T)Enum.Parse(typeof(T), value, true);
         }
 
+        /// <summary>
+        /// 字符串转成对应的枚举类型
+        /// </summary>
+        /// <returns></returns>
         public static T ToEnum<T>(this string value, T defaultValue) where T : struct
         {
             if (!value.HasValue())
             {
                 return defaultValue;
             }
-#if NET35
-            try
-            {
-                return (T)Enum.Parse(typeof(T), value);
-            }
-            catch
-            {
-
-            }
-#else
-            T result;
-            if (Enum.TryParse<T>(value, out result))
+            if (Enum.TryParse<T>(value, out T result))
             {
                 return result;
             }
-#endif
             return defaultValue;
         }
 
@@ -270,11 +274,9 @@ namespace Harry.Extensions
         /// <param name="value"></param>
         /// <param name="encoding"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static byte[] ToBytes(this string value, Encoding encoding)
         {
-            Throws.IfNull(value, nameof(value));
-            Throws.IfNull(encoding, nameof(encoding));
-
             return encoding.GetBytes(value);
         }
 
@@ -283,9 +285,9 @@ namespace Harry.Extensions
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static byte[] ToBytes(this string value)
         {
-            Throws.IfNull(value, nameof(value));
             return Encoding.UTF8.GetBytes(value);
         }
         #endregion
