@@ -2,7 +2,8 @@
 
 namespace Harry.Tree
 {
-    public class TreeNode<TKey>
+    public abstract class TreeNode<TKey, TNode>
+        where TNode : TreeNode<TKey, TNode>
     {
         public TKey Id { get; set; }
 
@@ -21,6 +22,10 @@ namespace Harry.Tree
             }
         }
 
-        public List<TreeNode<TKey>> Children { get; set; }
+        public List<TNode> Children { get; set; }
+    }
+
+    public sealed class TreeNode<TKey> : TreeNode<TKey, TreeNode<TKey>>
+    {
     }
 }
