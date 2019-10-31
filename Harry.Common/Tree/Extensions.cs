@@ -8,7 +8,8 @@ namespace Harry.Tree
         /// <summary>
         /// 转换成树型数据
         /// </summary>
-        public static TreeNode<TKey> ToTreeNode<TKey>(this ITreeNode<TKey> model, Action<ITreeNode<TKey>, TreeNode<TKey>> act = null)
+        public static TreeNode<TKey> ToTreeNode<TModel, TKey>(this TModel model, Action<TModel, TreeNode<TKey>> act = null)
+            where TModel : class, ITreeNode<TKey>
         {
             var node = new TreeNode<TKey>()
             {
@@ -22,7 +23,8 @@ namespace Harry.Tree
         /// <summary>
         /// 转换成树型数据
         /// </summary>
-        public static TNode ToTreeNode<TKey, TNode>(this ITreeNode<TKey> model, Action<ITreeNode<TKey>, TNode> act = null)
+        public static TNode ToTreeNode<TModel, TKey, TNode>(this TModel model, Action<TModel, TNode> act = null)
+            where TModel : class, ITreeNode<TKey>
             where TNode : TreeNode<TKey, TNode>, new()
         {
             var node = new TNode()
@@ -37,22 +39,23 @@ namespace Harry.Tree
         /// <summary>
         /// 获取树形数据
         /// </summary>
-        public static List<TNode> ToTreeData<TKey, TNode>(this IEnumerable<ITreeNode<TKey>> data, TNode root, Action<ITreeNode<TKey>, TNode> act = null)
+        public static List<TNode> ToTreeData<TModel, TKey, TNode>(this IEnumerable<TModel> data, TNode root, Action<TModel, TNode> act = null)
+            where TModel : class, ITreeNode<TKey>
             where TNode : TreeNode<TKey, TNode>, new()
         {
             Check.NotNull(data, nameof(data));
 
             root.Open = true;
-            var dicData = new Dictionary<TKey, List<ITreeNode<TKey>>>();
+            var dicData = new Dictionary<TKey, List<TModel>>();
             foreach (var item in data)
             {
-                if (dicData.TryGetValue(item.ParentId, out List<ITreeNode<TKey>> list))
+                if (dicData.TryGetValue(item.ParentId, out List<TModel> list))
                 {
                     list.Add(item);
                 }
                 else
                 {
-                    dicData.Add(item.ParentId, new List<ITreeNode<TKey>>() { item });
+                    dicData.Add(item.ParentId, new List<TModel>() { item });
                 }
             }
 
@@ -62,7 +65,7 @@ namespace Harry.Tree
             {
                 root.Children = new List<TNode>();
             }
-            getTreeData(dicData, root.Id, root.Children, act);
+            getTreeData<TModel, TKey, TNode>(dicData, root.Id, root.Children, act);
 
             return results;
         }
@@ -70,31 +73,33 @@ namespace Harry.Tree
         /// <summary>
         /// 获取树形数据
         /// </summary>
-        public static List<TreeNode<TKey>> ToTreeData<TKey>(this IEnumerable<ITreeNode<TKey>> data, TreeNode<TKey> root, Action<ITreeNode<TKey>, TreeNode<TKey>> act = null)
+        public static List<TreeNode<TKey>> ToTreeData<TModel, TKey>(this IEnumerable<TModel> data, TreeNode<TKey> root, Action<TModel, TreeNode<TKey>> act = null)
+            where TModel : class, ITreeNode<TKey>
         {
             Check.NotNull(data, nameof(data));
 
-            return data.ToTreeData<TKey, TreeNode<TKey>>(root, act);
+            return data.ToTreeData<TModel, TKey, TreeNode<TKey>>(root, act);
         }
 
         /// <summary>
         /// 获取树形数据(没有单一根节点)
         /// </summary>
-        public static List<TNode> ToTreeData<TKey, TNode>(this IEnumerable<ITreeNode<TKey>> data, TKey parentId, Action<ITreeNode<TKey>, TNode> act = null)
+        public static List<TNode> ToTreeData<TModel, TKey, TNode>(this IEnumerable<TModel> data, TKey parentId, Action<TModel, TNode> act = null)
+            where TModel : class, ITreeNode<TKey>
             where TNode : TreeNode<TKey, TNode>, new()
         {
             Check.NotNull(data, nameof(data));
 
-            var dicData = new Dictionary<TKey, List<ITreeNode<TKey>>>();
+            var dicData = new Dictionary<TKey, List<TModel>>();
             foreach (var item in data)
             {
-                if (dicData.TryGetValue(item.ParentId, out List<ITreeNode<TKey>> list))
+                if (dicData.TryGetValue(item.ParentId, out List<TModel> list))
                 {
                     list.Add(item);
                 }
                 else
                 {
-                    dicData.Add(item.ParentId, new List<ITreeNode<TKey>>() { item });
+                    dicData.Add(item.ParentId, new List<TModel>() { item });
                 }
             }
 
@@ -103,11 +108,12 @@ namespace Harry.Tree
             return results;
         }
 
-        public static List<TreeNode<TKey>> ToTreeData<TKey>(this IEnumerable<ITreeNode<TKey>> data, TKey parentId, Action<ITreeNode<TKey>, TreeNode<TKey>> act = null)
+        public static List<TreeNode<TKey>> ToTreeData<TModel, TKey>(this IEnumerable<TModel> data, TKey parentId, Action<TModel, TreeNode<TKey>> act = null)
+            where TModel : class, ITreeNode<TKey>
         {
             Check.NotNull(data, nameof(data));
 
-            return data.ToTreeData<TKey, TreeNode<TKey>>(parentId, act);
+            return data.ToTreeData<TModel, TKey, TreeNode<TKey>>(parentId, act);
         }
 
         /// <summary>
@@ -117,15 +123,16 @@ namespace Harry.Tree
         /// <param name="data">所有数据</param>
         /// <param name="pid">父级ID</param>
         /// <param name="nodes">结果集合</param>
-        private static void getTreeData<TKey, TNode>(Dictionary<TKey, List<ITreeNode<TKey>>> data, TKey pid, List<TNode> nodes, Action<ITreeNode<TKey>, TNode> act = null)
+        private static void getTreeData<TModel, TKey, TNode>(Dictionary<TKey, List<TModel>> data, TKey pid, List<TNode> nodes, Action<TModel, TNode> act = null)
+            where TModel : class, ITreeNode<TKey>
             where TNode : TreeNode<TKey, TNode>, new()
         {
-            if (data.TryGetValue(pid, out List<ITreeNode<TKey>> list))
+            if (data.TryGetValue(pid, out List<TModel> list))
             {
                 foreach (var item in list)
                 {
                     //生成节点
-                    var node = item.ToTreeNode(act: act);
+                    var node = item.ToTreeNode<TModel, TKey, TNode>(act: act);
                     nodes.Add(node);
 
                     //获取子节点

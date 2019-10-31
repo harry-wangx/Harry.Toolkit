@@ -11,6 +11,8 @@ namespace Harry.Tree
 
         public bool Open { get; set; }
 
+
+        bool? isParent;
         /// <summary>
         /// 获取是否为父节点
         /// </summary>
@@ -18,7 +20,14 @@ namespace Harry.Tree
         {
             get
             {
-                return Children != null && Children.Count > 0;
+                if (this.isParent != null)
+                    return this.isParent.Value;
+                else
+                    return Children != null && Children.Count > 0;
+            }
+            set
+            {
+                this.isParent = value;
             }
         }
 
