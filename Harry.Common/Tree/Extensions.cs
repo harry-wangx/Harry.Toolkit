@@ -13,8 +13,8 @@ namespace Harry.Tree
         {
             var node = new TreeNode<TKey>()
             {
-                Id = model.Id,
-                Name = model.Name
+                Id = model.GetId(),
+                Name = model.GetName()
             };
             act?.Invoke(model, node);
             return node;
@@ -29,8 +29,8 @@ namespace Harry.Tree
         {
             var node = new TNode()
             {
-                Id = model.Id,
-                Name = model.Name,
+                Id = model.GetId(),
+                Name = model.GetName(),
             };
             act?.Invoke(model, node);
             return node;
@@ -49,13 +49,13 @@ namespace Harry.Tree
             var dicData = new Dictionary<TKey, List<TModel>>();
             foreach (var item in data)
             {
-                if (dicData.TryGetValue(item.ParentId, out List<TModel> list))
+                if (dicData.TryGetValue(item.GetParentId(), out List<TModel> list))
                 {
                     list.Add(item);
                 }
                 else
                 {
-                    dicData.Add(item.ParentId, new List<TModel>() { item });
+                    dicData.Add(item.GetParentId(), new List<TModel>() { item });
                 }
             }
 
@@ -93,13 +93,13 @@ namespace Harry.Tree
             var dicData = new Dictionary<TKey, List<TModel>>();
             foreach (var item in data)
             {
-                if (dicData.TryGetValue(item.ParentId, out List<TModel> list))
+                if (dicData.TryGetValue(item.GetParentId(), out List<TModel> list))
                 {
                     list.Add(item);
                 }
                 else
                 {
-                    dicData.Add(item.ParentId, new List<TModel>() { item });
+                    dicData.Add(item.GetParentId(), new List<TModel>() { item });
                 }
             }
 

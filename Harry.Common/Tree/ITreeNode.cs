@@ -2,10 +2,10 @@
 {
     public interface ITreeNode<TKey>
     {
-        TKey Id { get; set; }
+        TKey GetId();
 
-        string Name { get; set; }
+        string GetName();
 
-        TKey ParentId { get; set; }
+        TKey GetParentId();
     }
 }
