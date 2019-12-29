@@ -7,7 +7,9 @@ namespace Harry.Extensions
 {
     public static partial class StringExtensions
     {
+#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static bool HasValue(this string value)
         {
             return !string.IsNullOrWhiteSpace(value);
@@ -16,7 +18,9 @@ namespace Harry.Extensions
         /// <summary>
         /// 是否包含指定的char字符
         /// </summary>
+#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static bool Contains(this string value, char c)
         {
             return Check.NotNull(value, nameof(value))
@@ -69,7 +73,9 @@ namespace Harry.Extensions
         #endregion
 
         #region 字符串转其它格式
+#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static Int16 ToInt16(this string s)
         {
             return Int16.Parse(s);
@@ -89,7 +95,9 @@ namespace Harry.Extensions
             }
         }
 
+#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static Int32 ToInt32(this string s)
         {
             return Int32.Parse(s);
@@ -108,7 +116,9 @@ namespace Harry.Extensions
             }
         }
 
+#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static Int64 ToInt64(this string s)
         {
             return Int64.Parse(s);
@@ -127,7 +137,9 @@ namespace Harry.Extensions
             }
         }
 
+#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static UInt16 ToUInt16(this string s)
         {
             return UInt16.Parse(s);
@@ -146,7 +158,9 @@ namespace Harry.Extensions
             }
         }
 
+#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static UInt32 ToUInt32(this string s)
         {
             return UInt32.Parse(s);
@@ -165,7 +179,9 @@ namespace Harry.Extensions
             }
         }
 
+#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static UInt64 ToUInt64(this string s)
         {
             return UInt64.Parse(s);
@@ -184,7 +200,9 @@ namespace Harry.Extensions
             }
         }
 
+#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static decimal ToDecimal(this string s)
         {
             return decimal.Parse(s);
@@ -203,7 +221,9 @@ namespace Harry.Extensions
             }
         }
 
+#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static float ToSingle(this string s)
         {
             return float.Parse(s);
@@ -222,7 +242,9 @@ namespace Harry.Extensions
             }
         }
 
+#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static double ToDouble(this string s)
         {
             return double.Parse(s);
@@ -245,7 +267,9 @@ namespace Harry.Extensions
         /// 字符串转成对应的枚举类型
         /// </summary>
         /// <returns></returns>
+#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static T ToEnum<T>(this string value)
         {
             return (T)Enum.Parse(typeof(T), value, true);
@@ -274,7 +298,9 @@ namespace Harry.Extensions
         /// <param name="value"></param>
         /// <param name="encoding"></param>
         /// <returns></returns>
+#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static byte[] ToBytes(this string value, Encoding encoding)
         {
             return encoding.GetBytes(value);
@@ -285,7 +311,9 @@ namespace Harry.Extensions
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
+#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static byte[] ToBytes(this string value)
         {
             return Encoding.UTF8.GetBytes(value);

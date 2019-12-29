@@ -20,7 +20,11 @@ namespace Harry.Compression
             using (GZipStream zipStream = new GZipStream(ms, CompressionMode.Compress))
             {
                 zipStream.Write(data, 0, data.Length);//将数据压缩并写到基础流中
+#if !NET40
                 zipStream.FlushAsync().Wait();
+#else
+                zipStream.Close();
+#endif
                 return ms.ToArray();
             }
 
@@ -37,7 +41,14 @@ namespace Harry.Compression
             using (GZipStream decompressionStream = new GZipStream(originalStream, CompressionMode.Decompress))
             using (MemoryStream ms = new MemoryStream())
             {
+#if !NET40
                 decompressionStream.CopyTo(ms);
+#else
+                byte[] buffer = new byte[_DefaultCopyBufferSize];
+                int read;
+                while ((read = decompressionStream.Read(buffer, 0, buffer.Length)) != 0)
+                    ms.Write(buffer, 0, read);
+#endif
                 return ms.ToArray();
             }
         }

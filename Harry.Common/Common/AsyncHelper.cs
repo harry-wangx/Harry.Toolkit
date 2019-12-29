@@ -1,5 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#if !NET40
+
+using System;
 using System.Globalization;
 using System.Threading;
 
@@ -72,3 +73,4 @@ namespace Harry.Common
     }
 }
 
+#endif

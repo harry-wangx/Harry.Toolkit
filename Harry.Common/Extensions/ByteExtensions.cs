@@ -9,7 +9,7 @@ namespace Harry.Extensions
         public static string ToBase64String(this byte[] bytes)
         {
             if (bytes == null || bytes.Length <= 0)
-                return "";
+                return string.Empty;
             return Convert.ToBase64String(bytes);
         }
     }

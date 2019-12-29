@@ -27,7 +27,7 @@ namespace Harry.Common
 
             foreach (var interfaceType in givenType.GetInterfaces())
             {
-                if (interfaceType.GetTypeInfo().IsGenericType && interfaceType.GetGenericTypeDefinition() == genericType)
+                if (interfaceType.IsGenericType && interfaceType.GetGenericTypeDefinition() == genericType)
                 {
                     return true;
                 }
@@ -237,7 +237,11 @@ namespace Harry.Common
             if (properties.Length == 1)
             {
                 property = objectType.GetProperty(properties.First());
+#if !NET40
                 property.SetValue(obj, value);
+#else
+                property.SetValue(obj, value, null);
+#endif
                 return;
             }
 
@@ -249,7 +253,11 @@ namespace Harry.Common
             }
 
             property = currentType.GetProperty(properties.Last());
+#if !NET40
             property.SetValue(obj, value);
+#else
+            property.SetValue(obj, value, null);
+#endif
         }
     }
 }

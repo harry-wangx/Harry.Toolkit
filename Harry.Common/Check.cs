@@ -11,7 +11,9 @@ namespace Harry
     public static class Check
     {
         #region NotNull
+#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static T NotNull<T>(T value, string paramName) where T : class
         {
             if (value == null)
@@ -20,7 +22,9 @@ namespace Harry
             return value;
         }
 
+#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static T NotNull<T>(T? value, string paramName) where T : struct
         {
             if (value == null)
@@ -31,7 +35,9 @@ namespace Harry
         #endregion
 
         #region NotEmpty
+#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static string NotNullOrEmpty(string value, string paramName)
         {
             if (!value.HasValue())
