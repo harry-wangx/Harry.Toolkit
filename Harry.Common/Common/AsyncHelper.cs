@@ -3,13 +3,14 @@
 using System;
 using System.Globalization;
 using System.Threading;
-
 using System.Threading.Tasks;
-
 
 
 namespace Harry.Common
 {
+    /// <summary>
+    /// 异步助手类
+    /// </summary>
     public static class AsyncHelper
     {
         private static readonly TaskFactory _myTaskFactory = new TaskFactory(CancellationToken.None,
@@ -56,6 +57,12 @@ namespace Harry.Common
             }).Unwrap().GetAwaiter().GetResult();
         }
 
+        /// <summary>
+        /// 通过lock锁,实现单线程执行委托
+        /// </summary>
+        /// <param name="sync">锁定的对象</param>
+        /// <param name="canExecute">判断是否执行委托</param>
+        /// <param name="actiontoExecuteSafely">被执行的委托</param>
         public static void ExecuteSafely(object sync, Func<bool> canExecute, Action actiontoExecuteSafely)
         {
             if (canExecute())

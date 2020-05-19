@@ -7,7 +7,7 @@ using System.Text;
 namespace Harry.Common
 {
     /// <summary>
-    /// Defines helper methods for reflection.
+    /// 反射的辅助方法类.
     /// </summary>
     public static class ReflectionHelper
     {

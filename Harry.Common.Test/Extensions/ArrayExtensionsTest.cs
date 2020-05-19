@@ -6,7 +6,7 @@ using Xunit.Abstractions;
 using Harry.Extensions;
 using System.Linq;
 
-namespace Harry.Common.Test.Extensions
+namespace Harry.Common.Extensions
 {
     public class ArrayExtensionsTest
     {
@@ -29,6 +29,10 @@ namespace Harry.Common.Test.Extensions
             Assert.False(a.Equals<byte>(c));
             Assert.False(a.Equals<byte>(d));
             Assert.True(d.Equals<byte>(null));
+
+            //测试带元素比较器的
+            Assert.False((new string[] { "a", "B" }).Equals<string>(new string[] { "A", "B" }));
+            Assert.True((new string[] { "a", "B" }).Equals<string>(new string[] { "A", "B" }, StringComparer.OrdinalIgnoreCase));
         }
 
         [Fact]
@@ -39,12 +43,38 @@ namespace Harry.Common.Test.Extensions
             byte[] c = new byte[] { 5, 6 };
             byte[] d = new byte[] { 5, 7 };
 
-            Assert.True(b.Equals<byte>(a, 0, 2));
-            Assert.True(c.Equals<byte>(a, 4, 2));
+            Assert.True(b.Equals<byte>(a, 0, 1));
+            Assert.True(c.Equals<byte>(a, 4, 5));
 
-            Assert.False(c.Equals<byte>(a, 5, 1));//数量不对
-            Assert.False(d.Equals<byte>(a, 4, 2));//元素不对
+            Assert.False(c.Equals<byte>(a, 5, 5));//数量不对
+            Assert.False(d.Equals<byte>(a, 4, 5));//元素不对
 
+            //测试带元素比较器的
+            Assert.False((new string[] { "a" }).Equals(new string[] { "A", "B" }, 0, 0));
+            Assert.True((new string[] { "a" }).Equals(new string[] { "A", "B" }, 0, 0, StringComparer.OrdinalIgnoreCase));
+
+        }
+
+        [Fact]
+        public void StartsFor()
+        {
+            byte[] a = new byte[] { 1, 2, 3, 4, 5, 6 };
+            byte[] b = new byte[] { 1, 2 };
+            byte[] c = new byte[] { 5, 6 };
+
+            Assert.True(b.StartsFor(a));
+            Assert.False(c.StartsFor(a));
+        }
+
+        [Fact]
+        public void EndsFor()
+        {
+            byte[] a = new byte[] { 1, 2, 3, 4, 5, 6 };
+            byte[] b = new byte[] { 1, 2 };
+            byte[] c = new byte[] { 5, 6 };
+
+            Assert.False(b.EndsFor(a));
+            Assert.True(c.EndsFor(a));
         }
 
         [Fact]

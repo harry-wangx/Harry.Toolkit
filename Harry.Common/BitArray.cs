@@ -34,7 +34,7 @@ namespace Harry
                 if ((bitPos < 0) || (bitPos >= m_numBits))
                     throw new ArgumentOutOfRangeException(nameof(bitPos));
 
-                //返回指定索引处的位的状态
+                //返回指定索引处的位的状态(如果要与1比较,位还得右移回去)
                 return (m_byteArray[bitPos / 8] & (1 << (bitPos % 8))) != 0;
             }
 

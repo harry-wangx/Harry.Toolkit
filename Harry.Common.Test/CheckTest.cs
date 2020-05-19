@@ -2,7 +2,7 @@
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Harry.Common.Test
+namespace Harry
 {
     public class CheckTest
     {
