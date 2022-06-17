@@ -10,7 +10,8 @@ namespace Harry.Component
     internal class ComponentManager<TObject>
         where TObject : class, IObject
     {
-        private Dictionary<string, TObject> _dicObjects = new Dictionary<string, TObject>(StringComparer.OrdinalIgnoreCase);
+        private Dictionary<string, TObject> _dicObjects = new Dictionary<string, TObject>(StringComparer.Ordinal);
+        
         public ComponentManager(IEnumerable<TObject> objects)
         {
             if (objects == null) throw new ArgumentNullException(nameof(objects));
@@ -19,7 +20,7 @@ namespace Harry.Component
             {
                 if (!_dicObjects.TryAdd(item.Name, item))
                 {
-                    throw new ArgumentException($"类型{typeof(TObject)}中,名称[{item.Name}]有重复（忽略大小写）");
+                    throw new ArgumentException($"类型{typeof(TObject)}中,名称[{item.Name}]有重复");
                 }
             }
         }

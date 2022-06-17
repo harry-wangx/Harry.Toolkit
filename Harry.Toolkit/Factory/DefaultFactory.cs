@@ -27,7 +27,7 @@ namespace Harry.Factory
             _providers = (providers ?? throw new ArgumentNullException(nameof(providers))).ToList();
         }
 
-        public T Create(string name)
+        public bool TryCreate(string name, out T value)
         {
             if (CheckDisposed())
             {
@@ -38,11 +38,14 @@ namespace Harry.Factory
                 T result = null;
                 foreach (var provider in _providers)
                 {
-                    result = provider.Create(name);
-                    if (result != null)
-                        return result;
+                    if (provider.TryCreate(name, out result))
+                    {
+                        value = result;
+                        return true;
+                    }
                 }
-                return null;
+                value = null;
+                return false;
             }
         }
 

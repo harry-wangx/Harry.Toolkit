@@ -9,7 +9,7 @@ namespace Harry.Factory
         /// 创建对像实例
         /// </summary>
         /// <param name="name">对像名称</param>
-        T Create(string name);
+        bool TryCreate(string name, out T value);
 
         /// <summary>
         /// 添加提供者 <see cref="IProvider<T>"/> 到工厂.

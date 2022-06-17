@@ -9,6 +9,12 @@ namespace Harry.Factory
     public interface IProvider<T> : IDisposable
         where T : class
     {
-        T Create(string name);
+        /// <summary>
+        /// 尝试创建对象
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        bool TryCreate(string name,out T value);
     }
 }

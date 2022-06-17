@@ -16,6 +16,11 @@ namespace Microsoft.Extensions.DependencyInjection
                 services.Add(ServiceDescriptor.Singleton(typeof(IFactory<>), typeof(DefaultFactory<>)));
             }
 
+            if (!services.Any(m => m.ServiceType == typeof(IFactoryCache<>)))
+            {
+                services.Add(ServiceDescriptor.Singleton(typeof(IFactoryCache<>), typeof(DefaultFactoryCache<>)));
+            }
+
             configure?.Invoke(new FactoryBuilder(services));
             return services;
         }
