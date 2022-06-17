@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Harry.Device
+namespace Harry.Factory
 {
-    public interface IDeviceBuilder
+    public interface IFactoryBuilder
     {
         IServiceCollection Services { get; }
     }
