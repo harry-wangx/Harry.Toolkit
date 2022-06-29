@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7822CDA4-7
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Harry.Toolkit", "Harry.Toolkit\Harry.Toolkit.csproj", "{A2129235-4B72-44F3-BECC-642BC2BE8CD0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harry.Toolkit.Test", "Harry.Toolkit.Test\Harry.Toolkit.Test.csproj", "{D0931B29-BEE4-461F-995F-C748A3224D51}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,9 +19,16 @@ Global
 		{A2129235-4B72-44F3-BECC-642BC2BE8CD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2129235-4B72-44F3-BECC-642BC2BE8CD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2129235-4B72-44F3-BECC-642BC2BE8CD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0931B29-BEE4-461F-995F-C748A3224D51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0931B29-BEE4-461F-995F-C748A3224D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0931B29-BEE4-461F-995F-C748A3224D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0931B29-BEE4-461F-995F-C748A3224D51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D0931B29-BEE4-461F-995F-C748A3224D51} = {7822CDA4-72DD-4576-9EEA-85F822E9E08E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1084F7FC-4392-4E22-BB69-3479163A5609}

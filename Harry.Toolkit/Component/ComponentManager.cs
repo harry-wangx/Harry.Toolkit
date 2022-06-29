@@ -7,11 +7,11 @@ namespace Harry.Component
     /// 组件管理器
     /// </summary>
     /// <typeparam name="TObject"></typeparam>
-    internal class ComponentManager<TObject>
+    internal class ComponentManager<TObject> : IComponentManager<TObject>
         where TObject : class, IObject
     {
         private Dictionary<string, TObject> _dicObjects = new Dictionary<string, TObject>(StringComparer.Ordinal);
-        
+
         public ComponentManager(IEnumerable<TObject> objects)
         {
             if (objects == null) throw new ArgumentNullException(nameof(objects));
